@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>An API-Centric Architecture Approach</title>
+        <style>
+/* From extension zhuangtongfa.material-theme */
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body {
+  box-sizing: border-box;
+  min-width: 200px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  background-color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  color: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre code {
+  color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code > div {
+  background: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table td {
+  border: 1px solid rgba(171, 178, 191, 0.5) !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-active-line:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-line:hover:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-line .code-line:hover:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* Generated from 'node_modules/github-markdown-css/github-markdown.css' */
+@font-face {
+  font-family: octicons-link;
+  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAZwABAAAAAACFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEU0lHAAAGaAAAAAgAAAAIAAAAAUdTVUIAAAZcAAAACgAAAAoAAQAAT1MvMgAAAyQAAABJAAAAYFYEU3RjbWFwAAADcAAAAEUAAACAAJThvmN2dCAAAATkAAAABAAAAAQAAAAAZnBnbQAAA7gAAACyAAABCUM+8IhnYXNwAAAGTAAAABAAAAAQABoAI2dseWYAAAFsAAABPAAAAZwcEq9taGVhZAAAAsgAAAA0AAAANgh4a91oaGVhAAADCAAAABoAAAAkCA8DRGhtdHgAAAL8AAAADAAAAAwGAACfbG9jYQAAAsAAAAAIAAAACABiATBtYXhwAAACqAAAABgAAAAgAA8ASm5hbWUAAAToAAABQgAAAlXu73sOcG9zdAAABiwAAAAeAAAAME3QpOBwcmVwAAAEbAAAAHYAAAB/aFGpk3jaTY6xa8JAGMW/O62BDi0tJLYQincXEypYIiGJjSgHniQ6umTsUEyLm5BV6NDBP8Tpts6F0v+k/0an2i+itHDw3v2+9+DBKTzsJNnWJNTgHEy4BgG3EMI9DCEDOGEXzDADU5hBKMIgNPZqoD3SilVaXZCER3/I7AtxEJLtzzuZfI+VVkprxTlXShWKb3TBecG11rwoNlmmn1P2WYcJczl32etSpKnziC7lQyWe1smVPy/Lt7Kc+0vWY/gAgIIEqAN9we0pwKXreiMasxvabDQMM4riO+qxM2ogwDGOZTXxwxDiycQIcoYFBLj5K3EIaSctAq2kTYiw+ymhce7vwM9jSqO8JyVd5RH9gyTt2+J/yUmYlIR0s04n6+7Vm1ozezUeLEaUjhaDSuXHwVRgvLJn1tQ7xiuVv/ocTRF42mNgZGBgYGbwZOBiAAFGJBIMAAizAFoAAABiAGIAznjaY2BkYGAA4in8zwXi+W2+MjCzMIDApSwvXzC97Z4Ig8N/BxYGZgcgl52BCSQKAA3jCV8CAABfAAAAAAQAAEB42mNgZGBg4f3vACQZQABIMjKgAmYAKEgBXgAAeNpjYGY6wTiBgZWBg2kmUxoDA4MPhGZMYzBi1AHygVLYQUCaawqDA4PChxhmh/8ODDEsvAwHgMKMIDnGL0x7gJQCAwMAJd4MFwAAAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAGVYYDT+AEjAwuDFpBmA9KMDEwMCh9i/v8H8sH0/4dQc1iAmAkALaUKLgAAAHjaTY9LDsIgEIbtgqHUPpDi3gPoBVyRTmTddOmqTXThEXqrob2gQ1FjwpDvfwCBdmdXC5AVKFu3e5MfNFJ29KTQT48Ob9/lqYwOGZxeUelN2U2R6+cArgtCJpauW7UQBqnFkUsjAY/kOU1cP+DAgvxwn1chZDwUbd6CFimGXwzwF6tPbFIcjEl+vvmM/byA48e6tWrKArm4ZJlCbdsrxksL1AwWn/yBSJKpYbq8AXaaTb8AAHja28jAwOC00ZrBeQNDQOWO//sdBBgYGRiYWYAEELEwMTE4uzo5Zzo5b2BxdnFOcALxNjA6b2ByTswC8jYwg0VlNuoCTWAMqNzMzsoK1rEhNqByEyerg5PMJlYuVueETKcd/89uBpnpvIEVomeHLoMsAAe1Id4AAAAAAAB42oWQT07CQBTGv0JBhagk7HQzKxca2sJCE1hDt4QF+9JOS0nbaaYDCQfwCJ7Au3AHj+LO13FMmm6cl7785vven0kBjHCBhfpYuNa5Ph1c0e2Xu3jEvWG7UdPDLZ4N92nOm+EBXuAbHmIMSRMs+4aUEd4Nd3CHD8NdvOLTsA2GL8M9PODbcL+hD7C1xoaHeLJSEao0FEW14ckxC+TU8TxvsY6X0eLPmRhry2WVioLpkrbp84LLQPGI7c6sOiUzpWIWS5GzlSgUzzLBSikOPFTOXqly7rqx0Z1Q5BAIoZBSFihQYQOOBEdkCOgXTOHA07HAGjGWiIjaPZNW13/+lm6S9FT7rLHFJ6fQbkATOG1j2OFMucKJJsxIVfQORl+9Jyda6Sl1dUYhSCm1dyClfoeDve4qMYdLEbfqHf3O/AdDumsjAAB42mNgYoAAZQYjBmyAGYQZmdhL8zLdDEydARfoAqIAAAABAAMABwAKABMAB///AA8AAQAAAAAAAAAAAAAAAAABAAAAAA==) format("woff");
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: #abb2bf;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  background: #282c34;
+  padding-top: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c {
+  color: #6a737d;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-v {
+  color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-e, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-en {
+  color: #6f42c1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-smi, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-s1 {
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ent {
+  color: #22863a;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-k {
+  color: #d73a49;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-pds, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-pse .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-sre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-sra {
+  color: #032f62;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-smw {
+  color: #e36209;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-bu {
+  color: #b31d28;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ii {
+  color: #fafbfc;
+  background-color: #b31d28;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c2 {
+  color: #fafbfc;
+  background-color: #d73a49;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c2::before {
+  content: "^M";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-cce {
+  font-weight: bold;
+  color: #22863a;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ml {
+  color: #735c0f;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mh, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mh .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ms {
+  font-weight: bold;
+  color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi {
+  font-style: italic;
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mb {
+  font-weight: bold;
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-md {
+  color: #b31d28;
+  background-color: #ffeef0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi1 {
+  color: #22863a;
+  background-color: #f0fff4;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mc {
+  color: #e36209;
+  background-color: #ffebda;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi2 {
+  color: #f6f8fa;
+  background-color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mdr {
+  font-weight: bold;
+  color: #6f42c1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ba {
+  color: #586069;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sg {
+  color: #959da5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-corl {
+  text-decoration: underline;
+  color: #032f62;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a {
+  background-color: transparent;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:active, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:hover {
+  outline-width: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: bolder;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img {
+  border-style: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  font: inherit;
+  margin: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  overflow: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body [type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body * {
+  box-sizing: border-box;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a {
+  color: #528bff;
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:hover {
+  text-decoration: underline;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr::before {
+  display: table;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body td, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body th {
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  font-size: 32px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 {
+  font-size: 16px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 {
+  font-size: 14px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  font-size: 12px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  margin: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol {
+  list-style-type: lower-roman;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dd {
+  margin-left: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .octicon {
+  vertical-align: text-bottom;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-0 {
+  padding-left: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-1 {
+  padding-left: 4px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-2 {
+  padding-left: 8px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-3 {
+  padding-left: 16px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-4 {
+  padding-left: 24px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-5 {
+  padding-left: 32px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-6 {
+  padding-left: 40px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body::before {
+  display: table;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body > *:first-child {
+  margin-top: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body > *:last-child {
+  margin-bottom: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .anchor {
+  float: left;
+  padding-right: 4px;
+  margin-left: -20px;
+  line-height: 1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .anchor:focus {
+  outline: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  /* padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5; */
+  padding: 8.5px 17px;
+  margin: 1.5em 0;
+  font-size: inherit;
+  color: #7c879c;
+  border-color: #4b5362;
+  border-width: 4px;
+  border-left: 5px solid #4b5362;
+  background: transparent;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote > :first-child {
+  margin-top: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote > :last-child {
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #f0f0f0;
+  border-bottom: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6:hover .anchor {
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.5em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 {
+  font-size: 1.25em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 {
+  font-size: 1em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 {
+  font-size: 0.875em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  font-size: 0.85em;
+  color: #6a737d;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol {
+  padding-left: 2em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li {
+  word-wrap: break-all;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li > p {
+  margin-top: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li + li {
+  margin-top: 0.25em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl {
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th {
+  font-weight: 700;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table td {
+  padding: 6px 13px;
+  /* border: 1px solid #dfe2e5; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table tr {
+  /* background-color: #fff; */
+  /* border-top: 1px solid #c6cbd1; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table tr:nth-child(2n) {
+  /* background-color: #f6f8fa; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img {
+  max-width: 100%;
+  box-sizing: content-box;
+  display: inline-block;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img[align=right] {
+  padding-left: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img[align=left] {
+  padding-right: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: #3a3f4b;
+  border-radius: 3px;
+  color: white;
+  margin: 0 1px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  word-wrap: normal;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre > code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight {
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  /* background-color: #f6f8fa; */
+  border-radius: 3px;
+  background-color: #31363f;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+  color: #abb2bf;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .full-commit .btn-outline:not(:disabled):hover {
+  color: #005cc5;
+  border-color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #d1d5da;
+  border-bottom-color: #c6cbd1;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #c6cbd1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body :checked + .radio-label {
+  position: relative;
+  z-index: 1;
+  border-color: #0366d6;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item {
+  list-style-type: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item + .task-list-item {
+  margin-top: 3px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item input {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  border-bottom-color: #eee;
+}
+
+/*
+
+Atom One Dark by Daniel Gamage
+Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
+
+base:    #282c34
+mono-1:  #abb2bf
+mono-2:  #818896
+mono-3:  #5c6370
+hue-1:   #56b6c2
+hue-2:   #61aeee
+hue-3:   #c678dd
+hue-4:   #98c379
+hue-5:   #e06c75
+hue-5-2: #be5046
+hue-6:   #d19a66
+hue-6-2: #e6c07b
+
+*/
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #abb2bf;
+  background: #282c34;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-comment,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-quote {
+  color: #5c6370;
+  font-style: italic;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-doctag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-keyword,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-formula {
+  color: #c678dd;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-section,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-name,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-tag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-deletion,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-subst {
+  color: #e06c75;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-literal {
+  color: #56b6c2;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-string,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-regexp,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-addition,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-attribute,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-meta-string {
+  color: #98c379;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-built_in,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-class .hljs-title {
+  color: #e6c07b;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-template-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-type,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-class,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-pseudo,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-number {
+  color: #d19a66;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-symbol,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-bullet,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-link,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-meta,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-id,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-title {
+  color: #61aeee;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-emphasis {
+  font-style: italic;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-strong {
+  font-weight: bold;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-link {
+  text-decoration: underline;
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h3 align="center"> API-Centric Centralized Reference Architectures</center></h3>
+<h1 align="center"> Layered and Segmented Architecture</center></h1>
+<p align="center">
+<i>
+Version Summer-2020<br/>
+</i>
+</p>
+<p><strong><em>Original Author</em></strong></p>
+<ul>
+<li>Asanka Abeysinghe | Chief Technology Evangelist | WSO2, Inc | <a href="mailto:asankaa@wso2.com">asankaa@wso2.com</a></li>
+</ul>
+<blockquote>
+<p><em>Enterprises depend on API-driven strategies to bring about digital transformation. The benefits include increased productivity, simplification, seamless connectivity, and rich experiences through digital channels. Connecting humans, things, applications, systems, and data is a fundamental requirement to become a digitally-driven organization, city, or country. APIs are the digital connectors that act as the glue for various digital assets. As a result, the business and technical architecture moved to API-centric from service-orientation. The primary focus of this paper is to look at the architecture approaches taken by the industry and represent these patterns as generic reference architectures. We identified two centralized reference architectures, i.e., layered and segmented, and we will discuss them in detail.</em></p>
+</blockquote>
+<h2 id="an-api-centric-architecture-approach">An API-Centric Architecture Approach</h2>
+<p>Digital transformation forced organizations to expose their capabilities in standard and easy-to-access ways. As a result, (managed) APIs became the norm to access business data and functionalities. Every architecture took an API-first approach and was augmented to support the same. Most enterprises followed the layered approach for a while and subsequently moved to segmented architecture with the rise of microservices. This paper focuses on these two centralized API-centric architecture patterns.</p>
+<h2 id="abstractions">Abstractions</h2>
+<table>
+<thead>
+<tr>
+<th>Icon</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="file:////media/ra-ls-component-10.png" alt="Person"></td>
+<td>Component</td>
+<td>In this architecture, any runtime is treated as a component. A component is an atomic unit. It can represent data, data abstraction, business logic, an end-user application, etc.</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-ls-layer-20.png" alt="Layer"></td>
+<td>Layer</td>
+<td>A layer is a grouping of a set of similar components and creates a clear boundary at design time and runtime. Layers are stacked on one another.</td>
+</tr>
+<tr>
+<td><img src="file:////Users/hovo/workspace/git/reference-architecture/media/ra-ls-dflow-20.png" alt="DFlow"></td>
+<td>Data flow</td>
+<td>The data flow represents how information is exchanged between each layer. Data flows sequentially (without bypassing) based on how the layers are stacked.</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-ls-segment-20.png" alt="Segment"></td>
+<td>Segment</td>
+<td>The subgrouping of components within a layer or across a number of layers.</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-ls-api-20.png" alt="API"></td>
+<td>API</td>
+<td>An <strong>A</strong>pplication <strong>P</strong>rogramming <strong>I</strong>nterface. They can represent edge, domain, and utility APIs.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-evolution-of-application-architecture">The Evolution of Application Architecture</h2>
+<p><img src="file:////media/ra-ls-api-evo-75.png" alt="evolution of api architecture"></p>
+<p>Single-tier Architecture: As we discussed earlier, application systems started as being centralized and single-purpose, with user interfaces, business logic, and data bundled together as a single layer. If you have built systems using Cobol and RPG (3G programming languages), you would have experienced how to generate user interfaces (forms) by pointing to a data set and building business logic directly interacting with the record sets and user interface. To run complex logic and data manipulation, business processes had to be scheduled in a queue and were executed sequentially (FIFO). 3G programming languages, ISAM databases, and mainframes were some of the technical elements in the single-tier era.</p>
+<p>Two-Tier Architecture: Following the advancements in data storage and data access mechanisms (database management systems xDBMS), data layers were separated from user interfaces and business logic.  As a result, two layers were introduced at the design, implementation, runtime, and administration. A new role was introduced to a database administrator (DBA). The user interface (UI) and the business logic was tightly coupled with the data but was logically and physically separated into two layers. Developers used programming languages such as Clipper, dBASEIII, and PowerBuilder to implement systems using two-tier architecture.</p>
+<p>Three-Tier Architecture: The introduction of various distributed computing technologies for information exchange and data access led to the three-tier architecture by separating the user interfaces, business logic, and data into individual tiers. Information exchange technologies (such as OLE, COM, COM+, DCOM, ActiveX, CORBA, and RMI/IIOP) and data access technologies (like OLE-DB, ODBC, DAO, and JDBC) introduced the power and linking capabilities of a three-tier architecture. Three-tier architecture became popular during this time, and data centers had application servers and database servers while user interfaces ran in the desktop computers of the users. Also, three types of developers operated in this model as backend developers (who develop business logic) and frontend developers (who develop user interfaces) and database administrators (DBAs). To strengthen this pattern, a number of frameworks came into the market, such as Enterprise Java Beans (EJB) and <a href="http://Microsoft.Net">Microsoft.Net</a>.</p>
+<p>Model View Controller (MVC): Web-based applications were enhanced in the dotcom era, and, as a result, a web-friendly MVC architecture pattern was introduced. The MVC approach held on to the three-tier architecture by changing the layer-to-layer data flow to a triangular flow. In principle, three-tier architecture does not recommend the UI layer directly accessing the data. The MVC pattern changed this by allowing the UI to interact with the data layer directly. This was further improved with the introduction of MVC-2.</p>
+<p>N-Tier Architecture: Smart devices added another application type—mobile apps. As a result, three-tier architecture moved to n-tier, and this allowed architects to add many system layers based on application needs. For example, some systems introduced the client logic layer and made the web and mobile apps thin clients. Also, the n-tier approach moved data logic out of the core data storage and introduced a new data processing and manipulating layer. Data flow moved back to the layer-to-layer sequential flow.</p>
+<p>Service-Oriented Architecture (SOA): Web services standardized distributed system calls by introducing interface definitions (contracts) and message formats, which were initially XML based. In addition, web services simplified remote procedure calls and brought in the concept of business interfaces and business data. As a result, a new architecture layer was added to the n-tier architecture: the services layer. As the entire architecture was created based on services, it was named service-oriented architecture. Later on, services were categorized as data services, business services, composite services, etc., and each service category represented an architecture layer. SOA was further improved with the addition of many sub-architecture patterns, such as event-driven architecture (EDA) and web-oriented architecture (WOA).</p>
+<blockquote>
+<p><em><strong>This paper mainly focuses on the layered and segmented architecture(s) defined after SOA.</strong></em></p>
+</blockquote>
+<p>Microservice Architecture (MSA): The theory behind microservices proposed a decentralized and non-layered architecture. However, most enterprises that adopted MSA ended in a layered architecture once they started reusing existing systems and data as well as the added quality of services.</p>
+<p>One of the main motivations behind the <a href="https://github.com/wso2/reference-architecture/blob/master/reference-architecture-cell-based.html"><strong>Cell-Based Architecture</strong></a> <strong>(CBA)</strong> was to find the right reference architecture to enable MSA outside a layered approach. Cell-Based Architecture is an API-led decentralized reference architecture that is compliant with Microservice Architecture (MSA) and Cloud-Native Architecture (CNA).</p>
+<h3 id="influence-from-other-concepts">Influence from Other Concepts</h3>
+<h4 id="system-of-systems-sos">System of Systems (SoS)</h4>
+<p>The system of systems concept groups the functionality and the teams (people) associated with delivering the functionality. The system of record, system of operations, system of engagement, and system of intelligence are a few high-level classifications that derive into subsystems based on the size and the complexity of the overall system.</p>
+<h4 id="introduction-of-new-usage-patterns">Introduction of New Usage Patterns</h4>
+<p>There were various usage patterns that were introduced from time to time-based on functionality enhancements. As an example, API management introduced an API gateway layer, identity and access management (IAM), and analytics moved to a centralized service layer. At the same time, infrastructure-related operations moved to an infrastructure as a service layer. These patterns influenced the shape of layered architecture.</p>
+<h2 id="layered-architecture">Layered Architecture</h2>
+<p>For nearly two decades, reference architectures primarily focused on layers, where comparable functional capabilities were grouped into layers by following the SoS approach. Centralized data moved from one layer to another. Layered architecture not only created architecture and technology layers but it also created a culture, an organization structure, and a new way for how teams operate.
+There are pros and cons to using this pattern. We position this as part of the emerging architecture pattern by considering enterprises that are moving from brownfield to greenfield and heavy usage of this pattern on the systems already built and providing a digital experience for consumers.</p>
+<p>Layered architecture is a natural progression based on how hardware and software systems have evolved, which started from tightly coupled, centralized, and single-purpose systems to distributed (centralized) multi-functional systems and modern decentralized any-functional systems.</p>
+<p>The movement of hardware and software, in addition to the hierarchical and centralized setup of the organization structure, was also an excellent fit for layered architecture. In such an organization, sub-teams are disconnected and operate as silos. Centralized, layered architecture helps these disconnected teams to connect by making the centralized system the source of truth.</p>
+<h3 id="an-overview-of-layered-architecture">An Overview of Layered Architecture</h3>
+<p><img src="file:////media/ra-ls-layered-ov-25-2.png" alt="Layered architecture"></p>
+<p>As noted at the beginning of this paper, in a layered architecture, components are the atomic units. Components that provide similar functional capabilities are grouped into layers. Layers are arranged as a stack.</p>
+<p>The number of layers is not fixed. However, at least three layers introduced by the three-tier architecture (presentation, logic, and data) exist in most layered architecture approaches. The complexity of the systems and the level of distribution (separation of concerns), introduced sub-layers to the basic three layers.</p>
+<p>Data flow in a sequential manner from one layer to another. As a result, two layers cannot bypass a layer in between. Different message exchange patterns (MEPs) can be used to exchange data between each layer. An architect can use one or a combination of different MEPs. For example, request-response and publish/subscribe (pub/sub) MEPs can be used to exchange data between layers.<br>
+Developers working on and responsible for a layer experience the same behavior from the two layers surrounding it.</p>
+<h3 id="layered-architecture-with-soa">Layered Architecture with SOA</h3>
+<p><img src="file:////media/ra-ls-layered-soa-25-2.png" alt="Layered SOA"></p>
+<p>The above diagram represents a common layered architecture used by architects that used SOA to implement systems. However, this is not an architecture diagram used at the beginning of SOA—rather it presents an architecture after the SOA concepts were well established in the industry. Initial SOA concepts were built using a triangular web services model and consisted of a service provider, service registry or discovery, and a service consumer.</p>
+<p>Architects extended the triangular model by following one of the fundamental concepts of SOA &quot;decoupling&quot; and grouped the decoupled functional capabilities into layers. Organizations modeled their teams and reporting structures to fit into the layered architecture and each layer became an individual team or even a business unit.</p>
+<h3 id="improved-layered-architecture-with-soa-august-2011">Improved Layered Architecture with SOA: August-2011</h3>
+<p><img src="file:////media/ra-ls-layered-soa-2-orig.png" alt="Layered SOA2"></p>
+<blockquote>
+<p><em>In fall 2015, I was involved in defining the future state architecture for a leading European automobile company. The company’s chief architect visited our office in California, and we started the project by taking the standard SOA-based layered architecture defined in the previous section. After a full working day and many whiteboard diagrams, we realized that single-dimensional layers could not represent the full architecture landscape we wanted. We started day two by extending the layered architecture to one that was multi-dimensional by bringing in application lifecycle stages and quality of services into separate dimensions. This allowed us to group cross-cutting concerns into different blocks within the layers and address a broader scope of capabilities.</em></p>
+</blockquote>
+<p>The system of systems concept influenced this architecture as the foundation. Also, concepts such as Gartner's pace layered architecture and the functionality richness expected by the enterprise architecture considered heavily while defining this pattern.<br>
+We used this pattern to build many systems in medium to large enterprises, and still, many architects refer to this as a logical pattern.
+Let's go through each layer in detail.</p>
+<p>Source System of Record (SSoR): This is the layer that physically stores data. Different types of data storage can represent this layer. In reality, enterprises use heterogeneous data storage added with the time based on the internally and externally built systems introduced. This storage can vary from SQL, NoSQL, file system, to cloud storage, or a combination of these.</p>
+<p>System of Record (SoR): This layer is responsible for managing and maintaining data stored in the SSoR layer. Typically a core system application represents this layer by encapsulating the SSoR.</p>
+<p>Data Virtualization: This layer allows access to the SoR or multiple SoRs by building business objects. Data manipulation tools and technologies, such as master data management (MDM) and extract, transform, load (ETL), reside in this layer. Object-relational mapping (ORM), data services introduced by SOA, data APIs, and new data lakes implemented using data caches can be new additions.</p>
+<p>Service-Oriented Architecture (SOA): The SOA layer contains the business logic and processes that expose the business capabilities as services. Traditional web service standards or RESTful service standards use this layer to define the interfaces on accessing the services.</p>
+<p>Application Programming Interfaces (APIs): Data and business functionalities are exposed in secure and standard ways via (managed) APIs. The application developer only sees the APIs as the way to perform create/read/update/delete (CRUD) operations and execute business processes. APIs encapsulate the complexity of the underlying systems and data and provide a pure abstraction.</p>
+<p>System of Engagement: This is the layer that human interaction happens through various applications, such as web and mobile applications. As we identified before, applications are built by consuming (managed) APIs. There can be a system-to-system interaction, and device interaction through IoT (Internet of Things) can represent this layer, in addition to human-centric applications. Even robotics is a candidate to represent this layer.</p>
+<p>As explained previously, the difference between this layered architecture compared to the standard layered diagrams is the multi-dimensional aspect of it. So let's look at the horizontal view of the same.</p>
+<p>System of Automation: Infrastructure, infrastructure as a service (IaaS), and virtualization of hardware, such as the physical location of different runtimes, runs in this layer. Besides, a supportive process of application lifecycle management, such as continuous integration (CI), continuous deployment (CD), infrastructure as a code, and various DevOps automation, represents this layer. This layer runs across the vertical layers we looked in the previous sections.</p>
+<p>Application lifecycle stages (develop/publish/consume and run): Tools and actions bound with development sandbox environments are represented in the development layer. Once the application advances from the development by successfully passing the relevant quality tests, it gets promoted to the publishing stage. Publishing can proceed to a relevant listing (store or registry) as well as to an application composite repository. In some cases, it can be just a branch or a tag in the source control system, which contains a separate build pipeline. Application usage outside development and testing can be found in the consume and run layer. The production-ready versions of applications are represented here. In addition to the applications, the dependent runtimes in each vertical layer are presented from bottom to top (data to screen).</p>
+<p>Quality of Services (QoS): We identified three primary quality of services in this architecture, which can engage at the runtime separated from the core application and business logic. Securing, governing, and monitoring the applications and business logic are added as separate horizontal layers.</p>
+<p>The layered architecture described above does not look interesting for current greenfield projects that follow concepts such as microservices and cloud-native. The reality is that a majority of enterprises cannot take a 100% greenfield approach; it is a mix of brownfield and greenfield. Therefore, a multi-dimensional layered architecture is still used as a reference architecture to build large distributed systems. The next section explains a way to enhance this approach to address greenfield architecture requirements.</p>
+<h3 id="layered-architecture-with-microservice-architecture-msa-february-2014">Layered Architecture with Microservice Architecture (MSA): February-2014</h3>
+<p>The term microservices was coined by Dr. Peter Rogers in 2005; however, it was adopted as an architecture pattern that could be applied to build production-ready systems in 2011. Best practices and guidelines provided by technology evangelists like Martin Fowler and organizations that adopted the principles, such as Netflix and Uber, made it famous in the architecture community.</p>
+<p>However, architects found it difficult to apply all the theories associated with microservice architecture during that period. Development teams started writing microservices when they revamped existing services or when introducing new services. At the same time, greenfield projects started adopting microservices. But those microservices had to fit into the overall application architecture due to various reasons, such as fetching data, integrating with business processes, and even producing data to various end-user applications residing in the system of the engagement layer. As a result, microservices became another layer in layered architecture. The following diagram explains how microservices fit into the layered architecture during the early stage.</p>
+<p><img src="file:////media/ra-ls-layered-msa.png" alt="Layered MSA"></p>
+<p>Primarily the business logic and integration logic focused on service composition (orchestration and choreography) moved to microservices. The centralized nature of the runtime, dependency with multiple application architecture layers, and hypervisor-based and bare-metal infrastructure did not support the flexibility and depth required for MSA. Container-based infrastructures were there at that time, such as Linux Containers (LXC) and Warden, but they were not mature enough to run production systems.</p>
+<p>To break the limitations identified above, application and DevOps architects came up with a workaround. This is the birth of segmented architecture.</p>
+<h2 id="segmented-architecture">Segmented Architecture</h2>
+<h3 id="an-overview-of-segmented-architecture">An Overview of Segmented Architecture</h3>
+<p>Organizations started moving to a podular architecture with small agile teams adapting to agile methodologies. Different terms were used to define these teams. Pods, two-pizza teams, and scrum teams are a few examples of this, and we call them <a href="https://github.com/wso2/reference-methodology/blob/master/reference-methodology.md#self-organized-teams"><strong>self-organized teams</strong></a>. From a technical perspective, microservice architecture, virtualization, and containers helped these autonomous teams to operate successfully. Some teams started bypassing corporate IT and moved to their hosting options, such as public clouds. We call it 'Shadow IT.' To avoid Shadow IT, responsive IT concepts were introduced by corporate IT teams, and segmented architecture is a result of that.</p>
+<p>The fundamental concept behind layered architecture did not change in segmented architecture. However, segmented architecture introduced more freedom for application development teams than layered architecture by creating isolation and ownership of runtimes by partitioning using segments.</p>
+<p>Segments were created based on how each enterprise was organized; in some cases, it was based on the business units, a set of functionality delivered to larger application systems,  or center of excellence (CoE) teams. The team owns the segment and has access to the segment in different environments associated with the lifecycle of the application, such as development, testing, staging, and production.</p>
+<p><img src="file:////media/ra-ls-segmented-ov-25-2.png" alt="Segmented Architecture"></p>
+<p>The above diagram illustrates a logical abstraction of segmented architecture. Architecture layers remain as it is, and the data flow happens from one layer to another. However, the components in each layer are grouped as segments. Segmentation is implemented using the combination of infrastructure capabilities and security, such as role-based access control (RBAC) and entitlement policies.
+Organizations are taking different approaches to achieve segmentation. They can be categorized into three areas.</p>
+<ol>
+<li>Runtime partitioning</li>
+<li>Multi-tenancy</li>
+<li>Platform of platforms</li>
+</ol>
+<h4 id="runtime-partitioning">Runtime Partitioning</h4>
+<p>In the runtime partitioning approach, components inside a layer are grouped as segments, which adheres to the fundamentals of the segmented architecture pattern. The partitioning of components (or runtimes) is done based on the development and production deployment needs and isolation requirements. The following diagram shows a segmentation approach based on the business domains. Only the services layer is segmented based on the business domains and each segment is owned by an individual team. The remaining layers (other than domain services) are not partitioned and act as shared services across segments.</p>
+<p><img src="file:////media/ra-ls-runtime-part.png" alt="Runtime partioning"></p>
+<h4 id="multi-tenancy">Multi-Tenancy</h4>
+<p>Multi-tenancy introduced a way to provide isolation in hosted solutions, such as software as a service (SaaS) or platform as a service (Paas). Later on, the same concept was utilized to achieve segmentation in application development. Layered architecture platforms started providing the runtime capabilities and used a tenant as the boundary for each team. The common practice is to provide a tenant in each layer, but it can be obsolete in some layers and make them shared across the tenants. The system of record layer is an example of a shared layer.</p>
+<p><img src="file:////media/ra-ls-mt-25-2.png" alt="MT"></p>
+<p>Types of Multi-tenancy in Message-oriented Middleware</p>
+<ul>
+<li>Shared data, control, and management plane</li>
+<li>Individual data plane, shared control and management plane</li>
+<li>Individual data and control plane, shared management plane</li>
+</ul>
+<p>Based on various functional and non-functional requirements, internal and external service providers decide which model of multi-tenancy should be offered to consumers. Isolation requirements of functional runtimes, security, and system load are some considerations service providers have to take into account when making this decision.</p>
+<p>If you are new to the concept of the data, control, and management plane, please refer to this <a href="https://www.ciscopress.com/articles/article.asp?p=2928193"><strong>article</strong></a>.</p>
+<h4 id="platform-of-platforms">Platform of Platforms</h4>
+<p><img src="file:////media/ra-ls-platform-of-platforms-30.png" alt="Platform of platforms"></p>
+<p>In this approach, the entire platform is duplicated and is treated as a segment for a business unit or an agile team. When a new project or a business unit requires an environment, the authorized infrastructure team provision and spin up the entire platform and hand it over to the required team. The platform of platforms is a costly approach from an infrastructure point of view. Each team might require several environments based on their application development lifecycle. The number of environments can vary by the size of the team and the nature of the applications they build. For example, Team A requires development, testing, and production environments, while Team B needs development, testing, staging, production-blue, and production-green environments. In this approach, a clone of the same platform is required to represent each environment. However, there are considerable advantages in terms of productivity; the isolation of runtime environments allow teams to independently develop and release the products or the services they own. Most organizations offer some services across the platforms, such as master data, identities, user stores, and build processes associated with the CI/CD pipeline.</p>
+<h2 id="api-centric-architecture">API-Centric Architecture</h2>
+<p>In this section, we look at the relationships between APIs and layered and segmented architecture patterns.</p>
+<h3 id="the-evolution-of-apis">The Evolution of APIs</h3>
+<p><img src="file:////media/ra-ls-api-timeline-75.png" alt="API timeline"></p>
+<p>In the prior section, we looked at the architecture evolution that occurred during the past two decades. The above table is a snapshot of how APIs evolved during the same period. If you carefully analyze both, there is a synergy we can see in both progression paths that involve APIs from the beginning. Therefore, APIs were involved in each architecture approach in different forms and characteristics. Digital transformation, consumer-driven application requirements, and business-focused application development led APIs to shift to the right—from technical APIs to business-friendly APIs.</p>
+<h3 id="the-categorization-of-apis">The Categorization of APIs</h3>
+<h4 id="based-on-functionality">Based on Functionality</h4>
+<p>The components in an application architecture expose the functional capabilities as APIs. These APIs are created using different message exchange patterns, transports, and formats.  The purpose of the APIs varies based on the nature of the component. Based on various usage patterns, we have categorized APIs into three buckets.</p>
+<table>
+<thead>
+<tr>
+<th>API Category</th>
+<th>Icon</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Edge APIs</td>
+<td><img src="file:////media/ra-ls-edge-api-20.png" alt="Edge"></td>
+<td>Edge APIs utilize applications to build applications and share business capabilities internally and externally. These can be highly secured, managed, discoverable, and monetized API products.</td>
+</tr>
+<tr>
+<td>Domain APIs</td>
+<td><img src="file:////media/ra-ls-domain-api-20.png" alt="Domain"></td>
+<td>Business logic can be exposed as APIs based on the domain by utilizing utility APIs. They can be used for services, microservices, service composition (orchestration/choreography), functions, and business processes.</td>
+</tr>
+<tr>
+<td>Utility APIs</td>
+<td><img src="file:////Users/hovo/workspace/git/reference-architecture/media/ra-ls-utility-api-20.png" alt="Utility"></td>
+<td>These can expose various system of record layers as APIs using data drivers, file, B2B, legacy, and cloud connectors.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="based-on-behavior">Based on Behavior</h4>
+<p>Applications (or things) consuming the APIs require the message exchange between the API gateway and the application based on usage. For example, a mobile application on the move requires an asynchronous message exchange to the service during connection interruptions. Therefore, the APIs have to support multiple message exchange patterns. There are three main API types identified based on the behavior. Most of the API gateways available in the market support these three types.</p>
+<table>
+<thead>
+<tr>
+<th>API Type</th>
+<th>Icon</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Request Response</td>
+<td><img src="file:////media/ra-ls-reqest-response-20.png" alt="Edge"></td>
+<td>The request response API type provides an abstraction over everything that can be queried or activated Protocols: HTTP/s, gRPC</td>
+</tr>
+<tr>
+<td>Events</td>
+<td><img src="file:////media/ra-ls-events-20.png" alt="Domain"></td>
+<td>Events allow action in real-time based on changes that occur in the environment, allowing work to be triggered. Protocols: JMS, AMQP, SMTP, WebSockets, Webhooks, REST hooks, ServerSent</td>
+</tr>
+<tr>
+<td>Streams</td>
+<td><img src="file:////Users/hovo/workspace/git/reference-architecture/media/ra-ls-streams-20.png" alt="Utility"></td>
+<td>Streams capture the ongoing evolving nature of the environment, allowing pattern matching and analysis. Protocols: Kafka, MQTT</td>
+</tr>
+</tbody>
+</table>
+<p>Different behavioral APIs can be exposed using a single API gateway or use separate gateways per each behavioral type. The decision might depend on the functional capabilities of the API gateway and the architecture.</p>
+<h3 id="layered-architecture-and-apis">Layered Architecture and APIs</h3>
+<p>The reason for claiming layered architecture as an API-centric approach is highlighted in the following diagram. APIs act as the glue to connect the layers. Based on the functional capabilities exposed, the API type varies and fit into a category explained in the previous section.</p>
+<p><img src="file:////media/ra-ls-layered-api-25-2.png" alt="Layered API"></p>
+<p>While bridging connectivity between layers, APIs connect components within the layers as well. Connectivity between the components shares either business- or system-level information based on the runtime need.</p>
+<h3 id="service-oriented-architecture-and-apis">Service-Oriented Architecture and APIs</h3>
+<p>Inherited from the generic layered architecture connection with APIs, SOA uses the same concept.</p>
+<p><img src="file:////media/ra-ls-soa-api-25-2.png" alt="SOA and API"></p>
+<p>A new layer called API management was added to the architecture and resides between end-user applications and services. Utility APIs and domain APIs mainly are consumed internally; hence, additional control and security are required for the edge APIs that service end-user applications.</p>
+<p>The nature of the systems residing in each layer mandate the type of APIs exposed. Behavioral API models come in handy here to support that. In addition, heterogeneous systems expect various message formats and security standards, so message mediation and security bridging are common practices in this architecture pattern. Traditional enterprise service bus (ESB), composite services, and API gateways facilitate the mediation processes. Mediation is an overhead due to the added latency, but it can instantly negotiate by looking at the simplicity brought to the architecture and functional capabilities.</p>
+<h3 id="segmented-architecture-and-apis">Segmented Architecture and APIs</h3>
+<p>The usage of APIs in the segmented architecture is similar to the layered architecture. However, it increases dependency because a business unit or a team owns each segment. The only way (or recommended way) is to use APIs to communicate between the segments. Similar to the layered architecture, APIs will glue the segments as well as components inside each segment. In general, edge APIs get exposed between segments, but there are no restrictions to prove the capabilities as domain and utility APIs.</p>
+<p><img src="file:////media/ra-ls-segmented-api-25-2.png" alt="Segmented API"></p>
+<p>The usage and deployment of API gateways depend on the segmentation technique used. Shared gateways can be applied to runtime partitioning and multi-tenancy patterns, while independent gateways can be used in all three models, including platform of platforms.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The two architecture patterns discussed in this paper (layered and segmented) originate from the same family, i.e., centralized. The sequential data flow from one layer to another is a common characteristic in both designs. Segmented architecture provides more flexibility for agile teams than layered architecture because of the elongated isolation provided by the segments.</p>
+<p>The evolution of architecture and APIs happened in parallel. The type of APIs, protocols, and technology used to build the APIs varied based on the improvements in distributed computing, API economy, and organization structure. APIs act as the glue between the layers and components inside the layers.</p>
+<p>Architects have the freedom to pick the right reference architecture based on the application and organizational needs. If you are looking for a decentralized approach, you can refer to the <a href="https://github.com/wso2/reference-architecture/blob/master/reference-architecture-cell-based.html"><strong>Cell-based Architecture (CBA)</strong></a>. The <a href="https://github.com/wso2/reference-methodology/blob/master/reference-methodology.html"><strong>Methodology for Agility</strong></a> defines a guide to implement these three architecture patterns.</p>
+<blockquote>
+<p><em>Note from the author:
+I have been involved in implementing more than 1000 projects using layered and segmented architecture in many parts of the world. Even the current trend of decentralized architecture, layered architecture, and segmented architecture is a valid architecture that can be beneficial for many organizations. If you are looking for guidance for picking the correct architecture for your project, I'm happy to guide you using a <a href="https://wso2.com/strategic-consulting/"><strong>strategic consultancy engagement</strong></a>.</em></p>
+</blockquote>
+
+    </body>
+    </html>

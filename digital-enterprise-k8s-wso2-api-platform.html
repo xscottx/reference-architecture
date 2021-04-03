@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Introduction</title>
+        <style>
+/* From extension zhuangtongfa.material-theme */
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body {
+  box-sizing: border-box;
+  min-width: 200px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  background-color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  color: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre code {
+  color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code > div {
+  background: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table td {
+  border: 1px solid rgba(171, 178, 191, 0.5) !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-active-line:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-line:hover:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-line .code-line:hover:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* Generated from 'node_modules/github-markdown-css/github-markdown.css' */
+@font-face {
+  font-family: octicons-link;
+  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAZwABAAAAAACFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEU0lHAAAGaAAAAAgAAAAIAAAAAUdTVUIAAAZcAAAACgAAAAoAAQAAT1MvMgAAAyQAAABJAAAAYFYEU3RjbWFwAAADcAAAAEUAAACAAJThvmN2dCAAAATkAAAABAAAAAQAAAAAZnBnbQAAA7gAAACyAAABCUM+8IhnYXNwAAAGTAAAABAAAAAQABoAI2dseWYAAAFsAAABPAAAAZwcEq9taGVhZAAAAsgAAAA0AAAANgh4a91oaGVhAAADCAAAABoAAAAkCA8DRGhtdHgAAAL8AAAADAAAAAwGAACfbG9jYQAAAsAAAAAIAAAACABiATBtYXhwAAACqAAAABgAAAAgAA8ASm5hbWUAAAToAAABQgAAAlXu73sOcG9zdAAABiwAAAAeAAAAME3QpOBwcmVwAAAEbAAAAHYAAAB/aFGpk3jaTY6xa8JAGMW/O62BDi0tJLYQincXEypYIiGJjSgHniQ6umTsUEyLm5BV6NDBP8Tpts6F0v+k/0an2i+itHDw3v2+9+DBKTzsJNnWJNTgHEy4BgG3EMI9DCEDOGEXzDADU5hBKMIgNPZqoD3SilVaXZCER3/I7AtxEJLtzzuZfI+VVkprxTlXShWKb3TBecG11rwoNlmmn1P2WYcJczl32etSpKnziC7lQyWe1smVPy/Lt7Kc+0vWY/gAgIIEqAN9we0pwKXreiMasxvabDQMM4riO+qxM2ogwDGOZTXxwxDiycQIcoYFBLj5K3EIaSctAq2kTYiw+ymhce7vwM9jSqO8JyVd5RH9gyTt2+J/yUmYlIR0s04n6+7Vm1ozezUeLEaUjhaDSuXHwVRgvLJn1tQ7xiuVv/ocTRF42mNgZGBgYGbwZOBiAAFGJBIMAAizAFoAAABiAGIAznjaY2BkYGAA4in8zwXi+W2+MjCzMIDApSwvXzC97Z4Ig8N/BxYGZgcgl52BCSQKAA3jCV8CAABfAAAAAAQAAEB42mNgZGBg4f3vACQZQABIMjKgAmYAKEgBXgAAeNpjYGY6wTiBgZWBg2kmUxoDA4MPhGZMYzBi1AHygVLYQUCaawqDA4PChxhmh/8ODDEsvAwHgMKMIDnGL0x7gJQCAwMAJd4MFwAAAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAGVYYDT+AEjAwuDFpBmA9KMDEwMCh9i/v8H8sH0/4dQc1iAmAkALaUKLgAAAHjaTY9LDsIgEIbtgqHUPpDi3gPoBVyRTmTddOmqTXThEXqrob2gQ1FjwpDvfwCBdmdXC5AVKFu3e5MfNFJ29KTQT48Ob9/lqYwOGZxeUelN2U2R6+cArgtCJpauW7UQBqnFkUsjAY/kOU1cP+DAgvxwn1chZDwUbd6CFimGXwzwF6tPbFIcjEl+vvmM/byA48e6tWrKArm4ZJlCbdsrxksL1AwWn/yBSJKpYbq8AXaaTb8AAHja28jAwOC00ZrBeQNDQOWO//sdBBgYGRiYWYAEELEwMTE4uzo5Zzo5b2BxdnFOcALxNjA6b2ByTswC8jYwg0VlNuoCTWAMqNzMzsoK1rEhNqByEyerg5PMJlYuVueETKcd/89uBpnpvIEVomeHLoMsAAe1Id4AAAAAAAB42oWQT07CQBTGv0JBhagk7HQzKxca2sJCE1hDt4QF+9JOS0nbaaYDCQfwCJ7Au3AHj+LO13FMmm6cl7785vven0kBjHCBhfpYuNa5Ph1c0e2Xu3jEvWG7UdPDLZ4N92nOm+EBXuAbHmIMSRMs+4aUEd4Nd3CHD8NdvOLTsA2GL8M9PODbcL+hD7C1xoaHeLJSEao0FEW14ckxC+TU8TxvsY6X0eLPmRhry2WVioLpkrbp84LLQPGI7c6sOiUzpWIWS5GzlSgUzzLBSikOPFTOXqly7rqx0Z1Q5BAIoZBSFihQYQOOBEdkCOgXTOHA07HAGjGWiIjaPZNW13/+lm6S9FT7rLHFJ6fQbkATOG1j2OFMucKJJsxIVfQORl+9Jyda6Sl1dUYhSCm1dyClfoeDve4qMYdLEbfqHf3O/AdDumsjAAB42mNgYoAAZQYjBmyAGYQZmdhL8zLdDEydARfoAqIAAAABAAMABwAKABMAB///AA8AAQAAAAAAAAAAAAAAAAABAAAAAA==) format("woff");
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: #abb2bf;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  background: #282c34;
+  padding-top: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c {
+  color: #6a737d;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-v {
+  color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-e, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-en {
+  color: #6f42c1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-smi, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-s1 {
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ent {
+  color: #22863a;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-k {
+  color: #d73a49;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-pds, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-pse .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-sre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-sra {
+  color: #032f62;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-smw {
+  color: #e36209;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-bu {
+  color: #b31d28;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ii {
+  color: #fafbfc;
+  background-color: #b31d28;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c2 {
+  color: #fafbfc;
+  background-color: #d73a49;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c2::before {
+  content: "^M";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-cce {
+  font-weight: bold;
+  color: #22863a;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ml {
+  color: #735c0f;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mh, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mh .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ms {
+  font-weight: bold;
+  color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi {
+  font-style: italic;
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mb {
+  font-weight: bold;
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-md {
+  color: #b31d28;
+  background-color: #ffeef0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi1 {
+  color: #22863a;
+  background-color: #f0fff4;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mc {
+  color: #e36209;
+  background-color: #ffebda;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi2 {
+  color: #f6f8fa;
+  background-color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mdr {
+  font-weight: bold;
+  color: #6f42c1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ba {
+  color: #586069;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sg {
+  color: #959da5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-corl {
+  text-decoration: underline;
+  color: #032f62;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a {
+  background-color: transparent;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:active, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:hover {
+  outline-width: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: bolder;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img {
+  border-style: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  font: inherit;
+  margin: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  overflow: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body [type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body * {
+  box-sizing: border-box;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a {
+  color: #528bff;
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:hover {
+  text-decoration: underline;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr::before {
+  display: table;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body td, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body th {
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  font-size: 32px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 {
+  font-size: 16px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 {
+  font-size: 14px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  font-size: 12px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  margin: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol {
+  list-style-type: lower-roman;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dd {
+  margin-left: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .octicon {
+  vertical-align: text-bottom;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-0 {
+  padding-left: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-1 {
+  padding-left: 4px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-2 {
+  padding-left: 8px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-3 {
+  padding-left: 16px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-4 {
+  padding-left: 24px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-5 {
+  padding-left: 32px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-6 {
+  padding-left: 40px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body::before {
+  display: table;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body > *:first-child {
+  margin-top: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body > *:last-child {
+  margin-bottom: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .anchor {
+  float: left;
+  padding-right: 4px;
+  margin-left: -20px;
+  line-height: 1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .anchor:focus {
+  outline: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  /* padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5; */
+  padding: 8.5px 17px;
+  margin: 1.5em 0;
+  font-size: inherit;
+  color: #7c879c;
+  border-color: #4b5362;
+  border-width: 4px;
+  border-left: 5px solid #4b5362;
+  background: transparent;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote > :first-child {
+  margin-top: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote > :last-child {
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #f0f0f0;
+  border-bottom: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6:hover .anchor {
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.5em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 {
+  font-size: 1.25em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 {
+  font-size: 1em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 {
+  font-size: 0.875em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  font-size: 0.85em;
+  color: #6a737d;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol {
+  padding-left: 2em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li {
+  word-wrap: break-all;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li > p {
+  margin-top: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li + li {
+  margin-top: 0.25em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl {
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th {
+  font-weight: 700;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table td {
+  padding: 6px 13px;
+  /* border: 1px solid #dfe2e5; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table tr {
+  /* background-color: #fff; */
+  /* border-top: 1px solid #c6cbd1; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table tr:nth-child(2n) {
+  /* background-color: #f6f8fa; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img {
+  max-width: 100%;
+  box-sizing: content-box;
+  display: inline-block;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img[align=right] {
+  padding-left: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img[align=left] {
+  padding-right: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: #3a3f4b;
+  border-radius: 3px;
+  color: white;
+  margin: 0 1px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  word-wrap: normal;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre > code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight {
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  /* background-color: #f6f8fa; */
+  border-radius: 3px;
+  background-color: #31363f;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+  color: #abb2bf;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .full-commit .btn-outline:not(:disabled):hover {
+  color: #005cc5;
+  border-color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #d1d5da;
+  border-bottom-color: #c6cbd1;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #c6cbd1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body :checked + .radio-label {
+  position: relative;
+  z-index: 1;
+  border-color: #0366d6;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item {
+  list-style-type: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item + .task-list-item {
+  margin-top: 3px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item input {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  border-bottom-color: #eee;
+}
+
+/*
+
+Atom One Dark by Daniel Gamage
+Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
+
+base:    #282c34
+mono-1:  #abb2bf
+mono-2:  #818896
+mono-3:  #5c6370
+hue-1:   #56b6c2
+hue-2:   #61aeee
+hue-3:   #c678dd
+hue-4:   #98c379
+hue-5:   #e06c75
+hue-5-2: #be5046
+hue-6:   #d19a66
+hue-6-2: #e6c07b
+
+*/
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #abb2bf;
+  background: #282c34;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-comment,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-quote {
+  color: #5c6370;
+  font-style: italic;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-doctag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-keyword,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-formula {
+  color: #c678dd;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-section,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-name,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-tag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-deletion,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-subst {
+  color: #e06c75;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-literal {
+  color: #56b6c2;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-string,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-regexp,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-addition,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-attribute,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-meta-string {
+  color: #98c379;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-built_in,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-class .hljs-title {
+  color: #e6c07b;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-template-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-type,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-class,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-pseudo,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-number {
+  color: #d19a66;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-symbol,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-bullet,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-link,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-meta,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-id,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-title {
+  color: #61aeee;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-emphasis {
+  font-style: italic;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-strong {
+  font-weight: bold;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-link {
+  text-decoration: underline;
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 align="center"> Reference Implementation for a Cloud Native Digital Enterprise </center></h1>
+<p align="center">
+<i>
+Version Winter-2020<br/>
+</i>
+</p>
+<p><strong><em>Original Author</em></strong></p>
+<ul>
+<li>Lakmal Warusawithana | Senior Director - Technology Evangelism | WSO2, Inc | <a href="mailto:lakmal@wso2.com">lakmal@wso2.com</a> | <a href="https://twitter.com/lakwarus">@lakwarus</a></li>
+</ul>
+<blockquote>
+<p><em>This paper presents a reference implementation for a cloud native digital enterprise architecture described in the <a href="https://github.com/wso2/reference-architecture/blob/master/reference-cloud-native-architecture-digital-enterprise.html">Reference Architecture for a Cloud-Native Digital Enterprise</a>. We will focus on an implementation using Kubernetes and WSO2’s API-led integration platform.</em></p>
+</blockquote>
+<h2 id="introduction">Introduction</h2>
+<p>The recent constraints on businesses have pushed organizations to accelerate their plans for moving operations to the digital world—often shrinking timelines from years to months. In the process, APIs have emerged as the products of the 21st century. As discussed in the <a href="https://github.com/wso2/reference-architecture/blob/master/reference-cloud-native-architecture-digital-enterprise.html">Reference Architecture for a Cloud Native Digital Enterprise</a>, the combination of cloud native technologies and an API-led integration platform significantly increases productivity by enabling agility, flexibility, and scalability through automation and services.</p>
+<p>This paper discusses a reference implementation for a cloud native digital enterprise using two industry-leading, open-source technology stacks: <a href="http://kubernetes.io">Kubernetes</a> and <a href="http://wso2.com">WSO2’s API-led integration platform</a>.</p>
+<h2 id="reference-implementation-a-cloud-native-digital-enterprise">Reference Implementation: A Cloud Native Digital Enterprise</h2>
+<p align="center">
+<img src="file:////media/ra-reference-implementation-digital-enterprise.png">
+<br> 
+<i>Figure 1 - Cloud Native Digital Enterprise</i>
+</p>
+<p>In this reference implementation, Kubernetes provides the cloud native platform capabilities, and WSO2’s API-led integration solution offers the required integration and API management capabilities for a digital enterprise.</p>
+<p>Kubernetes can install on top of any private, public, or hybrid cloud infrastructure. WSO2’s API-led integration platform (WSO2 API Manager and WSO2 Enterprise Integrator) can be installed on top of Kubernetes with native support through the WSO2 Kubernetes API Operator. This native integration provides the necessary automation, scalability, and operations as well as giving API-led integration capabilities.</p>
+<h2 id="kubernetes">Kubernetes</h2>
+<p>Kubernetes, an open-source cloud native orchestration platform or a framework, provides a complete set of cloud native abstractions and a toolkit to build a scalable, flexible solution that aligns with business growth. It is a mature open-source project that is governed by the Cloud Native Computing Foundation (CNCF). Kubernetes’ rich cloud native abstractions help define the scalable architecture. Its toolkit helps to orchestrate containerized applications into a multi-host, multi-cloud distributed platform by providing the necessary infrastructure and automation.</p>
+<p>The Kubernetes architecture consists of a control-plane and a set of worker nodes. Typically, control-plane components deploy in master (control-plane) nodes, and work-loads deploy on worker nodes. The control-plane is responsible for storing information regarding nodes, monitoring the nodes, container workload scheduling, etc. If you are new to Kubernetes, I would recommend reading the <a href="#kubernetes-architecture">Kubernetes Architecture</a> appendix section.</p>
+<p>Kubernetes’ rich cloud native abstractions give the flexibility to create a wide variety of cloud native platforms. <em>PODs, Services, Deployments, ConfigMaps, Labels,</em> and the <em>Horizontal POD Autoscaler</em> are some of the key cloud native abstractions. The <a href="#kubernetes-cloud-native-abstractions">Kubernetes cloud-native abstractions</a> section discusses details of the Kubernetes abstractions used in the API-led integration platform to build a cloud native digital enterprise.</p>
+<h3 id="custom-resources-and-custom-controllers">Custom resources and custom controllers</h3>
+<p>A custom resource is an extension of the Kubernetes API; it does not ship with the default Kubernetes installation. A Kubernetes cluster admin can add/remove custom resources independently of the cluster itself. Once a custom resource installs, users can create and access its objects using kubectl, just as they do for built-in resources such as <em>PODs</em>.</p>
+<p>Custom controllers help keep the current state of Kubernetes objects (defined in CR) in sync with the desired state. The controller interprets the structured data as a record of the user’s desired state and continually maintains it. So, custom resources provide a dedicated declarative API when you combine a custom resource with a custom controller.</p>
+<p>Custom resources and custom controllers give flexibility and an immense power to architects to build cloud native platforms on top of Kubernetes.</p>
+<h2 id="wso2s-api-led-integration-platform">WSO2’s API-led integration platform</h2>
+<p>WSO2’s API-led integration platform is an open-source, market-leading enterprise solution that supports full API lifecycle management and integration. The platform was named a Leader in The Forrester Wave™: API Management Solutions, Q3 2020  <a href="https://wso2.com/resources/analyst-reports/the-forrester-wave-api-management-solutions-q3-2020/">report</a>.</p>
+<p>WSO2’s offering comes with an API designer and publisher, a developer portal, a key manager, an API analytics server, an API gateway, an enterprise integrator, and a Kubernetes API operator.</p>
+<h3 id="full-api-lifecycle-management">Full API lifecycle management</h3>
+<p>In an era of digital transformation, APIs are a strategic investment to any organization. They play a significant role as both technical enablers and  business drivers. WSO2 API Manager provides state-of-the-art web interfaces, e.g., WSO2 API Designer and Publisher, for API development and management. It is 100% compliant with the Open API Specification, helping API creators to develop, document, scale, and version APIs, while also facilitating more API management-related tasks such as publishing, monetizing, and promoting APIs.</p>
+<p align="center">
+<img src="file:////media/ra-api-publisher.png">
+<br> 
+<i>Figure 2 - WSO2 API Designer and Publisher</i>
+</p>
+<p>In addition to the graphical interface, WSO2’s API-led platform has a command-line tool, i.e., apictl, which automates full API lifecycle management functionalities.</p>
+<h3 id="the-communication-hub-for-an-api-ecosystem">The communication hub for an API ecosystem</h3>
+<p>The API developer portal is a hub to discover and onboard developers with low friction experiences. WSO2’s developer API portal enables developers to find APIs, test them before subscription and consumption, calculate monetization with specific metrics, view feedback, and feature requests from consumers through forums, and more.</p>
+<p align="center">
+<img src="file:////media/ra-api-dev-portal.png">
+<br> 
+<i>Figure 3 - WSO2 API Developer Portal</i>
+</p>
+<p>The developer portal’s web UI is a single page React application written on top of well-defined APIs. Organizations can customize the web UI to align with organization needs or build their own branded developer portal by consuming these developer APIs.</p>
+<h3 id="enabling-qos-through-traffic-regulation">Enabling QoS through traffic regulation</h3>
+<p>When productizing APIs, it is vital to have API traffic regulation capabilities to provide consumers with different service levels. WSO2 Traffic Manager helps to define throttling policies and enforce them in API gateways. WSO2 Traffic Manager comes with a dynamic throttling engine that processes throttling policies in real-time and enables rate-limiting of API requests to prevent APIs from being overwhelmed, allowing API owners to enforce a limit on the number of requests.</p>
+<h3 id="business-intelligence">Business intelligence</h3>
+<p>Obtaining meaningful business insights on how APIs are behaving is critical in every business. WSO2 API Analytics Server is capable of generating all kinds of business intelligence. In addition to statistical graphs, its real-time event processing engine can identify abnormalities and alert users about potential malicious attacks.</p>
+<h3 id="api-security-and-anomaly-detection">API security and anomaly detection</h3>
+<p>Security is paramount when exposing business capabilities via APIs. WSO2 Key Manager
+manages all clients, security, and access token-related operations. It supports OAuth 2.0, JWT, Basic Auth, Mutual SSL, and API-Key-based authentication mechanisms.</p>
+<p align="center">
+<img src="file:////media/ra-key-manager-v1.png">
+<br> 
+<i>Figure 4 - WSO2 API Key Manager</i>
+</p>
+<p>Sometimes, traditional security measures, such as authentication and authorization, alone are not enough. Compromised security tokens can cause a data breach or malicious activities. You can use WSO2’s integrated artificial intelligence-based solutions to control these kinds of incidents.</p>
+<p>Malicious payloads could come with authorized and authenticated requests, and identifying and stopping them immediately at an early stage is critical. You can set rules to analyze the request payload (e.g., JSON or XML) and prevent them from passing through the gateway to the respective backends.</p>
+<p>Anomalies can be identified by analyzing the access patterns to the APIs. Artificial intelligence and machine learning techniques help to identify these kinds of security threats. These advanced techniques help digital enterprises proactively monitor and prevent possible risks and malicious activities.</p>
+<h3 id="composition-integration-and-mediation">Composition, integration, and mediation</h3>
+<p>WSO2 Enterprise Integrator is capable of playing multiple roles in your enterprise architecture. It can be used as an Enterprise Service Bus (ESB), a streaming data processor, and a microservices integrator. WSO2 Micro Integrator supports both centralized (ESB style) and decentralized (microservices, cloud native) architectural styles. WSO2 Streaming Integrator allows you to implement streaming ETL (extract, transform, and load), change data capture (CDC), and process large files and real-time APIs.</p>
+<p>WSO2 Micro Integrator provides a unique low code approach to microservices integration. Its rich, full connectors help integrate with a wide range of legacy systems. The offering’s easy-to-use code integration approach speeds creating composite integration microservices, while enabling users to reap the benefits of MSA.</p>
+<p align="center">
+<img src="file:////media/ra-facade-pattern-v2.png">
+<br> 
+<i>Figure 5 - Micro integration</i>
+</p>
+<h3 id="policy-enforcement-at-scale">Policy enforcement at scale</h3>
+<p>The API Gateway is the main policy enforcement point. It supports OAuth 2.0, JWT, Basic Auth, Mutual SSL, and API-Key based authentication mechanisms and enables IT organizations to enforce rate limits and throttling policies.</p>
+<p>In addition to the policy enforcements, you can perform edge integrations, like mediation, transformation, etc., depending on your requirement. Suppose your integration is complex or wants to have a highly scalable architecture. In that case, WSO2 recommends using a facade pattern by using an enterprise micro integrator along with the API Gateway.</p>
+<p>WSO2 API Micro Gateway is optimized for microservices and supports all three deployment patterns: shared-gateway, private-jet gateway, and sidecar gateway (described in the reference architecture <a href="https://github.com/wso2/reference-architecture/blob/master/reference-cloud-native-architecture-digital-enterprise.html">paper</a>).</p>
+<p align="center">
+<img src="file:////media/ra-wso2-api-gateway-deployment.png">
+<br> 
+<i>Figure 6 - WSO2 API Micro Gateway Deployment Patterns</i>
+</p>
+<p>Depending on the API strategy, users can choose an effective API gateway deployment model. In some use cases, we can handle all API traffic by using a shared API Gateway cluster. Users  can also group APIs and distribute them in different API gateway clusters. These groupings can be done based on API functionalities or regions that they are accessing. These can be deployed in private jet mode or shared mode depending on scalable requirements.</p>
+<p>You can automate gateway deployment by using a Kubernetes platform that deploys across multi regions. Having a scalable gateway cluster is critical if you are looking for a global operational digital enterprise.</p>
+<h3 id="automation-through-the-kubernetes-operator-pattern">Automation through the Kubernetes operator pattern</h3>
+<p>WSO2 Kubernetes API Operator provides a fully automated experience for cloud native API management. It introduces a set of custom resources to deploy and manage API-led integration artifacts into Kubernetes easily.</p>
+<p align="center">
+<img src="file:////media/ra-wso2-k8s-api-operator.png">
+<br> 
+<i>Figure 7 - WSO2 Kubernetes API Operator</i>
+</p>
+<p>WSO2 Kubernetes API Operator can create and deploy WSO2 API Micro Gateway and WSO2 Micro Integrator by reading Swagger definitions or integration definitions provided by the API developer/publisher. These gateways and integrators automatically deploy into the defined Kubernetes cluster along with the necessary Kubernetes deployment artifacts.</p>
+<h3 id="api-observability">API observability</h3>
+<p>Unlike monolith architecture, auditing and tracing are challenging problems in decentralized architectures such as MSA. Performance issues, errors, and exceptions are unfortunate events that may occur in a production environment. To identify  such an event, observing the production environment is essential.</p>
+<p>Often, microservices do not act alone and they interconnect to each other through the API calls. WSO2 API Gateway can work with cloud native observability tools, such as Prometheus, Jaeger, and Fluentd, to analyze these captured metrics, statistics, and data to produce meaningful visualizations to understand system behavior.</p>
+<h4 id="prometheus">Prometheus</h4>
+<p>Prometheus is an open-source system monitoring and alerting toolkit that is governed by the CNCF. Prometheus can set up to work natively with a Kubernetes cluster.</p>
+<p>The API gateway exposes a metrics endpoint that gives metrics related to service level data, client-side data, and some process-related data such as memory and CPU usage. These metrics can then feed into Prometheus. In addition to this, users can configure an analytics dashboard, such as Grafana, to visualize Prometheus’s metrics.</p>
+<p>In addition to observability dashboards, you can use these collected metrics to scale backend services and API gateways by extending the Kubernetes Horizontal Pod Autoscaler.</p>
+<p align="center">
+<img src="file:////media/ra-prometheus-autoscale.png">
+<br> 
+<i>Figure 8 - Custom metrics-based autoscaling</i>
+</p>
+<h4 id="jaeger">Jaeger</h4>
+<p>Jaeger is a distributed tracing system toolkit that is governed by the CNCF. Jaeger support comes out-of-the-box in WSO2 API Gateway. It is well suited for distributed transaction monitoring, performance and latency optimization, service dependency analysis, and many operational problems when moving to a distributed architecture.</p>
+<h4 id="fluentd">Fluentd</h4>
+<p>Fluentd is an open-source data collector for unified logging layers. The CNCF governs the Fluentd project. By default, containers do not persist any operational data (such as logs, etc.), and when containers terminate, they will lose data. You can configure the Kubernetes cluster to push all aggregated logs from microservices, API gateways, and API integrators to Fluentd. These aggregate data can be used to perform different analyses to identify any operational problems.</p>
+<h2 id="gitops">GitOps</h2>
+<p>GitOps is a way of implementing continuous deployment for cloud native applications. It combines the functionalities of Git and continuous deployment tools and provides a developer-centric experience when operating infrastructure.</p>
+<p>In a digital enterprise, publishing an API is not just a simple process. It involves creating APIs and then deploying them in a lower API management environment to go through different testing rounds (developer testing, stress testing, QA testing, etc.). Once these tests are successful, they move to the production environment.</p>
+<p align="center">
+<img src="file:////media/ra-gitops-api-automation.png">
+<br> 
+<i>Figure 9 - API CI/CD Automation with GitOps</i>
+</p>
+<p>Each deployment environment has a specific Kubernetes cluster configured with WSO2 Kubernetes API Operator and WSO2 API management components. Depending on the enterprise requirements, API management components, such as WSO2 API Publisher, WSO2 API Traffic Manager, WSO2 API Key Manager, and WSO2 API Developer Portal, can be configured.</p>
+<p>WSO2 API Manager is 100% compatible with Open API Specification (formerly known as Swagger) based API design and development. Developers create API artifacts and commit them to a Git version control system. Then a  CI/CD build pipeline, such as Jenkins, CircleCI, Bamboo, can configure to pull artifacts and create container images and API/integration deployment descriptors. The <em>apictl</em> (API control CLI tool) tool helps to script the automation. Generated deployment descriptors can be committed and pushed to the deployment repository.</p>
+<p>Then, the deployment pipeline triggers and calls WSO2 Kubernetes API Operator (by using apictl/kubectl commands) and deploys the necessary API gateways and enterprise integrators in the given environment Kubernetes cluster. This automated process helps to carry out different testing rounds (developer testing, stress testing, QA testing, etc.).</p>
+<p>After completing environment testing, you can then promote to upper environments (e.g., stage to prod) by merging into the relevant Git branch. With this mode, If you want to deploy a new application or update an existing one, you only need to update the repository; the automated process handles everything else.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>By becoming digital enterprises and digitalizing value chains, companies in any sector can integrate and expose their business capabilities as APIs. These APIs should be secured, managed, observed, and monetized. An API-led integration platform is essential for digital enterprises, whether they start with greenfield or brownfield projects.</p>
+<p>Kubernetes, an open-source cloud native orchestration platform, provides a complete set of cloud native abstractions and a toolkit to build a scalable, flexible solution that aligns with business growth.</p>
+<p>WSO2’s API-led integration platform is an open-source, market-leading enterprise solution that supports full API lifecycle management and integration.</p>
+<p>The platform and its native Kubernetes integration capabilities provide an effective digital enterprise architecture to increase productivity by enabling agility, flexibility, and scalability through automation and services.</p>
+<h2 id="appendix">Appendix</h2>
+<h3 id="kubernetes-architecture">Kubernetes Architecture</h3>
+<p align="center">
+<img src="file:////media/ra-kubernetes-architecture.png">
+<br> 
+<i>Figure 10 - Kubernetes Architecture</i>
+</p>
+<h4 id="control-plane-components">Control-plane components</h4>
+<p>Dedicated components manage control-plane functionalities.</p>
+<p><strong>ETCD</strong>: is a database that stores all node information and container workload information as a key-value pair in a highly available manner.</p>
+<p><strong>Kube-scheduler</strong>: is responsible for scheduling container workloads for the worker nodes by considering requesting computing resources of the workloads, available resources in the nodes, the type of workload allowed in the worker nodes, and the other management policies and constraints.</p>
+<p><strong>Kube-controller manager</strong>: consists of multiple controller managers. Node controller is responsible for onboarding new nodes to the cluster and handling node unavailability. The replication controller ensures that the desired number of container workloads are running all the time. In addition to these two, many other controllers help manage different functionalities.</p>
+<p><strong>Kube-API server</strong>: is the primary communication center for all cluster components. It is responsible for orchestrating all operations within the cluster components and also exposes the Kubernetes API that is used by the external users who manage the container workloads. Worker node components also communicate with the control-plane via the Kube API server.</p>
+<h4 id="worker-node-components">Worker node components</h4>
+<p>Worker nodes should be able to communicate with control-plane components and provide necessary information to manage container workloads. Worker nodes have two major management components.</p>
+<p><strong>Kubelet</strong>: is an agent running in each node and responsible for scheduling container workloads with the control-plane instructions and  reporting back the status of the nodes and the container workloads.</p>
+<p><strong>Kube-Proxy</strong>: is running in each worker node and ensures all communication among the container workloads run in multiple nodes.</p>
+<h3 id="kubernetes-cloud-native-abstractions">Kubernetes cloud native abstractions</h3>
+<p>Kubernetes’ rich cloud native abstractions give the flexibility to create a wide variety of cloud native platforms. This section will only discuss the abstractions (or building blocks) used in the API-led integration platform to build the cloud native digital enterprise.</p>
+<h4 id="pod">POD</h4>
+<p align="center">
+<img src="file:////media/ra-pod-concept.png">
+<br> 
+<i>Figure 11 - POD</i>
+</p>
+<p>A <em>POD</em> is a single instance of our containerized application. Kubernetes will not directly deploy containers, and it encapsulates within a <em>POD</em>. A <em>POD</em> is the smallest unit that scales out depending on the load. A <em>POD</em> can consist of multiple containers. The containers in a <em>POD</em> are automatically co-located and co-scheduled on the same node in the cluster. Containers living within the POD can share the same network space, storage space, and process space.</p>
+<h4 id="replicaset">ReplicaSet</h4>
+<p>ReplicaSet helps to define the number of replica <em>PODs</em> running at any given time. It monitors the PODs and creates a new one when a failure occurs in the current set. It also helps to scale out the application by increasing the number of replicas.</p>
+<h4 id="deployment">Deployment</h4>
+<p>Using the Kubernetes <em>Deployment</em> object, we can define the desired state (e.g., number of replicas of a given version). The Deployment Controller changes the actual state to the desired state at a controlled rate and the deployment strategy. We can use Deployment rollouts to provision newer versions and rollback if the current state of the Deployment is not stable.</p>
+<h4 id="namespaces">Namespaces</h4>
+<p><em>Namespace</em> helps to divide physical clusters into multiple virtual clusters. The namespace provides a scope to Kubernetes naming objects. Names of resources need to be unique within a namespace but not across namespaces. Namespaces cannot be nested inside one another, and each Kubernetes resource can only be in one namespace.</p>
+<h4 id="resource-quota">Resource quota</h4>
+<p>Resource quota provides constraints that limit aggregate resource consumption per namespace. Cluster administrators can define resource quota allocated to a namespace, then the quota system tracks usage to ensure it does not exceed hard resource limits defined.</p>
+<h4 id="services">Services</h4>
+<p>Kubernetes <em>Service</em> exposes an application running on a set of <em>PODs</em> as a network service. When we deploy an application, each <em>POD</em> gets its IP address. However, to maintain the desired state in a <em>Deployment</em>, it can create and destroy <em>PODs</em> dynamically. Kubernetes <em>Service</em> provides a single IP address and a DNS name to a set of <em>PODs</em> in deployment and can monitor <em>POD</em> behaviors and update their IP addresses dynamically. Also, this given Service endpoint is capable of routing traffic to <em>PODs</em> in a load-balancing manner. In addition to this, Kubernetes <em>Services</em> is essential to have a service discovery mechanism without modifying your application code.</p>
+<p>Depending on how you want to expose your application, you can configure Kubernetes Services to behave in the main three modes. The ClusterIP service type helps expose your applications within the cluster.</p>
+<p align="center">
+<img src="file:////media/ra-service-clusterIP-v1.png">
+<br> 
+<i>Figure 12 - ClusterIP Service</i>
+</p>
+<p>If you want to expose applications outside of the cluster, you can use the NodePort type or Loadbalancer type. NodePort will expose applications by opening a port in every node in the cluster and map and forward traffic to the application port.</p>
+<p align="center">
+<img src="file:////media/ra-service-nodePort-v1.png">
+<br> 
+<i>Figure 13 - NodePort Service</i>
+</p>
+<p>The Loadbalancer type will create a load balancing endpoint that is configured with the cluster’s relevant cloud provider and exposed through the cloud provider’s load balancer.</p>
+<h4 id="configmaps">ConfigMaps</h4>
+<p>Every reusable application has some kind of configuration. Decoupling configuration with the application code helps to use the same application code in different environments. <em>ConfigMaps</em> allow you to decouple configuration artifacts from container image content to keep containerized applications portable.
+Secrets</p>
+<p>Like the configurations, we need to pass sensitive information, such as passwords, OAuth tokens, and ssh keys, to the application to perform the required tasks. Rather than placing sensitive information in a container image, we can use a Kubernetes Secret object. By default, Secrets obfuscate with Base64 encoding, but you can make them more secure (encrypt) by using deference techniques.</p>
+<h4 id="horizontal-pod-autoscaling">Horizontal POD Autoscaling</h4>
+<p align="center">
+<img src="file:////media/ra-hpa.png">
+<br> 
+<i>Figure 14 - Horizontal Pod Autoscaler</i>
+</p>
+<p>The capability of scaling each microservice gives the real benefit of the MSA. The Kubernetes Horizontal POD Autoscaler helps to automatically scale microservices by scaling the number of Pods in a deployment, replica set, or stateful set based on observed CPU utilization (or, with custom metrics support, on some other application-provided metrics).</p>
+<h4 id="kubectl">Kubectl</h4>
+<p>The kubectl command-line tool lets you interact and control Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs. Kubectl can be used either in imperative mode or in a declarative way.</p>
+<h5 id="imperative">Imperative</h5>
+<p>In imperative mode, we have to run a series of commands and follow a given step to complete a task. In Kubernetes, you can use the kubectl command to do things in imperative mode. Here are some examples:</p>
+<ul>
+<li>Create a POD        : <code>kubectl run --image=nginx nginx</code></li>
+<li>Create a Deployment : <code>kubectl create deployment --image=nginx nginx</code></li>
+<li>Create a Service    : <code>kubectl expose deployment nginx --port 80</code></li>
+<li>Edit existing object: <code>kubectl edit deployment nginx</code></li>
+<li>Scaling a Deployment: <code>kubectl scale deployment nginx --replicas=3</code></li>
+</ul>
+<p>All of the above are imperative approaches to managing objects in Kubernetes.</p>
+<h5 id="declarative">Declarative</h5>
+<p>In the declarative model, we can list our requirements (in a required format), and the system will be capable of completing the required task. In this mode, we can create a set of files that define the expected state of applications and services on a Kubernetes cluster. With a single kubectl apply command and Kubernetes should set the desired state by reading the given configuration files.</p>
+<p>Example: <code>kubectl apply -f nginx.yaml</code></p>
+<h4 id="labels-and-selectors">Labels and Selectors</h4>
+<p>Labels are key/value pairs that are attached to objects, such as pods. Labels can be used to organize and to select subsets of objects in a loosely coupled fashion. Application deployment and management often consist of multi-dimensional entities, such as multiple release tracks, multiple tiers, environments, etc. Mapping these into labels will help in day-to-day management and operational activities.</p>
+<p>Example labels:</p>
+<ul>
+<li>&quot;release&quot; : &quot;stable&quot;, &quot;release&quot; : &quot;canary&quot;</li>
+<li>&quot;environment&quot; : &quot;dev&quot;, &quot;environment&quot; : &quot;qa&quot;, &quot;environment&quot; : &quot;production&quot;</li>
+<li>&quot;tier&quot; : &quot;frontend&quot;, &quot;tier&quot; : &quot;backend&quot;, &quot;tier&quot; : &quot;cache&quot;</li>
+<li>&quot;partition&quot; : &quot;customerA&quot;, &quot;partition&quot; : &quot;customerB&quot;</li>
+<li>&quot;track&quot; : &quot;daily&quot;, &quot;track&quot; : &quot;weekly&quot;</li>
+</ul>
+<p>The label selector is the core grouping primitive in Kubernetes. You can use label sectors to perform operation activities like the rolling update, rollback, drain nodes to put in maintenance, scaling, etc.</p>
+<h4 id="health-check-probes">Health check probes</h4>
+<p>Heath probes are critical to achieving the high availability required to run our application in production. Kubernetes uses three health check probes to determine the necessary action to achieve auto-healing and high availability.</p>
+<h5 id="liveness-probe">Liveness probe</h5>
+<p>Defining liveness probes help to determine any deadlock scenarios, where an application is running but unable to make progress, and restart the container to overcome the situation.</p>
+<h5 id="readiness-probe">Readiness probe</h5>
+<p>Readiness probes help determine when a container is ready to start accepting traffic. One use of this signal is to control which PODs use backends for services. When a POD is not ready, it is removed from Service load balancers.</p>
+<h5 id="startup-probes">Startup probes</h5>
+<p>Some applications have longer startup times. In such situations, setting up a startup probe helps to disable liveness and readiness checks until it succeeds, making sure those probes do not interfere with application startup.</p>
+<h4 id="rollout">Rollout</h4>
+<p>When you create a new deployment, Kubernetes will attach a revision related to it. When you roll out a new version of your deployment, it will update the revision history. You can see all the rollout versions by using the following commands.</p>
+<p><code>kubectl rollout status deployment.v1.apps/nginx-deployment</code></p>
+<p><code>kubectl rollout history deployment.v1.apps/nginx-deployment</code></p>
+<p>Kubernetes support two deployment strategies. The first strategy is to recreate, destroy all currently running instances, and create the same number of new instances, not a zero-downtime deployment strategy.</p>
+<p>Kubernetes default is the rolling-update deployment strategy. This strategy will not take down all currently running instances at once; instead, it will take down a current version and bring up a newer version one by one. The best way to do this is by updating the declarative application file (yaml file) and executing the kubectl apply command. It will trigger a new rollout and a new revision is created.</p>
+<h4 id="rollbacks">Rollbacks</h4>
+<p>Even though we perform thorough testing, sometimes we need to roll back to a stable state due to a late-found error. You can use the following command to rollback a deployed version.</p>
+<p><code>kubectl rollout undo deployment.v1.apps/nginx-deployment</code></p>
+<p>Alternatively, you can rollback to a specific revision by specifying it with --to-revision:</p>
+<p><code>kubectl rollout undo deployment.v1.apps/nginx-deployment --to-revision=2</code></p>
+<h2 id="abstractions">Abstractions</h2>
+<table>
+<thead>
+<tr>
+<th>Icon</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="file:////media/ra-microservice.png" alt="Component"></td>
+<td>Microservices and serverless components</td>
+<td>Core business logic, aggregation and service composition, transformation.</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-gateway.png" alt="Component"></td>
+<td>Gateways</td>
+<td>API gateways, ingress gateways, mesh gateways, micro integrators, exposed APIs, events and streams, policy enforcement points</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-data-service.png" alt="Component"></td>
+<td>Legacy and data services</td>
+<td>Databases, existing systems, registries and repositories, user stores, business processes</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-saas-epr.png" alt="SaaS EPR"></td>
+<td>External endpoint</td>
+<td>Access using APIs, events, and streams, cloud systems, and SaaS</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-front-end-clients.png" alt="Front end Client"></td>
+<td>API consumers</td>
+<td>Mobile apps, reactive apps, API consumers</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-desktop-client-v3.png" alt="Desktop Client"></td>
+<td>API consumers</td>
+<td>Mobile apps, reactive apps, API consumers</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-mobile-client-v3.png" alt="Mobile Client"></td>
+<td>API consumers</td>
+<td>Mobile apps, reactive apps, API consumers</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-bot-client-v3.png" alt="Bot Client"></td>
+<td>API consumers</td>
+<td>Bots, API consumers</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-iot-client-v3.png" alt="IOT Client"></td>
+<td>API consumers</td>
+<td>IoT devices, apps, API consumers</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-wso2-api-gateway.png" alt="WSO2 API Gateway"></td>
+<td>WSO2 API Gateway</td>
+<td>WSO2 API Gateway, WSO2 Micro API Gateway</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-wso2-apim-developer-store.png" alt="WSO2 API Developer Portal"></td>
+<td>WSO2 API Developer Portal</td>
+<td>Developer portal for API discovery, an API marketplace</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-wso2-apim-publisher.png" alt="WSO2 API Publisher"></td>
+<td>WSO2 API Publisher</td>
+<td>API Publisher Portal, API design, develop, API package, API publish</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-wso2-apim-key-manager.png" alt="WSO2 API Key Manager"></td>
+<td>WSO2 API Key Manager</td>
+<td>Manage API keys and all security tokens</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-wso2-apim-traffic-manager.png" alt="WSO2 API Traffic Manager"></td>
+<td>WSO2 API Traffic Manager</td>
+<td>Rate Limiting, Traffic control policy defining portal</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-wso2-apim-analytics-server.png" alt="WSO2 API Analytics Server"></td>
+<td>WSO2 API Analytics Server</td>
+<td>Real-time analytics server, generate API business intelligence, anomaly detection engine, and altering</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-wso2-micro-ei.png" alt="WSO2 Micro Integrator"></td>
+<td>WSO2 Micro Integrator</td>
+<td>Enterprise integrator, mediation, transformation engine</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-wso2-ei-stream-integrator.png" alt="WSO2 Stream Integrator"></td>
+<td>WSO2 Stream Integrator</td>
+<td>Enterprise stream integration</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-wso2-ei-workflow.png" alt="WSO2 Enterprise Workflow"></td>
+<td>WSO2 Enterprise Workflow</td>
+<td>Workflow engine</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-k8s-deployment.png" alt="Kubernetes Deployment"></td>
+<td>Kubernetes Deployment</td>
+<td>An object that manages replica sets, rollouts, health checks</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-k8s-pod.png" alt="Kubernetes POD"></td>
+<td>Kubernetes POD</td>
+<td>A single instance of our containerized application</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-k8s-service.png" alt="Kubernetes Service"></td>
+<td>Kubernetes Service</td>
+<td>Exposes an application running on a set of Pods as a network service</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-k8s-crd.png" alt="Kubernetes Custom Resources"></td>
+<td>Kubernetes Custom Resources</td>
+<td>A custom resource is an extension of the Kubernetes API</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-k8s-configmap.png" alt="Kubernetes ConfigMap"></td>
+<td>Kubernetes ConfigMap</td>
+<td>Contains the configuration data</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-k8s-secret.png" alt="Kubernetes Secret"></td>
+<td>Kubernetes Secret</td>
+<td>Contain sensitive data like keys, credentials, certs</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-k8s-hpa.png" alt="Kubernetes Horizontal POD Autoscaler"></td>
+<td>Kubernetes Horizontal POD Autoscaler</td>
+<td>Scale workload based on observed CPU, memory utilization</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-k8s-namespace.png" alt="Kubernetes Namespace"></td>
+<td>Kubernetes Namespace</td>
+<td>Divide physical clusters into multiple virtual clusters</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-k8s-etcd.png" alt="ETCD"></td>
+<td>ETCD</td>
+<td>A database that stores all node information and container workload information as key-value pairs</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-k8s-ccm.png" alt="Kubernetes Cloud Control Manager"></td>
+<td>Kubernetes Cloud Control Manager</td>
+<td>Kubernetes Cloud Control Manager</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-k8s-cm.png" alt="Kubernetes Control Manager"></td>
+<td>Kubernetes Control Manager</td>
+<td>Kubernetes Control Manager</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-k8s-kube-proxy.png" alt="Kubernetes Kube Proxy"></td>
+<td>Kubernetes Kube Proxy</td>
+<td>Running in each worker node and ensures all communication among the container workloads</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-k8s-kubelet.png" alt="Kubernetes Kubelet"></td>
+<td>Kubernetes Kubelet</td>
+<td>An agent running in each node</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-k8s-schedular.png" alt="Kubernetes scheduler"></td>
+<td>Kubernetes scheduler</td>
+<td>Scheduling container workloads for the worker nodes</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-k8s-api-server.png" alt="Kubernetes API Server"></td>
+<td>Kubernetes API Server</td>
+<td>Primary communication center for all cluster components.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://kubernetes.io/">https://kubernetes.io/</a></li>
+<li><a href="https://wso2.com/api-management/">https://wso2.com/api-management/</a></li>
+<li><a href="https://wso2.com/integration/micro-integrator/">https://wso2.com/integration/micro-integrator/</a></li>
+<li><a href="https://github.com/wso2/k8s-api-operator">https://github.com/wso2/k8s-api-operator</a></li>
+<li><a href="https://www.gitops.tech/">https://www.gitops.tech/</a></li>
+</ul>
+
+    </body>
+    </html>

@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Introduction</title>
+        <style>
+/* From extension zhuangtongfa.material-theme */
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body {
+  box-sizing: border-box;
+  min-width: 200px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  background-color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  color: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre code {
+  color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code > div {
+  background: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table td {
+  border: 1px solid rgba(171, 178, 191, 0.5) !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-active-line:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-line:hover:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-line .code-line:hover:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* Generated from 'node_modules/github-markdown-css/github-markdown.css' */
+@font-face {
+  font-family: octicons-link;
+  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAZwABAAAAAACFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEU0lHAAAGaAAAAAgAAAAIAAAAAUdTVUIAAAZcAAAACgAAAAoAAQAAT1MvMgAAAyQAAABJAAAAYFYEU3RjbWFwAAADcAAAAEUAAACAAJThvmN2dCAAAATkAAAABAAAAAQAAAAAZnBnbQAAA7gAAACyAAABCUM+8IhnYXNwAAAGTAAAABAAAAAQABoAI2dseWYAAAFsAAABPAAAAZwcEq9taGVhZAAAAsgAAAA0AAAANgh4a91oaGVhAAADCAAAABoAAAAkCA8DRGhtdHgAAAL8AAAADAAAAAwGAACfbG9jYQAAAsAAAAAIAAAACABiATBtYXhwAAACqAAAABgAAAAgAA8ASm5hbWUAAAToAAABQgAAAlXu73sOcG9zdAAABiwAAAAeAAAAME3QpOBwcmVwAAAEbAAAAHYAAAB/aFGpk3jaTY6xa8JAGMW/O62BDi0tJLYQincXEypYIiGJjSgHniQ6umTsUEyLm5BV6NDBP8Tpts6F0v+k/0an2i+itHDw3v2+9+DBKTzsJNnWJNTgHEy4BgG3EMI9DCEDOGEXzDADU5hBKMIgNPZqoD3SilVaXZCER3/I7AtxEJLtzzuZfI+VVkprxTlXShWKb3TBecG11rwoNlmmn1P2WYcJczl32etSpKnziC7lQyWe1smVPy/Lt7Kc+0vWY/gAgIIEqAN9we0pwKXreiMasxvabDQMM4riO+qxM2ogwDGOZTXxwxDiycQIcoYFBLj5K3EIaSctAq2kTYiw+ymhce7vwM9jSqO8JyVd5RH9gyTt2+J/yUmYlIR0s04n6+7Vm1ozezUeLEaUjhaDSuXHwVRgvLJn1tQ7xiuVv/ocTRF42mNgZGBgYGbwZOBiAAFGJBIMAAizAFoAAABiAGIAznjaY2BkYGAA4in8zwXi+W2+MjCzMIDApSwvXzC97Z4Ig8N/BxYGZgcgl52BCSQKAA3jCV8CAABfAAAAAAQAAEB42mNgZGBg4f3vACQZQABIMjKgAmYAKEgBXgAAeNpjYGY6wTiBgZWBg2kmUxoDA4MPhGZMYzBi1AHygVLYQUCaawqDA4PChxhmh/8ODDEsvAwHgMKMIDnGL0x7gJQCAwMAJd4MFwAAAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAGVYYDT+AEjAwuDFpBmA9KMDEwMCh9i/v8H8sH0/4dQc1iAmAkALaUKLgAAAHjaTY9LDsIgEIbtgqHUPpDi3gPoBVyRTmTddOmqTXThEXqrob2gQ1FjwpDvfwCBdmdXC5AVKFu3e5MfNFJ29KTQT48Ob9/lqYwOGZxeUelN2U2R6+cArgtCJpauW7UQBqnFkUsjAY/kOU1cP+DAgvxwn1chZDwUbd6CFimGXwzwF6tPbFIcjEl+vvmM/byA48e6tWrKArm4ZJlCbdsrxksL1AwWn/yBSJKpYbq8AXaaTb8AAHja28jAwOC00ZrBeQNDQOWO//sdBBgYGRiYWYAEELEwMTE4uzo5Zzo5b2BxdnFOcALxNjA6b2ByTswC8jYwg0VlNuoCTWAMqNzMzsoK1rEhNqByEyerg5PMJlYuVueETKcd/89uBpnpvIEVomeHLoMsAAe1Id4AAAAAAAB42oWQT07CQBTGv0JBhagk7HQzKxca2sJCE1hDt4QF+9JOS0nbaaYDCQfwCJ7Au3AHj+LO13FMmm6cl7785vven0kBjHCBhfpYuNa5Ph1c0e2Xu3jEvWG7UdPDLZ4N92nOm+EBXuAbHmIMSRMs+4aUEd4Nd3CHD8NdvOLTsA2GL8M9PODbcL+hD7C1xoaHeLJSEao0FEW14ckxC+TU8TxvsY6X0eLPmRhry2WVioLpkrbp84LLQPGI7c6sOiUzpWIWS5GzlSgUzzLBSikOPFTOXqly7rqx0Z1Q5BAIoZBSFihQYQOOBEdkCOgXTOHA07HAGjGWiIjaPZNW13/+lm6S9FT7rLHFJ6fQbkATOG1j2OFMucKJJsxIVfQORl+9Jyda6Sl1dUYhSCm1dyClfoeDve4qMYdLEbfqHf3O/AdDumsjAAB42mNgYoAAZQYjBmyAGYQZmdhL8zLdDEydARfoAqIAAAABAAMABwAKABMAB///AA8AAQAAAAAAAAAAAAAAAAABAAAAAA==) format("woff");
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: #abb2bf;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  background: #282c34;
+  padding-top: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c {
+  color: #6a737d;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-v {
+  color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-e, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-en {
+  color: #6f42c1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-smi, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-s1 {
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ent {
+  color: #22863a;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-k {
+  color: #d73a49;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-pds, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-pse .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-sre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-sra {
+  color: #032f62;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-smw {
+  color: #e36209;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-bu {
+  color: #b31d28;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ii {
+  color: #fafbfc;
+  background-color: #b31d28;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c2 {
+  color: #fafbfc;
+  background-color: #d73a49;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c2::before {
+  content: "^M";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-cce {
+  font-weight: bold;
+  color: #22863a;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ml {
+  color: #735c0f;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mh, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mh .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ms {
+  font-weight: bold;
+  color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi {
+  font-style: italic;
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mb {
+  font-weight: bold;
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-md {
+  color: #b31d28;
+  background-color: #ffeef0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi1 {
+  color: #22863a;
+  background-color: #f0fff4;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mc {
+  color: #e36209;
+  background-color: #ffebda;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi2 {
+  color: #f6f8fa;
+  background-color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mdr {
+  font-weight: bold;
+  color: #6f42c1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ba {
+  color: #586069;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sg {
+  color: #959da5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-corl {
+  text-decoration: underline;
+  color: #032f62;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a {
+  background-color: transparent;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:active, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:hover {
+  outline-width: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: bolder;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img {
+  border-style: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  font: inherit;
+  margin: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  overflow: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body [type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body * {
+  box-sizing: border-box;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a {
+  color: #528bff;
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:hover {
+  text-decoration: underline;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr::before {
+  display: table;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body td, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body th {
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  font-size: 32px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 {
+  font-size: 16px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 {
+  font-size: 14px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  font-size: 12px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  margin: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol {
+  list-style-type: lower-roman;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dd {
+  margin-left: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .octicon {
+  vertical-align: text-bottom;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-0 {
+  padding-left: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-1 {
+  padding-left: 4px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-2 {
+  padding-left: 8px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-3 {
+  padding-left: 16px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-4 {
+  padding-left: 24px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-5 {
+  padding-left: 32px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-6 {
+  padding-left: 40px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body::before {
+  display: table;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body > *:first-child {
+  margin-top: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body > *:last-child {
+  margin-bottom: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .anchor {
+  float: left;
+  padding-right: 4px;
+  margin-left: -20px;
+  line-height: 1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .anchor:focus {
+  outline: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  /* padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5; */
+  padding: 8.5px 17px;
+  margin: 1.5em 0;
+  font-size: inherit;
+  color: #7c879c;
+  border-color: #4b5362;
+  border-width: 4px;
+  border-left: 5px solid #4b5362;
+  background: transparent;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote > :first-child {
+  margin-top: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote > :last-child {
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #f0f0f0;
+  border-bottom: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6:hover .anchor {
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.5em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 {
+  font-size: 1.25em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 {
+  font-size: 1em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 {
+  font-size: 0.875em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  font-size: 0.85em;
+  color: #6a737d;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol {
+  padding-left: 2em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li {
+  word-wrap: break-all;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li > p {
+  margin-top: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li + li {
+  margin-top: 0.25em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl {
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th {
+  font-weight: 700;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table td {
+  padding: 6px 13px;
+  /* border: 1px solid #dfe2e5; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table tr {
+  /* background-color: #fff; */
+  /* border-top: 1px solid #c6cbd1; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table tr:nth-child(2n) {
+  /* background-color: #f6f8fa; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img {
+  max-width: 100%;
+  box-sizing: content-box;
+  display: inline-block;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img[align=right] {
+  padding-left: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img[align=left] {
+  padding-right: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: #3a3f4b;
+  border-radius: 3px;
+  color: white;
+  margin: 0 1px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  word-wrap: normal;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre > code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight {
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  /* background-color: #f6f8fa; */
+  border-radius: 3px;
+  background-color: #31363f;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+  color: #abb2bf;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .full-commit .btn-outline:not(:disabled):hover {
+  color: #005cc5;
+  border-color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #d1d5da;
+  border-bottom-color: #c6cbd1;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #c6cbd1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body :checked + .radio-label {
+  position: relative;
+  z-index: 1;
+  border-color: #0366d6;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item {
+  list-style-type: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item + .task-list-item {
+  margin-top: 3px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item input {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  border-bottom-color: #eee;
+}
+
+/*
+
+Atom One Dark by Daniel Gamage
+Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
+
+base:    #282c34
+mono-1:  #abb2bf
+mono-2:  #818896
+mono-3:  #5c6370
+hue-1:   #56b6c2
+hue-2:   #61aeee
+hue-3:   #c678dd
+hue-4:   #98c379
+hue-5:   #e06c75
+hue-5-2: #be5046
+hue-6:   #d19a66
+hue-6-2: #e6c07b
+
+*/
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #abb2bf;
+  background: #282c34;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-comment,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-quote {
+  color: #5c6370;
+  font-style: italic;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-doctag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-keyword,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-formula {
+  color: #c678dd;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-section,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-name,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-tag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-deletion,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-subst {
+  color: #e06c75;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-literal {
+  color: #56b6c2;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-string,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-regexp,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-addition,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-attribute,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-meta-string {
+  color: #98c379;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-built_in,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-class .hljs-title {
+  color: #e6c07b;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-template-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-type,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-class,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-pseudo,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-number {
+  color: #d19a66;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-symbol,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-bullet,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-link,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-meta,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-id,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-title {
+  color: #61aeee;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-emphasis {
+  font-style: italic;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-strong {
+  font-weight: bold;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-link {
+  text-decoration: underline;
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 align="center"> Cell-Based Architecture </center></h1>
+<p align="center">
+<i>
+Version: Fall-2020<br/>
+</i>
+</p>
+<p><strong><em>Original Authors</em></strong></p>
+<ul>
+<li>Asanka Abeysinghe | Chief Technology Evangelist- <a href="https://wso2.com/">WSO2, Inc</a> | <a href="https://twitter.com/asankama">@asankama</a> (Summer-2018 - Fall-2020)</li>
+<li>Paul Fremantle | former CTO and Co-Founder - <a href="https://wso2.com/">WSO2, Inc</a> | <a href="https://twitter.com/pzfreo">@pzfreo</a> (Summer-2018 - Spring-2020)</li>
+</ul>
+<blockquote>
+<p><em>This document describes a reference architecture for modern agile digital  enterprises. This reference architecture offers a logical architecture based on a disaggregated cloud-based model that can be instantiated to create an effective and agile approach for digital enterprises, deployed in private, public or hybrid cloud environments. In this paper we present the architecture, the approach to applying this architecture, and existing approaches that fit into this architecture. The architecture defined in this paper can be mapped to current architectures as well as used to define new architectures. It is designed to help move from the “as-is” towards the “to-be”.</em></p>
+</blockquote>
+<h2 id="introduction">Introduction</h2>
+<p>Enterprise architecture has one main aim-to bring structure and organization to evolving systems, thus enabling better maintainability, flexibility, and agility. Enterprise architects have the unending task of trying to bring order to chaos. Over the past five years, a rapid shift has taken place in the agility of software development and in particular DevOps. As a result, continuous integration and continuous deployment (CI/CD) approaches have dramatically accelerated the time needed for new deployments of software projects from months to weeks to days to hours. In many ways, enterprise architectures have struggled to adjust. This reference architecture aims to enable an agile enterprise by increasing the agility at the project level and take it to the enterprise level.</p>
+<p>This architecture is based on experience working across hundreds of projects on building digital systems. It also offers a forward-looking view aimed at addressing emerging challenges. The aim of this architecture is to enhance agility at the enterprise level. We define agility as the ability of an organization to respond effectively and in good time to changes in the business environment, in customer requirements, or in enterprise strategy. Agility is not just about one-time changes. It's about ongoing, repeated adaptation to meet the challenges of the enterprise. In creating agility, we assert that four properties are key:</p>
+<ul>
+<li>
+<p><strong>Scalability</strong>, the ability to deal with changing workloads by utilizing available resources and effectively maintaining a service level. Modern cloud infrastructure allows components, such as containers, to be scaled effectively, provided they are designed in the correct manner</p>
+</li>
+<li>
+<p><strong>Modularity</strong>, is the idea that components of the architecture are versioned, replicable, and have well-defined interfaces. It is about exposing the right interfaces into a versioned system as well as hiding the details of the internal workings.</p>
+</li>
+<li>
+<p><strong>Composability</strong>, is about creating a recursive and uniform architecture where new components and capabilities add to the overall platform in a seamless way. For example, adding business logic in a web page makes it hard for other systems to build on top of that logic, whereas adding the same logic to an API allows web applications, mobile apps, and other server-based systems to access that logic.</p>
+</li>
+<li>
+<p><strong>Governance</strong>, is about building managed, monitored, resilient systems and ensuring that organizational policies are enforced.</p>
+</li>
+</ul>
+<p>The rest of the this paper is structured as follows:</p>
+<ul>
+<li>
+<p><strong>Section 1</strong>: Introduces the overall abstractions used.</p>
+</li>
+<li>
+<p><strong>Section 2</strong>: Introduces to the units of an enterprise architecture.</p>
+</li>
+<li>
+<p><strong>Section 3</strong>: Discusses structured agility and looks at how the reference architecture augments an iterative architecture.</p>
+</li>
+<li>
+<p><strong>Section 4</strong>: Defines the new reference architecture. This includes a mapping to a real-world example.</p>
+</li>
+<li>
+<p><strong>Section 5</strong>: Define the rules that can apply in the design, implementation and deployment of the cells.</p>
+</li>
+<li>
+<p><strong>Appendix-A</strong>: Examines the overall picture by describing the agile business from the business architecture point of view.</p>
+</li>
+</ul>
+<h2 id="section-1-abstractions">Section 1: Abstractions</h2>
+<table>
+<thead>
+<tr>
+<th>Icon</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="file:////media/ra-person.png" alt="Person"></td>
+<td>User</td>
+<td>A user is a human interacting with the system. Users can be external customers of the organization, internal employees, or partners.</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-component.png" alt="Component"></td>
+<td>Component</td>
+<td>A <strong>component</strong> is the <strong>atomic unit</strong> of this reference architecture. A component represents a process or business logic running in a container, serverless environment, or an existing runtime. This can then be categorized into many subtypes based on the functional capabilities. A component is designed based on a specific scope, which can be independently run and reused at the runtime. Runtime requirements and the behavior of the component vary based on the component type and the functional capabilities. The user may decide to build and run the code as a service, function, or microservice, or choose to reuse an existing legacy service based on the architectural need.</td>
+</tr>
+<tr>
+<td><img src="file:////Users/hovo/workspace/git/reference-architecture/media/ra-cell-icon.png" alt="Cell"></td>
+<td>Cell</td>
+<td>Cell - an architecture block represents by an <strong>octagon</strong>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="component-types-main-categories">Component Types: Main Categories</h3>
+<table>
+<thead>
+<tr>
+<th>Icon</th>
+<th>Category</th>
+<th>Component</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="file:////media/ra-data-service.png" alt="Component"></td>
+<td>Legacy and data services</td>
+<td>Databases, Existing systems, Registries and repositories, User stores, Business processes</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-microservice.png" alt="Component"></td>
+<td>Microservices and serverless components</td>
+<td>Core business logic, Aggregation and service composition, Transformation</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-gateway.png" alt="Component"></td>
+<td>Gateways and brokers</td>
+<td>Exposed APIs, events, and streams, Policy enforcement points, Message brokers, Identity brokers and identity gateways, Sidecars and bridges</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-saas-epr.png" alt="SaaS EPR"></td>
+<td>External endpoint</td>
+<td>Access using APIs, events,  and streams, Cloud systems and SaaS</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-front-end-clients.png" alt="Frontend Clients"></td>
+<td>Frontend clients</td>
+<td>Mobile apps, Reactive apps, API consumers</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-gov-utils.png" alt="Gov and Utils"></td>
+<td>Governance and utilities</td>
+<td>Registry, Observability, Automation tools</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-2-cell---the-units-of-an-enterprise-architecture">Section 2: Cell - The Units of an Enterprise Architecture</h2>
+<p><img src="file:////media/ra-cell-definition-2.2-75.png" alt="cell definition"></p>
+<p>A <strong>cell</strong> is a <strong>collection of components</strong>, grouped from design and implementation into deployment. A cell is independently deployable, manageable, and observable.
+Components inside the cell can communicate with each other using supported transports for intra-cell communication. External communication must happen through the edge-gateway or proxy, which provides APIs, events, or streams via governed network endpoints using standard network protocols.</p>
+<p>A cell can have 1:n components grouped. Components inside the cells are reusable and can instantiate in multiple cells. The cell should document its offers. The capabilities of a cell must be network accessible endpoints. In addition, if the cell needs access to external dependencies, then these must also be exposed as network endpoints through a cell-gateway. These endpoints can expose APIs, events, or streams. Any interfaces that the microservices or serverless components offer that are not made available by the control point should be inaccessible from outside the cell. Every component within the cell should be versioned. The cell should have a name and a version identifier. The versions should change when the cell’s requirements and/or offers change.</p>
+<ul>
+<li>A cell is an immutable application component that can be built, deployed and managed as a complete unit.</li>
+<li>A cell consists of multiple services, managed APIs, ingress and egress policies (including routing, throttling, and access control), security trust domain, deployment policies, rolling update policies, and external dependencies.</li>
+<li>The cell definition captures all of these in a standard technology-neutral fashion.</li>
+</ul>
+<h3 id="deep-dive-into-cells">Deep-Dive into Cells</h3>
+<p><img src="file:////media/ra-cell-details-2.0-60.png" alt="cell definition"></p>
+<p>In this example, <strong>Cell-1</strong> contains two microservices and a function operating with a microbroker and a microgateway to fulfill the functionality. The function is communicating with a few external services running outside the cell, and one microservice communicates with a cluster of external databases. The cell contains local storage, which is required by the microbroker. The functionality of a microservice in this cell has been extended by bringing a sidecar.</p>
+<p><strong>Cell-2</strong> contains a cluster of relational databases exposed via a Java Database Connectivity (JDBC) endpoint.</p>
+<p>Components in <strong>Cell-3</strong> are running in a hypervisor-based virtualized environment with a few RESTful services, an application server runtime, and a business process. Cell-3 exposes its capabilities through an endpoint implemented via a traditional enterprise service bus (ESB) or an API gateway.</p>
+<p>The concept of a cell moves away from centralized a enterprise architecture to a decentralized architecture. The segmented approach allows each cell to be independent and iterate individually.</p>
+<h4 id="cell-gateway-communication">Cell Gateway Communication</h4>
+<p>The cells consume the functionality of other cells using the three API types (request response, events and streams) exposed by the cell gateways.</p>
+<p><img src="file:////media/ra-gw-communication-v3-20.png" alt="epr types"></p>
+<ul>
+<li>
+<p><strong>Request Response</strong> API types provide an abstraction over everything that can be <strong>queried</strong> or <strong>activated</strong>.</p>
+</li>
+<li>
+<p><strong>Events</strong> allow action in real-time based on changes that occur in the environment, allowing work to be <strong>triggered</strong>.</p>
+</li>
+<li>
+<p><strong>Streams</strong> capture the ongoing evolving nature of the environment, allowing <strong>pattern matching</strong> and <strong>analysis</strong>.</p>
+</li>
+</ul>
+<p>A common characteristic of the usage among the three different types of endpoints is subscriptions. An application or a system is required to have an active subscription to send or receive messages/events from the applicable API type. The difference is how the messages/events are delivered and the underlying protocols used.
+External cells represent endpoints exposed by the partners and the service provider ecosystem of the organization. External cells can be a software-as-a-service (SaaS) application, an integration or an API gateway encapsulating a set of functionality provided by the external counterpart.</p>
+<h4 id="inter-and-intra-cell-communication">Inter and Intra Cell Communication</h4>
+<p>This diagram brings the data plane, control plane and the management plane concept into the cell-based architecture.</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Name</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DP</strong></td>
+<td>Data Plane</td>
+<td>Forwards traffic between hops, takes data packets</td>
+</tr>
+<tr>
+<td><strong>CP</strong></td>
+<td>Control Plane</td>
+<td>Signaling of the network, makes decisions about the traffic flow, runtime governance</td>
+</tr>
+<tr>
+<td><strong>MP</strong></td>
+<td>Management Plane</td>
+<td>Configuration, observeabiltty, monitoring, design-time governance</td>
+</tr>
+</tbody>
+</table>
+<p><img src="file:////media/ra-cell-communication-v2.2.png" alt="cell communication"></p>
+<p>Components in a cell are required to communicate with each other in a seamless way, which we call intra-cell communication. Cells in a system architecture are required to communicate with each other through the edge-gateway, which we call inter-cell communication. As a result, a control-plane and a data-plane operate inside each cell along with a common control-plane, data-plane and management-plane outside the cells.</p>
+<p>Communication planes inside a cell are called the <strong>local mesh</strong> and the communication planes outside the cells are called the <strong>global mesh</strong>.</p>
+<h4 id="governance-of-cell-based-architecture">Governance of Cell-Based Architecture</h4>
+<p><img src="file:////media/ra-cell-gov.png" alt="cell governance"></p>
+<p>The gateway is the control point for a cell-based architecture, which provides a well-defined interface to a subset of APIs, events, and streams. In this pattern, the gateway becomes the only access point (endpoint) for the cell. As a result, the gateway acts as a policy enforcement point, an observability touchpoint, and an enabler for governance frameworks. Additionally, the gateway pattern helps to implement architectures that comply with domain-specific technology or business standards.</p>
+<p>The gateway pattern mandates the entire internal and external communication flow through a set of defined gateway clusters. Therefore, it is easy to enforce policies and capture the information required for observation from these gateways. This approach increases the agility of the overall architecture because the enforcements are introduced, managed, and maintained at the gateways without changing the rest of the associated components in the ecosystem.</p>
+<h4 id="security-of-cell-based-architecture">Security of Cell-Based Architecture</h4>
+<p><img src="file:////Users/hovo/workspace/git/reference-architecture/media/ra-cell-security-v2.1.png" alt="security of cells"></p>
+<p>Security of the cell-based architecture is an area that needs more detailed coverage than what is offered here. A paper devoted to a security reference architecture for an agile enterprise is planned to be published in the future. However, it is worth making a few high-level points here. The main point, which needs to be clear, is that the identity and security domain within a cell may be distinct from the domain outside the cell. For example, the cell gateway may replace tokens that are valid outside the cell with alternative tokens that operate within the cell. This is because the cell may need to operate its own security rules, policies, and approaches. This encapsulation ensures that the cell can migrate without affecting the externals users.</p>
+<p>However, some organizations may choose to operate a single continuous domain across multiple cells. The above diagram shows two common security patterns:</p>
+<ul>
+<li>
+<p>Pattern-1 offers a Security Token Service (STS) inside the cell, and the local STS of the cell contains the required security metadata to authorize and authenticate the incoming requests. STS is part of the local control plane; it stores the required policies and acts as a Policy Decision Point (PDP).</p>
+</li>
+<li>
+<p>Pattern-2 connects to an identity provider (IDP) that resides in the conventional control plane, which is stationed outside the cells. Primarily, we would like to emphasize that the cell-based architecture can work on a local security model in the cell or extend to a federated security model (which is common) by connecting beyond the boundary of the cell.</p>
+</li>
+</ul>
+<h4 id="lifecycle-and-versioning-of-cells">Lifecycle and Versioning of Cells</h4>
+<p><img src="file:////Users/hovo/workspace/git/reference-architecture/media/ra-cell-lcm.png" alt="cell lcm"></p>
+<p>The lifecycle of a cell is similar to a typical application lifecycle. Each cell can have its own lifecycle stages based on the functionality, business criticality, and how the team owning the cell has organized the release pipeline. As described in the above diagram, Cell-1 is pipelined with four lifecycle stages (development, testing, staging, and production) while Cell-2 contains three lifecycle stages (development, testing, and production). A cell can have multiple active versions at a given time due to the interdependencies cells create with other cells in an enterprise. Each version of the cell contains a separate lifecycle and a release pipeline. As the above diagram explains, Cell-2 has two versions: v3.00 and v2.70; while v3.00 has three stages and v2.70 has two stages.</p>
+<p>By utilizing modern container-based, cloud-native infrastructures, pre-production stages can spin up when required. As described in the diagram, v2.70 of Cell-2 does not have a “dev” phase (because it assumes that development is completed), but it can spin one up if needed to rollout a required a bug fix or a feature enhancement.</p>
+<h2 id="section-3-structured-agility">Section 3: Structured Agility</h2>
+<p><img src="file:////Users/hovo/workspace/git/reference-architecture/media/ra-structured-agility.png" alt="structured agility"></p>
+<p>One of the main advantages architects can gain from a cell-based architecture is the extended agility provided by the cells and isolation compared to the traditional layered architecture. As mentioned before, the cell-based approach divides the enterprise architecture into individual cells. As a result, there are three levels of iterative architecture that can be enforced.</p>
+<ul>
+<li>Level-1: <strong>Components</strong> inside each cell can iterate individually.</li>
+<li>Level-2: Each <strong>cell</strong> can iterate independently.</li>
+<li>Level-3: The <strong>enterprise architecture</strong> can iterate as a whole.</li>
+</ul>
+<p>Even though most large enterprises try to follow an iterative approach, projects are pushed to an agile-waterfall model due to the size and complexity of the systems. The cell-based approach divides these larger architectures into small chunks and facilitates iteration within. Each iterative step can version individually and manage the dependencies by sticking to the principles of loose-coupling.</p>
+<h3 id="cells-and-agile-teams">Cells and Agile Teams</h3>
+<h4 id="creation-of-cells">Creation of Cells</h4>
+<p>Cell creation can take two approaches based on the current state of the organization. Greenfield projects can take a top-down approach by defining the cells first and developing the components after that. However, in a situation where the components are already developed and exist in the infrastructure, components can be reorganized by mapping them to cells. A combination of the above two methods is also a viable approach.</p>
+<h5 id="scenario-1-brand-new-cell">Scenario 1: Brand New Cell</h5>
+<p>A development team can start creating a cell before developing the components. In this scenario, the developer treats the cell as a composite. During the development process, the developer (cell owner/creator) and/or the teammates can add components to the cell. However, the cell should contain the essential components linked with the local mesh (DP and CP) before deploying the cell from the local sandbox environment.</p>
+<p><img src="file:////Users/hovo/workspace/git/reference-architecture/media/ra-cell-creation-sc1.png" alt="cell creation 1"></p>
+<h5 id="scenario-2-from-existing-micro-services">Scenario 2: From Existing (Micro) Services</h5>
+<p>The second scenario comes when the components already exist or are built outside the cell boundary. The cell owner or the self-organized team members can create a new cell definition and include the components or edit an existing cell definition and introduce the new components.</p>
+<p><img src="file:////Users/hovo/workspace/git/reference-architecture/media/ra-cell-creation-sc2.png" alt="cell creation 2"></p>
+<h4 id="developer-flow">Developer Flow</h4>
+<p>A new architecture paradigm can change the natural development flow, which might affect the productivity of the developers. However, cell-based architecture takes a developer-friendly approach that increases efficiency and adoption.</p>
+<p><img src="file:////Users/hovo/workspace/git/reference-architecture/media/ra-dev-lcm.png" alt="developer lcm"></p>
+<p>Developers implement components by writing code or configuration and testing it in their local sandbox environment. Once the units tests are passed, they push (or pull) the changes to the shared source control repository. At that point, the CI/CD process will kickoff and deploy the components into the cells based on the cell configuration defined by the cell owner. The CI/CD process takes the components and the cells through the configured application lifecycle stages. Deployment of the component can take two paths based on the immutability of the cell. Immutable cells (recommended) signal the global control-plane and deploy the entire cell for a component change. If the cell is mutable, it signals the local control-plane and deploys only the updated component.</p>
+<p>The cell definitions can be created by using a programming language or infrastructure as a code script and utilizing the functionality provided by the targeted infrastructure.</p>
+<h2 id="section-4-building-an-agile-enterprise-with-the-cell-based-architecture">Section 4: Building an Agile Enterprise with the Cell-Based Architecture</h2>
+<p>One of the objectives of building a modern reference architecture is to enable adaptivity. Adaptivity is an organization’s ability to respond to changes in the environment, overcome new challenges, and meet new customer demands in an effective and agile way. The aim of the cell-based architecture is to create an environment where new applications can be created from existing capabilities in a modular and iterative approach. A well architected system of cells within the enterprise creates a platform for innovation. The use of APIs, streams, and events ensures a consistent, effective model for building interactive and real-time applications. Effectively, the logical cell-based architecture becomes the basis of an evolving platform for the digital enterprise.</p>
+<h3 id="evolution-of-the-cell-based-architecture-emerging-architectural-patterns">Evolution of the Cell-Based Architecture: Emerging Architectural Patterns</h3>
+<p><img src="file:////media/ra-evolution.png" alt="evolution of architecture"></p>
+<p>Most enterprises follow a layered architecture with both service-oriented architecture (SOA) principles and microservice architecture (MSA) concepts by grouping the services or microservices into a single layer in the overall enterprise architecture. This approach makes each architecture layer a logically centralized set of shared components that eventually becomes another silo.</p>
+<p>First, we discussed a segmented architecture, which is created by dividing the layered architecture into small segments based on the functional capabilities within each architecture layer [4]. However, that segmentation is too high-level to enforce a decentralized, self-contained architecture unit. At the same time, microservices are generally too fine-grained to be treated as an architecture unit. As a result, we are introducing the cell as the architecture unit in this reference architecture.</p>
+<p><strong>Note</strong>: <em>A layered architecture and the segmented architecture illustrated in  <a href="https://github.com/wso2/reference-architecture/blob/master/reference-architecture-layered-segmented.html"><strong>API-centric Centralized Architectures: Layered and Segmented</strong></a> for organizations that are building systems using the same architecture models.</em></p>
+<h3 id="cell-based-architecture-enterprise-view">Cell-Based Architecture: Enterprise View</h3>
+<p><img src="file:////media/ra-cell-based-ea-v2.0.png" alt="cell-based ea"></p>
+<p>As we discussed  earlier, cell-based architecture goes beyond the traditional layered architecture and creates a framework for decentralization.  Cells can be categorized into a few subcategories based on the architecture patterns used, the implementation, and the provider.</p>
+<p>The first level of categorization is based on the provider. Cells owned by internal groups are treated as internal cells, and the cells owned by external parties, such as partners and external service providers, are treated as external cells.</p>
+<h4 id="cell-types">Cell Types</h4>
+<table>
+<thead>
+<tr>
+<th>Cell Type</th>
+<th>Components</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logic</td>
+<td>Microservices, functions, microgateways, lightweight storages</td>
+</tr>
+<tr>
+<td>Integration</td>
+<td>MicroESB or other integration microservices, lightweight storage and/or cache</td>
+</tr>
+<tr>
+<td>Legacy</td>
+<td>Existing systems, legacy services, COTS systems</td>
+</tr>
+<tr>
+<td>External</td>
+<td>SaaS and partner systems</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>RDBMS, NoSQL, file, message broker</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>IDP, user stores</td>
+</tr>
+<tr>
+<td>Channel</td>
+<td>Web, mobile, IoT <em>(end-user)</em> applications</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mapping-an-agile-enterprise-to-the-real-world-an-order-management-system-reference-implementation">Mapping an Agile Enterprise to the Real-World: An Order Management System Reference Implementation</h3>
+<p><img src="file:////media/ra-cell-rw-l0.png" alt="epr types"></p>
+<p>The diagram above represents a real-world example using the cell-based architecture. For reference purposes, we have only captured a portion of the entire architecture. This architecture follows the fundamentals of cell-based architecture and is divided into multiple cells. Each cell contains different components for building the expected functionality.</p>
+<p>We identified three main categories of users in this order management system: customers, partners, and employees. The end-user application cells contain an order management application, which can be consumed by the users.</p>
+<p>The employee cell represents the functionality needed by the employees associated with the system. It exposes an API through the microgateway component residing at the edge of the cell. Employee data is stored in the human resources (HR) system and local user stores, hence the employee cell connects with those cells through the endpoints provided. Some of the activities executed by the employees need to be stored in a log for computing compensation as well as an audit log. Therefore, the employee cell connects to a cell that contains a cluster of relational databases via a data access endpoint. Employees also need to be authenticated, so the cell uses a sidecar pattern to communicate with the identity system residing in the use-store cell.</p>
+<p>The order cell manages the core transactions created in the system, which are orders posted by customers, employees, and partners. The order cell exposes an API for the application cells to consume. At the same time, the order cell provides the ability to subscribe to the order status events using an event endpoint. The order cell connects the order management system (OMS), which is a COTS system. The COTS system provides an endpoint to execute remote procedure calls (RPCs) in order to exchange data and the functionality related to orders. The OMS cell falls into the legacy cell category.</p>
+<p>The customer cell represents the customer-focused functionality. It connects to an internal legacy cell to provide customer relationship management (CRM) capabilities. An external cell represents a SaaS-based CRM system.
+The promotions cell exposes the functionality using a streaming endpoint and lets the reactive order application receive information about the campaigns offered by the organization.</p>
+<h2 id="section-5-cell---recommendations-and-best-practices">Section 5: Cell - Recommendations and Best Practices</h2>
+<h3 id="generic">Generic</h3>
+<ol>
+<li>
+<p>A cell forms a bounded context that encapsulated a set of functionality, which may be implemented as a monolith, a set of microservices, serverless functions, or some combination of those.</p>
+</li>
+<li>
+<p>Each cell is owned by one team. That team owns the development of the cell. In many cases, the same team also owns the deployment and runtime of the cell.</p>
+</li>
+<li>
+<p>Communication between cells is via well-defined, versioned APIs. For example, using OpenAPI or gRPC/Protobuf. Asynchronous communication between cells is preferred so that cells can continue to work if their dependent cells are unavailable.</p>
+</li>
+<li>
+<p>A cell should implement logic and data. At the least, the logic must offer a versioned business API to that data that is independent of the data storage model.</p>
+</li>
+<li>
+<p>A cell &quot;owns&quot; all the data (as well as logic) for its domain: only the owning cell may access that directly, and all other parties can only access that data via the cell's APIs. Therefore if a cell needs data that it doesn't &quot;own,&quot; it must use well-defined and versioned APIs (from other cells or external sources) to access that data. A cell may cache data that it does not own temporarily.</p>
+</li>
+<li>
+<p>A cell may replicate its data to a data lake (e.g. for reporting), but the cell's APIs are always the primary source of truth for its data.</p>
+</li>
+<li>
+<p>A cell must be secured. The minimum security is that cell access is controlled through API gateways which enable policies that control which other cells can call it. However, end-to-end federated security with identities based on tokens and certificates is recommended.</p>
+</li>
+<li>
+<p>A cell should be deployable as an immutable unit via a versioned DevOps process, enabling blue-green, canary and other deployment patterns.</p>
+</li>
+<li>
+<p>Each cell should be designed to scale independently and to implement throttling and SLA policies that protect it from DoS or other demand challenges.</p>
+</li>
+<li>
+<p>The internal communication model, control plane, data plane, and implementation of the cell are the responsibility of the cell's team.</p>
+</li>
+<li>
+<p>The cells disregard cyclic dependencies by not having cells inside cells.</p>
+</li>
+<li>
+<p>A group of cells are labelled as a <strong>virtual application</strong>.</p>
+</li>
+</ol>
+<h3 id="cell-granularity">Cell Granularity</h3>
+<ol>
+<li>
+<p>The design of systems has always required an approach to the clustering of functionality, and it remains an open computer science problem - so don't expect a definitive answer!</p>
+</li>
+<li>
+<p>The number of component-component connections within a cell should be higher than the number that crosses the cell boundary. Hence one approach would be to cluster components based on the connections.</p>
+</li>
+<li>
+<p>Other approaches such as Domain-driven Design (DDD)[5] may help, but fundamentally the cell model is there to provide team boundaries.</p>
+</li>
+<li>
+<p>Hence the size of a cell should be based on the size, responsibility, and output of a team - and the size and output of a team based on team concepts (like the two-pizza rule).</p>
+</li>
+<li>
+<p>Cell-based architecture aims to create business focused architectural constructs that can be reused at a higher level, so naturally organizing the teams and cells around business functions is essential.</p>
+</li>
+</ol>
+<p><strong>Note</strong>:<em>A specification focused on cell granularity is in progress, which is shaping the cell boundaries by considering the bounded context and component interaction graph as a model of components and characteristics of their interactions.</em></p>
+<h3 id="cell-use-cases">Cell Use Cases</h3>
+<h4 id="api-products">API Products</h4>
+<p>APIs can comprehend as the products of the 21st century. For many millennia, human trade was mostly directly between the producers and consumers of products. Furthermore, APIs enable connecting businesses and exchange transactions. Technical APIs are too granular hence exposing a collection of APIs as application developer-friendly managed APIs make application developers productive. Grouping a set of managed APIs providing a business functionality makes the application developer productivity further. The grouping of managed APIs call API products and cells provides an excellent framework to develop, manage, and expose API products by classifying a set of components.</p>
+<p><img src="file:////media/ra-api-product-10.png" alt="API products"></p>
+<h4 id="reference-implementations">Reference implementations</h4>
+<h5 id="cellery">Cellery</h5>
+<p><a href="https://cellery.io/">Cellery</a> is a code-first approach (architecture as code) to building, integrating, running and managing composite applications on Kubernetes. Build, push/pull, test, deploy, update, scale and observe cells. Create secure APIs by default. Use your existing container images, written in any language.
+Cellery started off as a learning experiment. Our passion for services composition and the need for a reference implementation for Cell-based architecture gave birth to Cellery. Last year and half was a great learning experience for us. Through Cellery, we learnt to organize services and deploy on Kubernetes at scale. We also found out that this is a common problem that many technical communities are trying to solve and we are planning to contribute to such communities like Open Application Model (<a href="https://oam.dev/">OAM</a>) in future. As for Cellery, we are no longer actively maintaining the codebase. If you are interested in forking Cellery and using it in your project, please feel free to do so.</p>
+<p>You can navigate to the code base at - <a href="https://github.com/wso2/cellery">https://github.com/wso2/cellery</a>.</p>
+<h5 id="okta">Okta</h5>
+<p><a href="https://www.okta.com/resources/whitepaper/how-okta-builds-and-runs-scalable-infrastructure/">An Insider Look: How Okta Builds and Runs Scalable Infrastructure</a> using Cell-based Architecture.</p>
+<h5 id="microservice-dsl-mdsl">Microservice DSL (MDSL)</h5>
+<p><a href="https://microservice-api-patterns.github.io/MDSL-Specification/">A Domain-Specific Language (DSL) to specify (micro-)service contracts</a>, their data representations and API endpoints.</p>
+<h4 id="parallels">Parallels</h4>
+<p>[1] UBER - Domain-oriented Microservice Architecture (DOMA) - <a href="https://eng.uber.com/microservice-architecture/">https://eng.uber.com/microservice-architecture/</a></p>
+<p>[2] Gartner - Mesh Architecture of Apps, APIs and Services (MASA) - <a href="https://www.gartner.com/en/documents/3980382/masa-how-to-create-an-agile-application-architecture-wit">https://www.gartner.com/en/documents/3980382/masa-how-to-create-an-agile-application-architecture-wit</a></p>
+<p>[3] NEU - Law of Demeter (LoD) - <a href="https://en.wikipedia.org/wiki/Law_of_Demeter">https://en.wikipedia.org/wiki/Law_of_Demeter</a></p>
+<h2 id="conclusions">Conclusions</h2>
+<p>Advancements in technology and changes to the business model are pushing enterprise architectures to be truly agile. Traditionally centralized enterprise architectures no longer deliver on the expectations of the business and consumers. Our approach creates a pragmatic reference architecture that addresses the requirement for agility using a technology-neutral approach.</p>
+<p>Microservice architecture is an excellent approach to building decentralized systems. However, microservices are too granular when it comes to architecting larger systems and projects in the brownfield. The need for decentralization is not limited to where various IT assets run and who owns and manages it. There is the people aspect as well. An environment where innovative ideas come from every part of the organization and decision-making is decentralized needs to be established. An enterprise architecture group can operate as the center of enablement that brings life to these ideas and provides constructive feedback.</p>
+<p>Identifying the boundaries and the size of the cells depends on the business domain, organizational structure, skill set, and processes adhered to by the organization. Scaling the cells and providing high availability is part of the infrastructure that deploys the cells.<br>
+Reference implementations using market-leading technologies and solutions for various vertical markets successfully will be discussed as separate white papers in the future.</p>
+<p>Authors have published a <a href="https://github.com/wso2/reference-methodology/blob/master/reference-methodology.html"><strong>Reference Methodology</strong></a> as a guideline to implement application systems and agile enterprises using cell-based architecture.</p>
+<blockquote>
+<p><em>Note from the author:
+I have been involved in implementing more than 1000 projects using Cell-based, layered and segmented architecture in many parts of the world. If you are looking for guidance for picking the correct architecture for your project, I'm happy to guide you using a <a href="https://wso2.com/strategic-consulting/"><strong>strategic consultancy engagement</strong></a>.</em></p>
+</blockquote>
+<h2 id="references">References</h2>
+<p>[1] WSO2,Inc - Engaging in a Digital World - <a href="https://wso2.com/wso2_resources/wso2-e-book-navigating-the-digital-transformation-landscape.pdf">https://wso2.com/wso2_resources/wso2-e-book-navigating-the-digital-transformation-landscape.pdf</a></p>
+<p>[2] Dave Gray - The Connected Company - <a href="http://www.xplaner.com/connectedco/">http://www.xplaner.com/connectedco/</a></p>
+<p>[3] Iterative, Segmented Architecture - <a href="https://www.slideshare.net/asankama/iterative-architecture-your-path-to-ontime-delivery">https://www.slideshare.net/asankama/iterative-architecture-your-path-to-ontime-delivery</a></p>
+<p>[4] The exploding endpoint problem - <a href="https://thenewstack.io/the-exploding-endpoint-problem-why-everything-must-become-an-api/">https://thenewstack.io/the-exploding-endpoint-problem-why-everything-must-become-an-api/</a></p>
+<p>[5] Domain Driven Design (DDD) - <a href="https://en.wikipedia.org/wiki/Domain-driven_design">https://en.wikipedia.org/wiki/Domain-driven_design</a></p>
+<p>[6] Reference Methodology for Agility - <a href="https://github.com/wso2/reference-methodology/blob/master/reference-methodology.html">https://github.com/wso2/reference-methodology/blob/master/reference-methodology.md</a></p>
+<h2 id="publications">Publications</h2>
+<p>[1] Kristopher Sandoval - What is Cell-Based Architecture - <a href="https://nordicapis.com/what-is-cell-based-architecture/">https://nordicapis.com/what-is-cell-based-architecture/</a></p>
+<p>[2] Asanka Abeysinghe - Cell-Based Architecture: A New Decentralized Approach for Cloud Native Patterns - <a href="https://thenewstack.io/cell-based-architecture-a-new-decentralized-approach-for-cloud-native-patterns/">https://thenewstack.io/cell-based-architecture-a-new-decentralized-approach-for-cloud-native-patterns/</a></p>
+<p>[3] Asanka Abeysinghe - The Cellular Enterprise - <a href="https://www.forbes.com/sites/forbestechcouncil/2020/06/29/the-cellular-enterprise/">https://www.forbes.com/sites/forbestechcouncil/2020/06/29/the-cellular-enterprise/</a></p>
+<h2 id="appendix-a-agile-enterprise">Appendix A: Agile Enterprise</h2>
+<blockquote>
+<p><em>“It is not the strongest of the species that survives, nor the most intelligent that survives. It is the one that is most adaptable to change. -Charles Darwin</em></p>
+</blockquote>
+<h3 id="agile-enterprise-users">Agile Enterprise Users</h3>
+<p><strong>Customers</strong>: Today’s consumer-driven culture has empowered customers to demand the nature of the products and services provided by service providers. Service providers have to deliver and meet expectations to win and retain customers. Switching service providers is a natural process for consumers, so enterprises need to be agile, adaptive, and innovative to win customers, meet their the expectations and retain their loyalty. Setting up essential feedback channels as well as capturing end-user behavior by enabling analytics helps with understanding customer requirements.</p>
+<p><strong>Employees</strong>: Employees (AKA the digital workforce) are the primary source for creating innovative ideas, design, and implementation. Organizations need to create an open culture and a platform that engages, empowers, and entrusts their employees. This enables employees to build proof of concepts (PoCs), and prototypes, release an minimal viable product (MVP), and identify the product market fit (PMF) rapidly using an iterative approach.
+A podular architecture that results in functional, unit-based pods encourages each pod to be creative, build, run, manage, and support the service offerings that the pod owns. This approach pushes pod members to the edge and allows them to access customers directly. Digital giants in the market today, such as Amazon, eBay, Netflix, and Uber, follow the podular organization structure and operational model to be agile [2].</p>
+<p><strong>Partners</strong>: A business cannot be isolated and operate alone. Connecting with other platforms is essential. We call this ecosystem a partner network. An agile business should be able to connect seamlessly with its partners, share their own business capabilities, and leverage the business capabilities offered by partners. The composability of cell-based architecture increases the ability to expose the business functionality as APIs.  Business APIs act as the digital connectors, enable seamless connectivity, and create a framework to quickly onboard partners.</p>
+<h3 id="agile-enterprise-platform">Agile Enterprise Platform</h3>
+<p><img src="file:////Users/hovo/workspace/git/reference-architecture/media/ra-business-model.png" alt="business model"></p>
+<p><strong>Governance</strong>: An organization might lose control and deliver low-quality output by operating without governance. A light-weight governance framework that allows innovation and agility is essential. A few practices that bring essential governance principles into a digital enterprise include:</p>
+<ul>
+<li>Enterprise architecture patterns</li>
+<li>Automation with continuous-integration and delivery</li>
+<li>API-driven communication</li>
+<li>Policy-driven access control</li>
+</ul>
+<p>Having decentralized architecture, development, and deployment of the systems makes governance a mandatory requirement.</p>
+<p><strong>Reference Methodology (RM)</strong>:  A correct execution model is the delivery vehicle to provide the expected digital experience to consumers. An agile business quickly inherits new technology without affecting the productivity of existing technology and people. Innovation labs and development go hand in hand, and agile development methodologies enable an environment to experiment with new technologies. Proper onboarding programs, evangelization activities, and hackathons help to bring new technologies into the digital enterprise.</p>
+<p><strong>Reference Architecture (RA)</strong>: A blueprint is required to start, plan, execute, and deliver agile applications. The reference methodology will be built by referring to the reference architecture. Therefore, the reference architecture is the core of an agile business model.</p>
+<h3 id="agile-enterprise-runtime">Agile Enterprise Runtime</h3>
+<p><strong>Iterative and continuous</strong>: Even though there are many endpoints available, an organization is not required to connect with all of them from day one. The integration architecture can follow an iterative approach by identifying the essential endpoints and integration flows based on priorities set by the business and consumers.
+While building application, integration or API platforms, we have to consider another platform: the automation platform. Test automation has been around for a while now, but automation has expanded to cover a broader range of tasks associated with application development and delivery.</p>
+<p><img src="file:////Users/hovo/workspace/git/reference-architecture/media/ra-cicd-pipeline.png" alt="cicd/pipeline"></p>
+<p>The automation platform is about building a pipeline that can take code or configuration from development to run through a well managed automated process. Activities associated with the pipeline can vary from organization to organization, but Figure 5 above defines a generic approach.
+Automation is key when implementing innovative ideas and taking them to market rapidly. Automation creates an environment that allows developers and integration engineers to focus on the application development and the value they can provide for end-users while the automation framework takes care of the quality, compliance, and delivery of applications.</p>
+<p><strong>Scaling and workload</strong>: Agile businesses need to scale and handle the workload based on various fluctuations that can happen in the business. Scalability requirements are determined by user behavior, market changes, or external factors, such as weather and political movements. The ability to scale and handle the workload is vital behavior for an agile business.</p>
+<p><strong>Real-time</strong>: Users associated with an agile business (customers, partners, and employees) along with the systems connected rely on real-time information exchange, primarily due to the digital needs and experiences built around real-time data.</p>
+<p><strong>Artificial Intelligence (AI)</strong>: AI is a crosscutting concern in the agile business runtime. AI boosts the adaptability and decision-making capabilities of the business by using technologies, such as logical AI, pattern recognition, and heuristics. Capabilities provided by AI can be utilized in development environments to increase the productivity of development teams, as well as increase the end-user experience by linking AI with digital products. The cell-based architecture provides a framework to provide data for AI systems by capturing usage data from the observations. Additionally, the decentralized architecture makes it possible to plug in advanced AI features, such as automatic programming and genetic programming. Finally, AI has become an accessible technology for any enterprise as a result of the open source offerings introduced to the industry.</p>
+
+    </body>
+    </html>

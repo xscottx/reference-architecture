@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>1&period;0 Introduction</title>
+        <style>
+/* From extension zhuangtongfa.material-theme */
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body {
+  box-sizing: border-box;
+  min-width: 200px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  background-color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  color: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre code {
+  color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code > div {
+  background: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table td {
+  border: 1px solid rgba(171, 178, 191, 0.5) !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-active-line:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-line:hover:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-line .code-line:hover:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* Generated from 'node_modules/github-markdown-css/github-markdown.css' */
+@font-face {
+  font-family: octicons-link;
+  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAZwABAAAAAACFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEU0lHAAAGaAAAAAgAAAAIAAAAAUdTVUIAAAZcAAAACgAAAAoAAQAAT1MvMgAAAyQAAABJAAAAYFYEU3RjbWFwAAADcAAAAEUAAACAAJThvmN2dCAAAATkAAAABAAAAAQAAAAAZnBnbQAAA7gAAACyAAABCUM+8IhnYXNwAAAGTAAAABAAAAAQABoAI2dseWYAAAFsAAABPAAAAZwcEq9taGVhZAAAAsgAAAA0AAAANgh4a91oaGVhAAADCAAAABoAAAAkCA8DRGhtdHgAAAL8AAAADAAAAAwGAACfbG9jYQAAAsAAAAAIAAAACABiATBtYXhwAAACqAAAABgAAAAgAA8ASm5hbWUAAAToAAABQgAAAlXu73sOcG9zdAAABiwAAAAeAAAAME3QpOBwcmVwAAAEbAAAAHYAAAB/aFGpk3jaTY6xa8JAGMW/O62BDi0tJLYQincXEypYIiGJjSgHniQ6umTsUEyLm5BV6NDBP8Tpts6F0v+k/0an2i+itHDw3v2+9+DBKTzsJNnWJNTgHEy4BgG3EMI9DCEDOGEXzDADU5hBKMIgNPZqoD3SilVaXZCER3/I7AtxEJLtzzuZfI+VVkprxTlXShWKb3TBecG11rwoNlmmn1P2WYcJczl32etSpKnziC7lQyWe1smVPy/Lt7Kc+0vWY/gAgIIEqAN9we0pwKXreiMasxvabDQMM4riO+qxM2ogwDGOZTXxwxDiycQIcoYFBLj5K3EIaSctAq2kTYiw+ymhce7vwM9jSqO8JyVd5RH9gyTt2+J/yUmYlIR0s04n6+7Vm1ozezUeLEaUjhaDSuXHwVRgvLJn1tQ7xiuVv/ocTRF42mNgZGBgYGbwZOBiAAFGJBIMAAizAFoAAABiAGIAznjaY2BkYGAA4in8zwXi+W2+MjCzMIDApSwvXzC97Z4Ig8N/BxYGZgcgl52BCSQKAA3jCV8CAABfAAAAAAQAAEB42mNgZGBg4f3vACQZQABIMjKgAmYAKEgBXgAAeNpjYGY6wTiBgZWBg2kmUxoDA4MPhGZMYzBi1AHygVLYQUCaawqDA4PChxhmh/8ODDEsvAwHgMKMIDnGL0x7gJQCAwMAJd4MFwAAAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAGVYYDT+AEjAwuDFpBmA9KMDEwMCh9i/v8H8sH0/4dQc1iAmAkALaUKLgAAAHjaTY9LDsIgEIbtgqHUPpDi3gPoBVyRTmTddOmqTXThEXqrob2gQ1FjwpDvfwCBdmdXC5AVKFu3e5MfNFJ29KTQT48Ob9/lqYwOGZxeUelN2U2R6+cArgtCJpauW7UQBqnFkUsjAY/kOU1cP+DAgvxwn1chZDwUbd6CFimGXwzwF6tPbFIcjEl+vvmM/byA48e6tWrKArm4ZJlCbdsrxksL1AwWn/yBSJKpYbq8AXaaTb8AAHja28jAwOC00ZrBeQNDQOWO//sdBBgYGRiYWYAEELEwMTE4uzo5Zzo5b2BxdnFOcALxNjA6b2ByTswC8jYwg0VlNuoCTWAMqNzMzsoK1rEhNqByEyerg5PMJlYuVueETKcd/89uBpnpvIEVomeHLoMsAAe1Id4AAAAAAAB42oWQT07CQBTGv0JBhagk7HQzKxca2sJCE1hDt4QF+9JOS0nbaaYDCQfwCJ7Au3AHj+LO13FMmm6cl7785vven0kBjHCBhfpYuNa5Ph1c0e2Xu3jEvWG7UdPDLZ4N92nOm+EBXuAbHmIMSRMs+4aUEd4Nd3CHD8NdvOLTsA2GL8M9PODbcL+hD7C1xoaHeLJSEao0FEW14ckxC+TU8TxvsY6X0eLPmRhry2WVioLpkrbp84LLQPGI7c6sOiUzpWIWS5GzlSgUzzLBSikOPFTOXqly7rqx0Z1Q5BAIoZBSFihQYQOOBEdkCOgXTOHA07HAGjGWiIjaPZNW13/+lm6S9FT7rLHFJ6fQbkATOG1j2OFMucKJJsxIVfQORl+9Jyda6Sl1dUYhSCm1dyClfoeDve4qMYdLEbfqHf3O/AdDumsjAAB42mNgYoAAZQYjBmyAGYQZmdhL8zLdDEydARfoAqIAAAABAAMABwAKABMAB///AA8AAQAAAAAAAAAAAAAAAAABAAAAAA==) format("woff");
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: #abb2bf;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  background: #282c34;
+  padding-top: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c {
+  color: #6a737d;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-v {
+  color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-e, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-en {
+  color: #6f42c1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-smi, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-s1 {
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ent {
+  color: #22863a;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-k {
+  color: #d73a49;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-pds, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-pse .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-sre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-sra {
+  color: #032f62;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-smw {
+  color: #e36209;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-bu {
+  color: #b31d28;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ii {
+  color: #fafbfc;
+  background-color: #b31d28;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c2 {
+  color: #fafbfc;
+  background-color: #d73a49;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c2::before {
+  content: "^M";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-cce {
+  font-weight: bold;
+  color: #22863a;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ml {
+  color: #735c0f;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mh, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mh .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ms {
+  font-weight: bold;
+  color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi {
+  font-style: italic;
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mb {
+  font-weight: bold;
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-md {
+  color: #b31d28;
+  background-color: #ffeef0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi1 {
+  color: #22863a;
+  background-color: #f0fff4;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mc {
+  color: #e36209;
+  background-color: #ffebda;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi2 {
+  color: #f6f8fa;
+  background-color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mdr {
+  font-weight: bold;
+  color: #6f42c1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ba {
+  color: #586069;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sg {
+  color: #959da5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-corl {
+  text-decoration: underline;
+  color: #032f62;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a {
+  background-color: transparent;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:active, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:hover {
+  outline-width: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: bolder;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img {
+  border-style: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  font: inherit;
+  margin: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  overflow: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body [type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body * {
+  box-sizing: border-box;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a {
+  color: #528bff;
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:hover {
+  text-decoration: underline;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr::before {
+  display: table;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body td, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body th {
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  font-size: 32px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 {
+  font-size: 16px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 {
+  font-size: 14px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  font-size: 12px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  margin: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol {
+  list-style-type: lower-roman;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dd {
+  margin-left: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .octicon {
+  vertical-align: text-bottom;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-0 {
+  padding-left: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-1 {
+  padding-left: 4px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-2 {
+  padding-left: 8px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-3 {
+  padding-left: 16px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-4 {
+  padding-left: 24px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-5 {
+  padding-left: 32px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-6 {
+  padding-left: 40px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body::before {
+  display: table;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body > *:first-child {
+  margin-top: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body > *:last-child {
+  margin-bottom: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .anchor {
+  float: left;
+  padding-right: 4px;
+  margin-left: -20px;
+  line-height: 1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .anchor:focus {
+  outline: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  /* padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5; */
+  padding: 8.5px 17px;
+  margin: 1.5em 0;
+  font-size: inherit;
+  color: #7c879c;
+  border-color: #4b5362;
+  border-width: 4px;
+  border-left: 5px solid #4b5362;
+  background: transparent;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote > :first-child {
+  margin-top: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote > :last-child {
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #f0f0f0;
+  border-bottom: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6:hover .anchor {
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.5em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 {
+  font-size: 1.25em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 {
+  font-size: 1em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 {
+  font-size: 0.875em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  font-size: 0.85em;
+  color: #6a737d;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol {
+  padding-left: 2em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li {
+  word-wrap: break-all;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li > p {
+  margin-top: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li + li {
+  margin-top: 0.25em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl {
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th {
+  font-weight: 700;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table td {
+  padding: 6px 13px;
+  /* border: 1px solid #dfe2e5; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table tr {
+  /* background-color: #fff; */
+  /* border-top: 1px solid #c6cbd1; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table tr:nth-child(2n) {
+  /* background-color: #f6f8fa; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img {
+  max-width: 100%;
+  box-sizing: content-box;
+  display: inline-block;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img[align=right] {
+  padding-left: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img[align=left] {
+  padding-right: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: #3a3f4b;
+  border-radius: 3px;
+  color: white;
+  margin: 0 1px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  word-wrap: normal;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre > code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight {
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  /* background-color: #f6f8fa; */
+  border-radius: 3px;
+  background-color: #31363f;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+  color: #abb2bf;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .full-commit .btn-outline:not(:disabled):hover {
+  color: #005cc5;
+  border-color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #d1d5da;
+  border-bottom-color: #c6cbd1;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #c6cbd1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body :checked + .radio-label {
+  position: relative;
+  z-index: 1;
+  border-color: #0366d6;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item {
+  list-style-type: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item + .task-list-item {
+  margin-top: 3px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item input {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  border-bottom-color: #eee;
+}
+
+/*
+
+Atom One Dark by Daniel Gamage
+Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
+
+base:    #282c34
+mono-1:  #abb2bf
+mono-2:  #818896
+mono-3:  #5c6370
+hue-1:   #56b6c2
+hue-2:   #61aeee
+hue-3:   #c678dd
+hue-4:   #98c379
+hue-5:   #e06c75
+hue-5-2: #be5046
+hue-6:   #d19a66
+hue-6-2: #e6c07b
+
+*/
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #abb2bf;
+  background: #282c34;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-comment,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-quote {
+  color: #5c6370;
+  font-style: italic;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-doctag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-keyword,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-formula {
+  color: #c678dd;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-section,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-name,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-tag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-deletion,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-subst {
+  color: #e06c75;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-literal {
+  color: #56b6c2;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-string,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-regexp,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-addition,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-attribute,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-meta-string {
+  color: #98c379;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-built_in,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-class .hljs-title {
+  color: #e6c07b;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-template-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-type,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-class,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-pseudo,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-number {
+  color: #d19a66;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-symbol,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-bullet,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-link,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-meta,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-id,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-title {
+  color: #61aeee;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-emphasis {
+  font-style: italic;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-strong {
+  font-weight: bold;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-link {
+  text-decoration: underline;
+}
+
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 align="center"> Event-driven APIs in Microservice Architectures
+ </center></h1>
+<!-- <h2 align="center"> A Reference Document </center></h2> --> 
+<p align="center">
+<i>
+Version Q4-2020<br/>
+</i>
+</p>
+<p><strong><em>Author</em></strong></p>
+<ul>
+<li>Dakshitha Ratnayake, Associate Director - Technology Evangelism
+<a href="mailto:dakshitha@wso2.com">dakshitha@wso2.com</a> <a href="https://twitter.com/techieducky">@techieducky</a></li>
+</ul>
+<blockquote>
+<p><em>This paper will focus on event-driven APIs and their management. Event-driven as a concept has been around for a long time but event-driven APIs are a more recent topic, which entails using event-driven architecture to support scalable, real-time (or near-real-time), push-based communication in APIs published to third parties.</em></p>
+</blockquote>
+<h2 id="10-introduction">1.0 Introduction</h2>
+<p>As architectures and technologies evolved to enable ‘digital transformation’, monolithic applications got broken down into coarse-grained services and now into more fine-grained loosely-coupled microservices that can be implemented using a variety of technologies.  Docker and Kubernetes have simplified the containerized deployment and scaling of microservices across different environments. To enable consumption for customers, partners, and other third parties, these microservices have been exposed via managed RESTful APIs and they communicate directly and synchronously with each other over HTTP. Developers have designed resource-based APIs using CRUD actions. And of course, API management platforms and rich tooling have made the consumption experience all the more easier and better.
+The grand majority of APIs that make up the web today are synchronous APIs. However, synchronous, request/reply interactions happen one at a time, in a pre-arranged sequence, and each interaction blocks the progress of the process until its completion. This means that the response time to the user is a cumulative sum of response times of the microservices. Also, if a client wishes to know about an update, it must continuously invoke the API to check for data modifications. This pattern is known as polling and has been a common solution for clients that need to become aware of new data or notified of backend events. And most of these ‘polling’ calls are wasted because the data hasn't changed and the resources (CPU, network, etc.) were used unnecessarily.  Thus, the term ‘polling madness’ was coined. Furthermore, rate limiting (mostly enforced by API managers) prevents clients from polling often enough to support the solution’s needs for event updates.</p>
+<p>Making APIs event-driven or asynchronous can systematically address these issues and really deliver on the (near) real-time experience, and adopting an event-driven architecture at a system level can truly provide sizable benefits and bring comfort to end-users and efficiency to the web. This paper will discuss how.</p>
+<h3 id="11-event-driven-systems">1.1 Event-driven Systems</h3>
+<p>What is event-driven? An event-driven architecture (EDA) centers around the concept of events. An event can be defined as a change in state and can closely represent what happens in the real world. Online purchases, human actions, command and control instructions, sensor readings, news feeds, stock ticks, interest rate changes, process alerts, workflow notifications, fault detection, and fraud detection are all real-world incidents that can be captured as events in an event-driven system. Being event-driven is about taking advantage of events as they happen; in other words, it’s about sensing, capturing, and responding to these events in (near) real-time to deliver a higher quality of service, offer a better customer experience, and make more informed business decisions.</p>
+<p><b>Real-time (or near real-time) experiences are built with event-driven architectures. </b></p>
+<p>It’s about the power of being able to do something in that instant as it happens. What is real-time varies for different industries (usually milliseconds or less) with their own metrics. In capital markets, <a href="https://research.tabbgroup.com/report/v06-007-value-millisecond-finding-optimal-speed-trading-infrastructure">1 millisecond is worth $8m</a>. This means that apps need to be highly reactive to change. One of the biggest advantages of EDA is that it optimizes the time it takes between the occurrence of an event and the reaction by the company to that event.  So, instead of polling, consumers can register their interest (subscribe) and react to events in real-time. With the real-time transmission of events (pushing instead of polling) and services being executed in parallel, everything interacts with each other efficiently. Better response times result in better user engagement and satisfaction and, therefore, better business.</p>
+<p><b>EDAs are loosely-coupled and agile.</b></p>
+<p>In event-driven architectures, applications and the underlying services are loosely coupled. Consequently, event producers simply transmit events (and do not care if anyone is interested). They fire, usually to a broker, and forget. Consuming apps and microservices do not have to know how many different applications they are consuming data from; they are only concerned about the data. So, the consuming applications are registered with the broker to receive the data updates they want. Decoupling, as we all know, offers many benefits. Because things are dealt with independently, consumers can be scaled independently of the sender. This means allowing millions of devices to consume events. Furthermore, bottleneck issues can be more easily tracked to a single component due to the decoupling.</p>
+<p>It also makes systems flexible and agile, such that new systems can be easily plugged into the architecture without making any changes to the source systems or impacting other systems, thus future-proofing the architecture. It allows developers to spend less time worrying about the systems and more about the business logic, allowing them to build products faster. An event-driven microservice architecture means faster time-to-market for new and modified business capabilities.</p>
+<p><b>Becoming event-driven creates efficient systems.</b></p>
+<p>EDAs not only improve latency (so that users don’t have to refresh their UIs to get the latest updates) but also support reliable delivery. With most brokers, if a service fails, the message can be stored by the event broker and can be delivered when the service comes back online —reliable delivery is a basis for eventual consistency and no data loss. A stateful intermediary with the right capabilities also allows for additional fault tolerance, speed mismatches, and shock absorption during peak volumes.</p>
+<p>With these gains due to EDA, an API vendor servicing clients with events can not only make them happier but also reduce their cloud bill on CPU and network drastically.</p>
+<h2 id="20-architecture">2.0 Architecture</h2>
+<h3 id="21-a-synchronous-api-first-microservice-architecture">2.1 A Synchronous API-first Microservice Architecture</h3>
+<p>There are mainly three components in the  architecture:</p>
+<ul>
+<li>The consumer applications:  Anything that can consume an API.</li>
+<li>The API  exposure layer:  Ideally an API gateway or a micro gateway but sometimes also a load balancer, a layer 7 firewall, a CDN, or any other layer 7 application on top of core service(s).</li>
+<li>The microservices:  A microservice (a core service or integration service) basically encapsulates a logic.</li>
+</ul>
+ <!-- ![synchronous api driven msa ](/media/media_event_driven_apis/1_synchronous_api_driven_msa.png) -->
+<p align="center">
+<img src="file:////media/media_event_driven_apis/1_synchronous_api_driven_msa.png" alt="synchronous api driven msa" width="80%" height="80%" />
+</p>
+<p align="center">
+<i>
+Figure 1: A Synchronous API-driven Microservice Architecture
+<br/>
+</i>
+</p>
+<p>A synchronous API call involves a single thread to process a request and its response.  As shown in Figure 1, for each request (REST, GraphQL, gRPC), a response follows. Synchronous communication is ideal for many scenarios especially if you need an instant response; however, in other cases, especially when the processing required for the response happens at a different time, ordinary synchronous messaging becomes tricky.  As a solution, developers have resorted to using polling techniques to get updates. But the data keeps changing constantly.  For example, a retail application wanting to know price changes will need to poll the API continuously, thus overloading the backend system. As in most cases, if an API management system is present, it will throttle out these requests.</p>
+<!-- ![events in a retail application ](/media/media_event_driven_apis/2_events_in_a_retail_app.png) -->
+<p align="center">
+<img src="file:////media/media_event_driven_apis/2_events_in_a_retail_app.png" alt="events in a retail application" width="60%" height="60%" />
+</p>
+<p align="center">
+<i>
+Figure 2: Pushing Events via Async APIs in a Retail Application
+<br/>
+</i>
+</p>
+<p>However, if the retail application is implemented in an event-driven way, the price changes are pushed to the client instead. First of all, any application that is interested in the price change event will subscribe to the event. When a price change occurs, that data will get distributed out to the subscribed apps. Such an app will now no longer need to continuously query for the price because the latest price is in its system; the app can keep this data in its cache or keep it persisted. For such scenarios, it makes more sense to receive push events via ‘async’ APIs than polling via ‘sync’ APIs as shown in Figure 2.</p>
+<h3 id="22-an-event-driven-api-first-microservice-architecture">2.2 An Event-driven API-first Microservice Architecture</h3>
+<p>Application languages and backend architectures have relied on events before REST was created. Back then, financial industries had events from exchanges pushed to hedge funds to allow them to stay in front of the market using IP-based tweaks and proprietary middleware. Since then, message buses have evolved to open standards adopted outside finance. Although EDA does not explicitly require the use of middleware, using such an intermediary between event producers and consumers helps to implement corresponding patterns and deliver more manageable and scalable solutions. We refer to this middleware as the event broker. A few notable examples of brokers are <a href="https://www.rabbitmq.com/">RabbitMQ</a>, <a href="https://kafka.apache.org/">Apache Kafka</a>, and <a href="http://activemq.apache.org/">Apache ActiveMQ</a>, among many others in the market today. Moreover, a scalable <a href="https://microservices.io/patterns/microservices.html">microservices architecture</a> (MSA) is the optimal architecture for complex event-driven backend services. These event-driven microservices can act as event subscribers or publishers in order to process events, handle errors, and persist event-driven states.</p>
+<p>In contrast to REST-fashioned APIs (which are usually implemented in polling scenarios),  push or streaming APIs are event-driven.  An event-driven API requires two capabilities—a mechanism to allow a consumer to subscribe (this can be user-controlled or programmatic) and the means to deliver events to consumers that are subscribed. The event-enabled APIs and/or services can connect to the broker and clients can subscribe to a channel of interest. Eventually, when an event takes place, it triggers a data flow to a client that’s waiting for the inbound data in order to process it in real-time. Additionally, when it comes to two-way communication, the client application should be able to publish events to the backend via the event-driven API as well.</p>
+<!-- ![asynchronous api-driven msa ](/media/media_event_driven_apis/3_asynchronous_api_driven_msa.png) --> 
+<p align="center">
+<img src="file:////media/media_event_driven_apis/3_asynchronous_api_driven_msa.png" alt="asynchronous api-driven msa" width="80%" height="80%" />
+</p>
+<p align="center">
+<i>
+Figure 3: An Asynchronous API-driven Microservice Architecture
+<br/>
+</i>
+</p>
+<p>To be more specific, an event broker, as shown in Figure 3, can be used to:</p>
+<ul>
+<li>Behave as a backbone or the event distribution layer for microservices that publish and process events.</li>
+<li>Liberate data from existing systems/brownfield. This can be done via an <a href="https://wso2.com/what-is-an-esb/">Enterprise Service Bus</a> or <a href="https://www.qlik.com/us/change-data-capture/cdc-change-data-capture">Change Data Capture (CDC)</a> tools. When something changes on the mainframe, they can publish events to the broker.</li>
+<li>Be fed by IoT devices (alarms, sensors, devices), connected systems (PoS terminals), etc.</li>
+<li>Interact with <a href="https://wso2.com/what-is-an-api-gateway/">API gateways</a> to expose data as events to the outside. These gateways (or <a href="https://wso2.com/api-management/api-microgateway/">micro gateways</a>) can take data from a request/response and transform it into an event or can even event-enable existing REST APIs.</li>
+</ul>
+<h2 id="30-event-driven-apis">3.0 Event-driven APIs</h2>
+<p>Receiving notifications about someone liking a picture or reacting to a story on Instagram,  a new Whatsapp message, a stock ticker, or social stream displaying the latest updates are all made possible through various modes of asynchronous communication. So how exactly should we perform asynchronous event-driven communication in the world of APIs where synchronous communication is predominant and most firewalls block non-HTTP traffic? There really is no one-size-fits-all solution.</p>
+<p>The technology landscape for asynchronous APIs is rapidly booming. The older protocols such as <a href="https://www.w3.org/Submission/WS-Eventing/">WS-Eventing</a> and <a href="https://xmpp.org/">XMPP</a> (a polling protocol that opens an HTTP thread and never closes it) are now making way for newer technologies (even though Whatsapp is still based on XMPP at the time of this writing). Since 2011, with the advent of social networks and to support reactive UI, the web has standardized protocols for low-volume bi-directional/peer-to-peer traffic (<a href="https://html.spec.whatwg.org/multipage/web-sockets.html">Websockets</a>) and server to client push over HTTP (<a href="https://html.spec.whatwg.org/multipage/server-sent-events.html">Server-Sent Events</a>). For battery constrained IoT devices, one would generally prefer using <a href="https://mqtt.org/">MQTT</a>. <a href="https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/about-webhooks">Webhooks</a> have become popular to handle low-volume events. Even though Kafka, which is based on TCP, is great for dealing with asynchronous communication between internal microservices, it is not optimized to be exposed to provide API consumers with easy access to real-time data and it will create issues with firewalls.</p>
+<p>The payloads are still mostly <a href="https://www.json.org/json-en.html">JSON</a> but <a href="http://avro.apache.org/">Avro</a> in Kafka and <a href="https://developers.google.com/protocol-buffers">protocol buffers</a> in <a href="https://grpc.io/">gRPC</a> are becoming more prevalent. In synchronous REST APIs, queries can be appended to the URL string that addresses an API’s endpoint (a GET request), or package the same query as a JSON payload instead (a POST request). Push/streaming approaches can be very different to each other. For example, Websockets allow for bi-directional streams while Webhooks and Server-Side Events are unidirectional. XMPP and <a href="https://smpp.org/">SMPP</a> differ substantially, such that XMPP is primarily based on XML payloads while SMPP relies on binary data.</p>
+<p>A message broker is usually required in the backend architecture to capture and filter events and manage event subscriptions. Moreover, languages traditionally used to create application layers linked to databases have also gone through their event revolution with reactive extensions such as <a href="https://github.com/ReactiveX/RxJava">RxJava</a> widely adopted by the Java community. And then there’s <a href="https://www.asyncapi.com/">AsyncAPI</a>, which is now widely adopted to document event-driven APIs.</p>
+<p>Let’s dig deeper into a few commonly-used and emerging standards in the event-driven API space.</p>
+<h3 id="31-defining-event-driven-apis-with-asyncapi">3.1 Defining Event-driven APIs with <a href="https://www.asyncapi.com/">AsyncAPI</a></h3>
+<p>One of the reasons why API management platforms really took off is their ability to streamline the development and drive adoption for their APIs via developer portals and API definition standards like OpenAPI. Once the provider defines the API interface as per the specification, consumers can pass the interface definition into a code generation framework (such as Swagger) to generate documentation and code for execution on a runtime platform. This minimized the amount of manual effort and communication required from an end-to-end perspective.</p>
+<p>A similar specification to standardize event-driven APIs has come up fairly recently: AsyncAPI. AsyncAPI is designed along the same elements of OpenAPI and shares many common constructs to simplify the adoption, but it also comes with additional features to accommodate eventing. It supports a wide variety of messaging protocols and transports (such as AMQP, MQTT, WebSockets, Kafka, JMS, STOMP, HTTP, etc.) and event schema formats. Therefore, the API definition will contain the event payload definition, channel name, application/transport headers, protocols, and other eventing semantics to connect, publish, and subscribe to the API.</p>
+<h3 id="32-asynchronous-messaging-protocols-for-apis">3.2 Asynchronous Messaging Protocols for APIs</h3>
+<h4 id="webhooks"><a href="https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/about-webhooks">Webhooks</a></h4>
+<p>Also known as “reverse APIs”,  webhook APIs completely detach the HTTP request and response from each other.</p>
+<!-- ![webhooks ](/media/media_event_driven_apis/4_webhooks.png) -->
+<p align="center">
+<img src="file:////media/media_event_driven_apis/4_webhooks.png" alt="webhooks" width="80%" height="80%" />
+</p>
+<p align="center">
+<i>
+Figure 4: Event-driven APIs with Webhooks
+<br/>
+</i>
+</p>
+<p>With webhooks:</p>
+<ol>
+<li>An API developer can subscribe to a REST API with an API Key and provide a callback URL (an HTTP endpoint, also known as the webhook) via the API provider’s developer portal.</li>
+<li>During runtime, the developer’s application will call the API with the API Key.</li>
+<li>For such a request, a 2xx  response will be sent as an acknowledgment.</li>
+<li>The API provider will &quot;stream&quot; back to the callback endpoint through an HTTP POST request, when the expected process triggers events that should be reported back to the consumer.</li>
+</ol>
+<p>Webhooks are rather easy to implement.  However, compared to other mechanisms, webhooks are better for pushing notifications to one or a small number of endpoints.  Webhooks are unsuitable to push events directly to client applications, (i.e., mobile/browser apps or other private apps hosted inside a firewall), because each client has to host an HTTP endpoint and be in possession of a publicly addressable domain name, and securing this network (typically using basic authentication or mutual SSL), would involve an unmaintainable administration overhead. The clients are almost always servers themselves.</p>
+<p>The OpenAPI 3.0.0  specification supports webhooks through a callback element that can be used to define a webhook. However, in general, there are no formal standards around webhooks.</p>
+<h4 id="websockets"><a href="https://html.spec.whatwg.org/multipage/web-sockets.html">WebSockets</a></h4>
+<p>The WebSocket protocol allows for constant, bi-directional communication between the server and client, which means both parties can communicate and exchange data as and when needed.  WebSockets are point-to-point connections modeled on TCP sockets and lack any native pub-sub support.</p>
+<!-- ![websockets ](/media/media_event_driven_apis/5_websockets.png) -->
+<p align="center">
+<img src="file:////media/media_event_driven_apis/5_websockets.png" alt="websockets" width="80%" height="80%" />
+</p>
+<p align="center">
+<i>
+Figure 5: Event-driven APIs with WebSockets
+<br/>
+</i>
+</p>
+<p>WebSockets don’t use a request/response strategy where a connection is opened in the course of making the request and then closed after it's initially fulfilled. In the case of WebSockets, the connection remains open until closed explicitly. A WebSocket connection is established by making an HTTP call and then asking for an upgrade on that connection. After that, the communication takes place over a single TCP connection using the WebSocket protocol. In other words, instead of sending a request to <code>http://&lt;target&gt;</code>, the request is sent to <code>ws://&lt;target&gt;</code>.</p>
+<p>Using a single TCP connection reduces resource usage by transferring only essential information (the HTTP header overhead is reduced) and thereby optimizes performance. To use WebSockets, the browser must be compatible. However, this limitation is insignificant because a majority of the browsers today already support the WebSocket protocol. The WebSocket interface can be defined with the AsyncAPI specification.  WebSockets have been combined with MQTT, AMQP, and proprietary protocol implementations to provide pub-sub communications.</p>
+<h4 id="server-sent-events"><a href="https://html.spec.whatwg.org/multipage/server-sent-events.html">Server-Sent Events</a></h4>
+<p>With Server-Sent Events (SSE), an open, lightweight, subscribe-only protocol, a browser application can subscribe to a stream of events or message updates generated by a server. First of all, the client creates a new <a href="https://html.spec.whatwg.org/multipage/server-sent-events.html#the-eventsource-interface">EventSource</a> object, and passes the URL of an endpoint to the server over a regular HTTP request. The client then waits for a response with a stream of event messages. The server leaves the HTTP response open until it has no more events to send. The server will terminate a stale connection (if the connection has been open long enough) or wait for the client to explicitly close the initial request.</p>
+<!-- ![server-sent events ](/media/media_event_driven_apis/6_sse.png) --> 
+<p align="center">
+<img src="file:////media/media_event_driven_apis/6_sse.png" alt="server-sent events" width="80%" height="80%" />
+</p>
+<p align="center">
+<i>
+Figure 6: Event-driven APIs with Server-Sent Events
+<br/>
+</i>
+</p>
+<p>SSE is appropriate if an efficient (due to better latency compared with other HTTP-based streaming methods) unidirectional communication protocol that doesn’t add unnecessary server load (as with HTTP long polling) is needed. SSE also comes with a predefined standard for handling errors and is widely used in the industry today to push news alerts, live sports scores, stock price updates, among many other server-generated updates. The only major limitation of SSE is the inability to pass information to a server from a client, thus making it a highly popular choice to implement server-to-browser asynchronous communication.</p>
+<h4 id="graphql">GraphQL</h4>
+<p>There are two common ways to perform asynchronous communications from a GraphQL server: subscriptions and live queries. Facebook developed GraphQL subscriptions internally in 2015 and used it to power global-scale features like live comments and streaming reactions. Live queries came into the picture much later and are not as widely used as subscriptions, yet.</p>
+<p>Subscriptions observe events; live queries observe data. Both are request/stream operations where the server responds to a client request with a stream of GraphQL responses, in the format designated by the client’s request document. Subscriptions are GraphQL operations, defined in the specification. Live queries are not formally defined in the <a href="https://facebook.github.io/graphql/June2018/#sec-Subscription">specification</a>, and are generally modeled by adding a special directive to a query operation.</p>
+<p>Both methods are technology agnostic. In the spec, subscriptions only specify algorithms for the creation of a stream, the content of each payload on that stream, and the closing of that stream. There are intentionally no specifications for serialization formats, the transport mechanism, message acknowledgment, buffering, resend requests, or any other quality of service (QoS) details. These are left to be chosen by the implementation service. So, those programming GraphQL subscriptions or live queries can use a messaging technology that best suits their needs. Both methods can use a variety of protocol (e.g., MQTT, AMQP, RSocket, Redis, <a href="http://Socket.io">Socket.io</a>, and other formats) and transport (e.g., WebSocket, TCP, HTTP long-polling, SSE, etc.) combinations.</p>
+<p>Subscriptions require a message broker. Live queries that outgrow polling will need reactive data sources (such as a database that allows to tail a query) and an accompanying programming model (such as Rx). In both cases, the server needs to store each operation execution request, subscribe to underlying source streams, and maintain an index of long-lived connections back to the client via a real-time gateway.</p>
+<h5 id="graphql-subscriptions"><a href="https://www.apollographql.com/docs/apollo-server/data/subscriptions/#gatsby-focus-wrapper">GraphQL Subscriptions</a></h5>
+<p>GraphQL subscriptions is a streaming mechanism built into GraphQL and is designed in a way that both synchronous HTTP communication and asynchronous event-driven interactions are available from a single API experience, i.e., a single API defined in GraphQL can support a mix of request-response queries and mutations (commands) as well as asynchronous event notifications. Subscriptions provide the ability to emit messages (not bi-directional) asynchronously out of the GraphQL API from within query or mutation execution logic.</p>
+<!-- ![graphql subscriptions ](/media/media_event_driven_apis/7_graphql_subscriptions.png) --> 
+<p align="center">
+<img src="file:////media/media_event_driven_apis/7_graphql_subscriptions.png" alt="graphql subscriptions" width="80%" height="80%" />
+</p>
+<p align="center">
+<i>
+Figure 7: Event-driven APIs with GraphQL Subscriptions
+<br/>
+</i>
+</p>
+<p>Subscriptions are client-driven, meaning that consuming applications define what data must be included in the event. Clients can indicate a subscription operation by using the subscription keyword, so that whenever the event defined occurs, it executes the defined selection and sends the result.</p>
+<p>Implementing a GraphQL subscription requires the use of a message broker. The <a href="https://www.apollographql.com/docs/apollo-server/">Apollo GraphQL Server</a> uses the WebSocket protocol and comes with a message broker installed by default. <a href="https://sangria-graphql.github.io/learn/">Sangria</a> (another implementation of GraphQL) uses Server-Sent Events. While WebSockets is the popular choice, other protocols such as <a href="http://www.amqp.org/">AMQP</a> or XMPP can be used too.</p>
+<h5 id="graphql-live-queries"><a href="https://dev.to/n1ru4l/graphql-live-queries-with-socket-io-4mh6">GraphQL Live Queries</a></h5>
+<!-- ![graphql live queries ](/media/media_event_driven_apis/8_graphql_live_queries.png) --> 
+<p align="center">
+<img src="file:////media/media_event_driven_apis/8_graphql_live_queries.png" alt="graphql live queries" width="50%" height="50%" />
+</p>
+<p align="center">
+<i>
+Figure 8: Event-driven APIs with GraphQL Live Queries
+<br/>
+</i>
+</p>
+<p>A GraphQL query can be transformed into a live query by including a directive, such as ‘@live’.</p>
+<p>Clients can indicate a subscription operation by using the subscription keyword, so that whenever the event defined occurs, it executes the defined selection and sends the result. In short, the client is telling the server to evaluate the defined selection and inform whenever the ‘selection’ would yield a different response. Just like subscriptions, a live query is a read-only push stream (not bi-directional). It requires the implementation of a reactive data layer (e.g., <a href="https://angular.io/guide/rx-library">RxJS</a>) in the GraphQL server (e.g., to tail a query). The reactive data layer listens to database level changes, which can be streamed back to the consumer.</p>
+<p><a href="https://hasura.io/">Hasura</a> supports both Subscriptions and Live Queries, and the Apollo client can approximate the behavior of a Live Query with its built-in <a href="https://www.apollographql.com/docs/react/essentials/queries.html#refetching">polling feature</a>.</p>
+<h4 id="grpc"><a href="https://grpc.io/">gRPC</a></h4>
+<p>Despite being widely used for synchronous communication between internal microservices (microservices within an organization), gRPC, unbeknownst to many, supports bi-directional streaming because of its ties to HTTP/2. In other words, it allows defining a service operation that either accepts an incoming stream or emits an outgoing stream, or both. This is popular for microservices that are built with gRPC and need to be able to communicate back and forth.</p>
+<p>gRPC is a standard that takes advantage of HTTP/2 and protocol buffers (instead of JSON) to ensure increased performance and maximum interoperability. gRPC uses protocol buffers (or protobufs) as serialization format over HTTP/2 and also to create the interface definition of the gRPC service.  In other words, the  .proto file acts as the service definition (instead of a Swagger file) and can be used to generate client stubs and server-side skeletons. Compared to REST APIs, gRPC APIs are faster. However, there is a considerable learning curve and it isn’t always as intuitive and easy to learn as REST.</p>
+<!-- ![grpc ](/media/media_event_driven_apis/9_grpc.png) --> 
+<p align="center">
+<img src="file:////media/media_event_driven_apis/9_grpc.png" alt="grpc" width="80%" height="80%" />
+</p>
+<p align="center">
+<i>
+Figure 9 - Event-driven APIs with gRPC
+<br/>
+</i>
+</p>
+<p>Even though external-facing communication based on gRPC is rare, there are methods to do so. For example, a gRPC web client, which is a special client for  browsers, can be used for client-server interactions.  However, this is complicated. Therefore, as a general practice, we can use gRPC for synchronous and asynchronous communications between internal microservices and in B2B environments.</p>
+<h3 id="33-event-enabling-api-management">3.3 Event-Enabling API Management</h3>
+<p>Because dynamic access to data and the federation of data across ecosystems can create groundbreaking capabilities, <a href="https://apim.docs.wso2.com/en/latest/learn/design-api/create-api/create-a-websocket-api/">existing API management platforms have also begun to support several asynchronous API protocols</a> (the most common ones being webhooks and WebSockets at the time of this writing), thereby facilitating an end-to-end event-driven architecture. By leveraging both <a href="https://swagger.io/specification/">OpenAPI</a> and AsyncAPI specifications to document and discover these event-driven APIs, enterprises and SaaS companies have been able to produce streamlined real-time applications, API products, and services for their customers, B2B partner companies, and internal business units.</p>
+<p>An event-driven backbone will manage the overall real-time data flow securely and at scale,  while the asynchronous APIs can be managed for external and internal consumption with a traditional API management solution that comes with inherent or extended capabilities to support event-driven semantics. The API manager will handle security, monitoring, auditing, throttling, discovery, and tooling capabilities for the event-driven APIs and also provide ways to enable commercial models around the APIs</p>
+<!-- ![event driven api management ](/media/media_event_driven_apis/10_event_driven_api_management.png) --> 
+<p align="center">
+<img src="file:////media/media_event_driven_apis/10_event_driven_api_management.png" alt="event driven api management" width="80%" height="80%" />
+</p>
+<p align="center">
+<i>
+Figure 10: Event-driven API Management
+<br/>
+</i>
+</p>
+<p>While each eventing protocol will have nuanced needs to event-enable the management of APIs, they will have a set of common core needs for user on-boarding, authentication, logging, analytics, etc. Typically, at a high level, the flow would be as follows:</p>
+<ul>
+<li>API developers will point to an existing service endpoint (e.g., WebSockets) or a topic URL via an API publisher portal. They can define one or many API paths by providing HTTP, HTTP/2, or TCP access. The publisher portal is effectively an integrated development environment that lets developers create the API interface definitions using OpenAPI (for webhooks) and AsyncAPI (for WebSockets) and also generate documentation that allow consumers to discover and write applications that utilize the service. The portal is also used to manage the lifecycle of APIs</li>
+<li>Developers interested in the event-driven API will discover and subscribe to the API through the developer portal. They will have to provide a callback URL in the case of webhooks. This request is managed within the developer portal, which generates the required API keys.</li>
+<li>Under the hood, via an API proxy in the gateway or otherwise, the message broker will be configured with the correct access control lists, internal queues, subscriptions, and various other settings to ensure the secure delivery of the selected data product streams via the broker and API proxy to the developer’s webhook or to the client application directly. During runtime, the API gateway will handle the runtime proxying of service requests and responses and perform authentication, throttling, logging, mediation, and transformation by communicating with other key components such as the security, throttling, and analytics components of the API manager.</li>
+<li>The security components will provide one or multiple ways for API consumers to authenticate and get access to the event-driven APIs.</li>
+<li>The API analytics tools will continue to understand how APIs are being consumed and how applications are putting API resources to use, and identify patterns related to API consumption across ecosystems to help create commercial models. They will help visualize all events within an enterprise regardless of the underlying infrastructure.</li>
+<li>The API monetization tools (in conjunction with the analytics capabilities) allow businesses to generate revenue out of their APIs by implementing different API monetization models such as pay-as-you-go, subscription-based usage, etc. They either come with the ability to bill users directly or integrate with external billing systems.</li>
+</ul>
+<p>To sum up, even though most organizations have basic event processing infrastructure, many don’t have the capabilities to design, develop, test, and manage event-centric APIs. Combining traditional API management capabilities—particularly governance, access control, monitoring and analytics—with an event-driven architecture provides a tremendous value addition in terms of expanding the business reach and adoption by providing managed access.</p>
+<h2 id="40-conclusion">4.0 Conclusion</h2>
+<p>Making APIs asynchronous reverses the paradigm by letting the backend push streams of events to the API client. Augmenting a REST API with event-driven capabilities allows for better and (near) real-time experiences, and drastically increases efficiency in CPU and network use for even the most demanding traffic.</p>
+<p>Event-enabling APIs comes with many challenges. There are multiple complexities to deal with, starting from what frameworks and networking protocols to choose to building the reliability of delivery and ensuring the scalability of the web-scale solution. Unlike the REST-fashioned APIs, which follow the same basic patterns, there are multiple approaches to push/streaming that feature some significant differences from one another. The asynchronous protocols commonly used today solve the problem of (near) real-time communication, but they solve different aspects of this problem in different ways, thereby making some protocols serve different purposes better than others. Managing these APIs is another crucial aspect because everyone managing physical assets (from cars to windmills) and other event-driven systems is trying to manage and monetize the data streams generated by them. And that requires API management tools and API definition standards for push/real-time APIs.</p>
+<p>Event-driven APIs have been the missing piece to realizing an end-to-end event-driven architecture. With these in place, the entire chain – from the data plane, API, network, up to the front-ends – can be event-driven. This allows organizations, their customers, and partners to truly reap the benefits of an event-driven architecture including the simplicity, agility, and efficiency it brings to all components individually and collectively. Having said that, event-driven client applications still need traditional request/response synchronous communication for interactive, non-event-driven interactions between the client and the backend. Combining event-driven APIs (underpinned by an event-driven architecture) with traditional request/response design brings the best of both worlds to build reactive client applications that delight customers and work just right.</p>
+<h2 id="50-references">5.0 References</h2>
+<p>[1] Emmelyn Wang - <a href="https://www.asyncapi.com/blog/an-api-strategist-explores-event-driven-apis/">An API Strategist Explores Event-Driven APIs</a></p>
+<p>[2] Luis Weir - <a href="https://www.youtube.com/watch?v=E_0tSNHWwWA">Event driven API Strategies: from WebHooks to GraphQL Subscriptions</a></p>
+<p>[3]  Chris Wood - <a href="https://www.programmableweb.com/news/what-webhooks-push-styled-api-and-how-does-it-work/analysis/2017/03/28">What is a Webhooks Push-Styled API and How Does It Work?</a></p>
+<p>[4] Bob Reselman - <a href="https://www.programmableweb.com/news/how-to-build-streaming-api-using-graphql-subscriptions/how-to/2019/12/09">How to Build a Streaming API Using GraphQL Subscriptions</a></p>
+<p>[5] <a href="http://Ably.io">Ably.io</a> - <a href="https://www.ably.io/topic/server-sent-events">Server-Sent Events (SSE): A Conceptual Deep Dive</a></p>
+<p>[6] Robert Zhu - <a href="https://medium.com/open-graphql/graphql-subscriptions-vs-live-queries-e38302c7ab8e#:~:text=Subscriptions%20are%20GraphQL%20operations%2C%20defined,left%20up%20to%20the%20user.">GraphQL Subscriptions vs. Live Queries</a></p>
+<p>[7] Kasun Indrasiri - <a href="https://thenewstack.io/build-real-world-microservices-with-grpc/">Build Real-World Microservices with gRPC</a></p>
+<p>[8] Kristopher Sandoval - <a href="https://nordicapis.com/7-protocols-good-for-documenting-with-asyncapi/">7 Protocols Good For Documenting With AsyncAPI</a></p>
+<p>[9] Ricardo Gomez-Ulmke and Florian Geiger - <a href="https://solace.com/blog/restful-asynchronous-messaging-solace-apigee/">Bringing Asynchronous Messaging to a RESTful world with Solace and Apigee</a></p>
+<p>[10] Meshvi Patel - <a href="https://solace.com/blog/restful-apis-event-driven-microservices/">Why RESTful APIs Can’t Compete with the Event-Driven Approach to Microservices</a></p>
+<p>[11] Arshardh Ifthikar - <a href="https://wso2.com/library/articles/2017/05/introducing-websocket-apis-with-wso2-api-manager/">Introducing WebSocket APIs with WSO2 API Manager</a></p>
+<p>[12] WSO2 API Manager Documentation - <a href="https://apim.docs.wso2.com/en/latest/learn/tutorials/create-and-publish-websocket-api/#create-and-publish-a-websocket-api">Create and Publish a WebSocket API</a></p>
+
+    </body>
+    </html>

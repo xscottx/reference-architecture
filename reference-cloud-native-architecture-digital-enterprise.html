@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Introduction</title>
+        <style>
+/* From extension zhuangtongfa.material-theme */
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body {
+  box-sizing: border-box;
+  min-width: 200px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  background-color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  color: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre code {
+  color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code > div {
+  background: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table td {
+  border: 1px solid rgba(171, 178, 191, 0.5) !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-active-line:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-line:hover:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-line .code-line:hover:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* Generated from 'node_modules/github-markdown-css/github-markdown.css' */
+@font-face {
+  font-family: octicons-link;
+  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAZwABAAAAAACFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEU0lHAAAGaAAAAAgAAAAIAAAAAUdTVUIAAAZcAAAACgAAAAoAAQAAT1MvMgAAAyQAAABJAAAAYFYEU3RjbWFwAAADcAAAAEUAAACAAJThvmN2dCAAAATkAAAABAAAAAQAAAAAZnBnbQAAA7gAAACyAAABCUM+8IhnYXNwAAAGTAAAABAAAAAQABoAI2dseWYAAAFsAAABPAAAAZwcEq9taGVhZAAAAsgAAAA0AAAANgh4a91oaGVhAAADCAAAABoAAAAkCA8DRGhtdHgAAAL8AAAADAAAAAwGAACfbG9jYQAAAsAAAAAIAAAACABiATBtYXhwAAACqAAAABgAAAAgAA8ASm5hbWUAAAToAAABQgAAAlXu73sOcG9zdAAABiwAAAAeAAAAME3QpOBwcmVwAAAEbAAAAHYAAAB/aFGpk3jaTY6xa8JAGMW/O62BDi0tJLYQincXEypYIiGJjSgHniQ6umTsUEyLm5BV6NDBP8Tpts6F0v+k/0an2i+itHDw3v2+9+DBKTzsJNnWJNTgHEy4BgG3EMI9DCEDOGEXzDADU5hBKMIgNPZqoD3SilVaXZCER3/I7AtxEJLtzzuZfI+VVkprxTlXShWKb3TBecG11rwoNlmmn1P2WYcJczl32etSpKnziC7lQyWe1smVPy/Lt7Kc+0vWY/gAgIIEqAN9we0pwKXreiMasxvabDQMM4riO+qxM2ogwDGOZTXxwxDiycQIcoYFBLj5K3EIaSctAq2kTYiw+ymhce7vwM9jSqO8JyVd5RH9gyTt2+J/yUmYlIR0s04n6+7Vm1ozezUeLEaUjhaDSuXHwVRgvLJn1tQ7xiuVv/ocTRF42mNgZGBgYGbwZOBiAAFGJBIMAAizAFoAAABiAGIAznjaY2BkYGAA4in8zwXi+W2+MjCzMIDApSwvXzC97Z4Ig8N/BxYGZgcgl52BCSQKAA3jCV8CAABfAAAAAAQAAEB42mNgZGBg4f3vACQZQABIMjKgAmYAKEgBXgAAeNpjYGY6wTiBgZWBg2kmUxoDA4MPhGZMYzBi1AHygVLYQUCaawqDA4PChxhmh/8ODDEsvAwHgMKMIDnGL0x7gJQCAwMAJd4MFwAAAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAGVYYDT+AEjAwuDFpBmA9KMDEwMCh9i/v8H8sH0/4dQc1iAmAkALaUKLgAAAHjaTY9LDsIgEIbtgqHUPpDi3gPoBVyRTmTddOmqTXThEXqrob2gQ1FjwpDvfwCBdmdXC5AVKFu3e5MfNFJ29KTQT48Ob9/lqYwOGZxeUelN2U2R6+cArgtCJpauW7UQBqnFkUsjAY/kOU1cP+DAgvxwn1chZDwUbd6CFimGXwzwF6tPbFIcjEl+vvmM/byA48e6tWrKArm4ZJlCbdsrxksL1AwWn/yBSJKpYbq8AXaaTb8AAHja28jAwOC00ZrBeQNDQOWO//sdBBgYGRiYWYAEELEwMTE4uzo5Zzo5b2BxdnFOcALxNjA6b2ByTswC8jYwg0VlNuoCTWAMqNzMzsoK1rEhNqByEyerg5PMJlYuVueETKcd/89uBpnpvIEVomeHLoMsAAe1Id4AAAAAAAB42oWQT07CQBTGv0JBhagk7HQzKxca2sJCE1hDt4QF+9JOS0nbaaYDCQfwCJ7Au3AHj+LO13FMmm6cl7785vven0kBjHCBhfpYuNa5Ph1c0e2Xu3jEvWG7UdPDLZ4N92nOm+EBXuAbHmIMSRMs+4aUEd4Nd3CHD8NdvOLTsA2GL8M9PODbcL+hD7C1xoaHeLJSEao0FEW14ckxC+TU8TxvsY6X0eLPmRhry2WVioLpkrbp84LLQPGI7c6sOiUzpWIWS5GzlSgUzzLBSikOPFTOXqly7rqx0Z1Q5BAIoZBSFihQYQOOBEdkCOgXTOHA07HAGjGWiIjaPZNW13/+lm6S9FT7rLHFJ6fQbkATOG1j2OFMucKJJsxIVfQORl+9Jyda6Sl1dUYhSCm1dyClfoeDve4qMYdLEbfqHf3O/AdDumsjAAB42mNgYoAAZQYjBmyAGYQZmdhL8zLdDEydARfoAqIAAAABAAMABwAKABMAB///AA8AAQAAAAAAAAAAAAAAAAABAAAAAA==) format("woff");
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: #abb2bf;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  background: #282c34;
+  padding-top: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c {
+  color: #6a737d;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-v {
+  color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-e, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-en {
+  color: #6f42c1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-smi, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-s1 {
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ent {
+  color: #22863a;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-k {
+  color: #d73a49;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-pds, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-pse .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-sre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-sra {
+  color: #032f62;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-smw {
+  color: #e36209;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-bu {
+  color: #b31d28;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ii {
+  color: #fafbfc;
+  background-color: #b31d28;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c2 {
+  color: #fafbfc;
+  background-color: #d73a49;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c2::before {
+  content: "^M";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-cce {
+  font-weight: bold;
+  color: #22863a;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ml {
+  color: #735c0f;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mh, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mh .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ms {
+  font-weight: bold;
+  color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi {
+  font-style: italic;
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mb {
+  font-weight: bold;
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-md {
+  color: #b31d28;
+  background-color: #ffeef0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi1 {
+  color: #22863a;
+  background-color: #f0fff4;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mc {
+  color: #e36209;
+  background-color: #ffebda;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi2 {
+  color: #f6f8fa;
+  background-color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mdr {
+  font-weight: bold;
+  color: #6f42c1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ba {
+  color: #586069;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sg {
+  color: #959da5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-corl {
+  text-decoration: underline;
+  color: #032f62;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a {
+  background-color: transparent;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:active, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:hover {
+  outline-width: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: bolder;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img {
+  border-style: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  font: inherit;
+  margin: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  overflow: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body [type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body * {
+  box-sizing: border-box;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a {
+  color: #528bff;
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:hover {
+  text-decoration: underline;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr::before {
+  display: table;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body td, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body th {
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  font-size: 32px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 {
+  font-size: 16px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 {
+  font-size: 14px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  font-size: 12px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  margin: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol {
+  list-style-type: lower-roman;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dd {
+  margin-left: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .octicon {
+  vertical-align: text-bottom;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-0 {
+  padding-left: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-1 {
+  padding-left: 4px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-2 {
+  padding-left: 8px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-3 {
+  padding-left: 16px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-4 {
+  padding-left: 24px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-5 {
+  padding-left: 32px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-6 {
+  padding-left: 40px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body::before {
+  display: table;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body > *:first-child {
+  margin-top: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body > *:last-child {
+  margin-bottom: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .anchor {
+  float: left;
+  padding-right: 4px;
+  margin-left: -20px;
+  line-height: 1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .anchor:focus {
+  outline: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  /* padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5; */
+  padding: 8.5px 17px;
+  margin: 1.5em 0;
+  font-size: inherit;
+  color: #7c879c;
+  border-color: #4b5362;
+  border-width: 4px;
+  border-left: 5px solid #4b5362;
+  background: transparent;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote > :first-child {
+  margin-top: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote > :last-child {
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #f0f0f0;
+  border-bottom: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6:hover .anchor {
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.5em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 {
+  font-size: 1.25em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 {
+  font-size: 1em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 {
+  font-size: 0.875em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  font-size: 0.85em;
+  color: #6a737d;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol {
+  padding-left: 2em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li {
+  word-wrap: break-all;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li > p {
+  margin-top: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li + li {
+  margin-top: 0.25em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl {
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th {
+  font-weight: 700;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table td {
+  padding: 6px 13px;
+  /* border: 1px solid #dfe2e5; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table tr {
+  /* background-color: #fff; */
+  /* border-top: 1px solid #c6cbd1; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table tr:nth-child(2n) {
+  /* background-color: #f6f8fa; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img {
+  max-width: 100%;
+  box-sizing: content-box;
+  display: inline-block;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img[align=right] {
+  padding-left: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img[align=left] {
+  padding-right: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: #3a3f4b;
+  border-radius: 3px;
+  color: white;
+  margin: 0 1px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  word-wrap: normal;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre > code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight {
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  /* background-color: #f6f8fa; */
+  border-radius: 3px;
+  background-color: #31363f;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+  color: #abb2bf;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .full-commit .btn-outline:not(:disabled):hover {
+  color: #005cc5;
+  border-color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #d1d5da;
+  border-bottom-color: #c6cbd1;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #c6cbd1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body :checked + .radio-label {
+  position: relative;
+  z-index: 1;
+  border-color: #0366d6;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item {
+  list-style-type: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item + .task-list-item {
+  margin-top: 3px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item input {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  border-bottom-color: #eee;
+}
+
+/*
+
+Atom One Dark by Daniel Gamage
+Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
+
+base:    #282c34
+mono-1:  #abb2bf
+mono-2:  #818896
+mono-3:  #5c6370
+hue-1:   #56b6c2
+hue-2:   #61aeee
+hue-3:   #c678dd
+hue-4:   #98c379
+hue-5:   #e06c75
+hue-5-2: #be5046
+hue-6:   #d19a66
+hue-6-2: #e6c07b
+
+*/
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #abb2bf;
+  background: #282c34;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-comment,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-quote {
+  color: #5c6370;
+  font-style: italic;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-doctag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-keyword,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-formula {
+  color: #c678dd;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-section,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-name,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-tag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-deletion,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-subst {
+  color: #e06c75;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-literal {
+  color: #56b6c2;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-string,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-regexp,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-addition,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-attribute,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-meta-string {
+  color: #98c379;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-built_in,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-class .hljs-title {
+  color: #e6c07b;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-template-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-type,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-class,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-pseudo,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-number {
+  color: #d19a66;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-symbol,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-bullet,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-link,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-meta,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-id,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-title {
+  color: #61aeee;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-emphasis {
+  font-style: italic;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-strong {
+  font-weight: bold;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-link {
+  text-decoration: underline;
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 align="center"> Reference Architecture for a Cloud Native Digital Enterprise </center></h1>
+<p align="center">
+<i>
+Version Winter-2020<br/>
+</i>
+</p>
+<p><strong><em>Original Author</em></strong></p>
+<ul>
+<li>Lakmal Warusawithana | Senior Director - Technology Evangelism | WSO2, Inc | <a href="mailto:lakmal@wso2.com">lakmal@wso2.com</a> | <a href="https://twitter.com/lakwarus">@lakwarus</a></li>
+</ul>
+<blockquote>
+<p><em>This document describes a vendor/technology-neutral reference architecture for a cloud native digital enterprise. The architecture defined in this paper can be mapped into different cloud native platforms (Kubernetes and service mesh), different cloud providers (Microsoft Azure, Amazon AWS, and Google GCP), and infrastructure services to perform the implementation. These reference implementations will be covered in separate papers.</em></p>
+</blockquote>
+<h2 id="introduction">Introduction</h2>
+<p>In an era of digital transformation, <strong>(digital) enterprises</strong> are looking for fast innovation through effective collaboration to deliver more value to their customers with dramatically less effort. Digital enterprises enable companies of every sector to integrate, expose, and monetize their business capabilities by digitizing entire value chains.</p>
+<p>As a result, APIs have become the norm to expose integrated business functionalities to deliver enhanced digital experience. Enterprises can start their digital transformation in greenfield or brownfield; in both cases, having a well defined <strong>API-led integration architecture</strong> is important. Apart from integration and API platforms, these architectures should be able to provide agility, flexibility, and scalability. This paper focuses on how to use cloud native technologies along with an API-led integration platform to create an effective architecture, i.e., a <strong>reference architecture for a cloud native digital enterprise</strong>, to increase productivity by having agility, flexibility, and scalability through automation and services.</p>
+<h2 id="what-is-cloud-native">What is Cloud Native?</h2>
+<p><strong>&quot;Cloud native&quot;</strong> is combination of a philosophical approach and a set of technologies that allow organizations to build, deploy, and operate software applications more frequently, resiliently, and reliably. The culture is an important one that is mostly ignored when describing the cloud native. In addition to the architectural and technical requirements, it should include cultural changes like more agile processes, dynamic and decentralized decision-making, and autonomy teams that will allow the organizations to utilize the benefits of all those modern technologies. In this document, we mainly focused on architectures and technologies that important for cloud native digital enterprise, and we will discuss essential cultural changes in a separate methodology paper.</p>
+<p>Cloud native has its own foundation: the <strong>Cloud Native Computing Foundation (CNCF)</strong>, which was launched in 2015 by the Linux Foundation. The main goal of the CNCF is to build sustainable ecosystems and foster communities to support the growth and health of cloud native open-source software.</p>
+<h2 id="cloud-native-reference-architecture">Cloud Native Reference Architecture</h2>
+<p align="center">
+<img src="https://github.com/lakwarus/reference-architecture/raw/master/media/ra-cloud-nativearchitecture-cncf-v1.png">
+<br> 
+<i>Figure 1 - Cloud native reference architecture by the CNCF</i>
+</p>
+<p>Figure 1 illustrates the cloud native reference architecture presented by the CNCF. Each layer has its own specialized cloud native software stacks and many of them are governed by the CNCF.</p>
+<h3 id="infrastructure">Infrastructure</h3>
+<p>The infrastructure layer represents the actual computing resources. These computing resources can be composed by using a set of bare metal machines networked together in a local data center. If the digital enterprise already runs a private cloud with the support of hypervisor-based virtualization technologies like VMware, OpenStack, and CloudStack, then the infrastructure layer can be composed by using a set of virtual machines connected and worked in the same virtual network. Alternatively, an enterprise can use virtual infrastructures, which is provided by public cloud providers such as Google, Microsoft, and Amazon. Or it can be a hybrid cloud by combining private cloud and public cloud computing resources.</p>
+<h3 id="provisioning">Provisioning</h3>
+<p>The provisioning layer covers the host management activities such as installation and setting up operating systems. It has a set of DevOps (maintenance) and management (software updates, security patches, etc) activities. Operating systems like CoreOS and RancherOS are specialized host operating systems to run containerized environments.</p>
+<h3 id="runtime">Runtime</h3>
+<p>The runtime layer mainly consists of the container runtime. The <strong>container runtime interface</strong> (CRI) allows to plug different implementations of container times. Docker is the widely used container runtime; alternatively,  CRI-O (Open Container Initiative compatible runtimes) or rkt container runtimes can be used. You can even plug a hypervisor-based container runtime like Frakti with support from CRI.</p>
+<p>The <strong>container network interface</strong> (CNI) enables APIs to plug different container network runtime implementations. The CNI comes with inbuilt network plugins such as BRIDGE, VLAN, IPVLAN, DHCP, loopback, etc. Also, it allows the plugin of the container network from third-party originations such as Weave, Calico, Cilium, Flannel, WMWare, and NSX. All of the network runtimes implement CNI specifications.</p>
+<p align="center">
+<img src="https://github.com/lakwarus/reference-architecture/raw/master/media/ra-cni-v1.png">
+<br> 
+<i>Figure 2 - Container network interface (CNI)</i>
+</p>
+<p>Docker does not implement the CNI and it has its own implementation known as the container network model (CNM) and it only works with the Docker container runtime.</p>
+<p>A <strong>Container storage interface</strong> (CSI) provides a common standard to connect container orchestration platforms to plugin to persistent storage. With the help of CSI, storage vendors can write a plugin to a single specification and this works on many orchestration platforms. Dynamic provisioning and decommissioning of volumes, attachment and detachment of volumes from a host node, and mounting and unmounting of a volume from a host node are the main capabilities that are provided by the CSI.</p>
+<h3 id="orchestration-and-management">Orchestration and Management</h3>
+<p><strong>Container orchestrators</strong> help to manage a large number of containerized application deployments across multiple container host machines. Cloud Foundry, Mesos, Nomad, and  Kubernetes are popular container orchestrators used in the cloud native space. Container scheduling, provisioning, launching, and discovery; system monitoring, tracing, and crash recovery; declarative system configuration; routing, load balancing, and policy enforcements are a few common features that are managed by these orchestrators.</p>
+<p>These base orchestrators can be used to create higher-level orchestrators such as service mesh and serverless platforms. Istio, Linkerd, and OpenPaaS are some service mesh platforms created on top of the Kubernetes orchestrator.</p>
+<h2 id="application-definition--deployment">Application Definition / Deployment</h2>
+<p>The application definition layer defines application composition, application-specific configurations, deployment properties, image repositories, continuous integration / continuous delivery, etc. Cloud native application developers are mainly engaged with the functionality of this layer.</p>
+<h2 id="reference-architecture-for-a-cloud-native-digital-enterprise">Reference Architecture for a Cloud Native Digital Enterprise</h2>
+<p>Cloud native applications are all about dynamism. <strong>Microservice architecture (MSA)</strong> is critical to accomplish agility. To gain the benefits of MSA (e.g., faster to develop, test, and deploy, and much easier to understand and maintain) these microservices need to integrate with different SaaS endpoints, legacy applications, and other microservices to perform the defined business functionality. To align with business requirements, it is required to composite and integrate multiple microservices and expose them as business APIs. These APIs should be secured, managed, observed, and monetized. API-led integration platforms combined with cloud native technologies are critical for a digital enterprise.</p>
+<p align="center">
+<img src="https://github.com/lakwarus/reference-architecture/raw/master/media/ra-cloud-native-architecture-for-a-digital-enterprise.png">
+<br> 
+<i>Figure 3 - Reference Architecture for a Cloud Native Digital Enterprise</i>
+</p>
+<h3 id="infrastructure-1">Infrastructure</h3>
+<p>This layer represents the same functionality that we discussed in the cloud native reference architecture.
+Container Orchestration Platform / Function as a Service Platform</p>
+<p>This layer also represents the same functionality that we discussed in the cloud native reference architecture. Cloud Foundry, Mesos, Nomad, Kubernetes, Istio, Linkerd, and OpenPaaS are some examples of current industry-leading container orchestration platforms. Knative, AWS Lambda, Azure Functions, Google Functions, Oracle Functions are a few examples of functions as a service platform (FaaS).</p>
+<h3 id="microservices-and-serverless-components">Microservices and Serverless Components</h3>
+<p>Decompositioning a complex problem into a set of smaller problems will be easier to tackle and faster to develop, test, deploy, scale, and much easier to update. This smaller problem can be implemented as microservices or a serverless function. Each microservice or serverless function is developed by a smaller team with the freedom of choosing appropriate technologies. Digital enterprises can have in-house or cloud orchestration platforms to deploy these MSA-based applications. Some cloud providers offer PaaS on top of these orchestration platforms and enterprises can use them with a pay-as-you-go model. If enterprises use serverless functions, then it is recommended to use a FaaS platform provided by a well-known cloud provider. Cloud locking might be a downside for the use of a FaaS platform, but it can depend on your enterprise's policies</p>
+<h4 id="containers-images">Containers Images</h4>
+<p><a href="https://12factor.net/">“The Twelve Factor App”</a> defines a methodology to develop and deploy scalable applications and many of them are nicely fit into MSA.</p>
+<p>Once the microservices are defined and implemented, they should be bundled with all their dependencies and shipped as container images. Environment-specific configurations should be defined externally and  injected into containers at the runtime. These container images should be stored in a registry where other developers as well as runtime environments cloud-pull and create containers out of these images.</p>
+<p align="center">
+<img src="https://github.com/lakwarus/reference-architecture/raw/master/media/ra-container-image-build-v1.png">
+<br> 
+<i>Figure 4 - Container image creation</i>
+</p>
+<p>One of key benefits of shipping applications as container images is the universal packaging model, which is supported by all the cloud providers, and the property of immutability. Once container images have been built, then it is guaranteed all the required dependencies will be met when the container runtime is created. It helps to maintain consistency from developer machines to production servers. Every release should create a new container image with proper versioning. These versions can be used as a container image tag.</p>
+<p><img src="file:////media/ra-container-image-naming.png" alt="Container Image Naming"></p>
+<h4 id="container-runtime">Container Runtime</h4>
+<p>The container orchestration platform is scheduled and creates a container (runtime) in a worker node. Each container gets its own IP address, storage, and a namespace with the allocated CPU and memory resources. These resource allocations should be able to pass as runtime properties or be allocated with default values.</p>
+<p align="center">
+<img src="https://github.com/lakwarus/reference-architecture/raw/master/media/ra-container-runtime.png">
+<br> 
+<i>Figure 5 - Container (runtime)</i>
+</p>
+<p>In addition to the all application dependencies that come with the container image, the container runtime needs to be associated with some environment-specific properties such as configurations, certificates, and credentials. These properties can be changed in the developer, test, and production environments. Therefore, these properties should not burn into the container image but should be associated with the container runtime.</p>
+<p align="center">
+<img src="https://github.com/lakwarus/reference-architecture/raw/master/media/ra-container-runtime-properties.png">
+<br> 
+<i>Figure 6 - Configs, credential, and certificate association with the container</i>
+</p>
+<h4 id="scalability-load-balancing-and-service-discovery">Scalability, Load Balancing and Service Discovery</h4>
+<p>Microservices communicate with each other to complete a given business task. When the number of services increase, we need to have a proper discovery service and should be able to communicate with a unique name (service-name) such as a domain name service (DNS). These service names should not be bound to a specific environment (dev, pod, etc.) and they should be resolved to correct the IP address of the services that are running in the given environment.</p>
+<p>Compared to hypervisor-based virtual machine instances, a container runtime’s overhead is minimal. Owing to the combination of container properties and MSA best practises, these containers can be scaled out very fast. When scaling out, ingress traffic should be routed to each container with a proper load balancing mechanism. Every application should have a proper load balancer bound to a service name.</p>
+<p align="center">
+<img src="https://github.com/lakwarus/reference-architecture/raw/master/media/ra-service-discovery-load-balancing.png">
+<br> 
+<i>Figure 7 - Scaling, load balancing, and service name resolving</i>
+</p>
+<h4 id="health-check-and-auto-healing">Health Check and Auto-Healing</h4>
+<p>An important feature of orchestration platforms is doing the health check probe for each container and being able to auto-heal if something is wrong. Health checks can be done in multiple levels of the container lifecycle.</p>
+<p>Some applications are required to carry out some initialization tasks when the container is booted up. Container orchestration platforms should be able to monitor the progress of these initialization tasks and advertise the successful completion before accepting any workload. These kinds of health check probes are known as startup probes.</p>
+<p>After the container boots up, container orchestrators do a health check to confirm the application readiness to accept the workload, then notify the load balancer to route incoming traffic to the container. In some cases, a running application can become unhealthy due to some temporary load spike. In these kinds of scenarios, orchestrators can detect the unhealthiness of the application from the health check probe and notify load balancers to skip further traffic routing. This helps affected containers to recover. When it recovers, then again opened traffic routes through the load balancers.</p>
+<p>Sometimes applications might not  fully recover from an unhealthy situation or can be in a fatal error. In such a scenario, orchestrators should be able to identify the situation through the health check probes and replace the error container with a new container. These health check probes are known as liveness probes.</p>
+<p align="center">
+<img src="https://github.com/lakwarus/reference-architecture/raw/master/media/ra-container-health-check.png">
+<br> 
+<i>Figure 8 - Container health check probes</i>
+</p>
+<h4 id="autoscaling">Autoscaling</h4>
+<p>Autoscaling is a critical function to accomplish a scalable architecture. Individual microservices that are deployed as containers should be able to scale in and out depending on the load spikes. Running unnecessary containers wastes computing resources and having a short number of containers can cause a service downtime.</p>
+<p>Container orchestrators can monitor these load spikes and are able to remove unnecessary containers or add additional containers to perform scale in and out. CPU usage, memory usage, and in-flight-request counts (load balancer routing queue) are few well known load spike monitoring factors and help to compute scale in and out decisions. Some orchestrators use advanced auto scaling algorithms, where it can predict future load spikes and do scale out early to avoid service disruptions.</p>
+<p align="center">
+<img src="https://github.com/lakwarus/reference-architecture/raw/master/media/ra-autoscaler.png">
+<br> 
+<i>Figure 9 - Autoscaling</i>
+</p>
+<h4 id="rollouts-and-rollbacks">Rollouts and Rollbacks</h4>
+<p>MSA produces frequent releases and these releases need to be seamlessly rolled out into production. As we know, even though we do thorough testing, sometimes we need to roll back to a stable state due to some late-found error. To mitigate these kinds of situations, we should  have different deployment strategies. The  deployment strategies, <a href="https://github.com/wso2/reference-architecture/blob/master/reference-cloud-native-architecture-digital-enterprise.md#ramped">ramped</a>, <a href="https://github.com/wso2/reference-architecture/blob/master/reference-cloud-native-architecture-digital-enterprise.md#bluegreen">Blue/Green</a>, <a href="https://github.com/wso2/reference-architecture/blob/master/reference-cloud-native-architecture-digital-enterprise.md#canary">Canary</a>, <a href="https://github.com/wso2/reference-architecture/blob/master/reference-cloud-native-architecture-digital-enterprise.md#ab-testing">A/B testing</a>, <a href="https://github.com/wso2/reference-architecture/blob/master/reference-cloud-native-architecture-digital-enterprise.md#shadow">shadow</a> help to have zero downtime in rollouts and rollbacks.</p>
+<h3 id="composition--integration--policy-enforcement">Composition / Integration / Policy Enforcement</h3>
+<p>Microservices are fine-grained and are developed as smaller logical components to make systems more agile and scalable. Microservices are not designed from the end users point of view, where users really need access to the system with their business needs. To expose system functionality as business APIs, these microservices need to integrate with different SaaS endpoints, legacy applications, and other microservices to perform the defined business functionality.</p>
+<p>Every enterprise already has some kind of system. When introducing new business functionalities, it is necessary to integrate with these legacy systems. These integrations are often supported by enterprise service bus (ESB) functionality such as routing, transformations, orchestration, aggregation, and resilient patterns.</p>
+<p>However, in general, ESB is a monolithic system and does not fit well with MSA. Alternatively in MSA, integrations are achieved by using integration microservices. These integration microservices can have either a codebase implementation approach or a configuration-driven approach. Integration-focused specifical programming languages and frameworks help with the code-based approach by providing necessary abstractions and libraries. For a configuration approach, a modern microservices-friendly lightweight ESB runtime, known as a micro integrator, can be used.</p>
+<p>Microservice expose APIs to be consumed by other microservices to complete a given business functionality. These individual microservices need to be aggregated to meet user needs. This aggregation can be done in another microservice to expose meaningful APIs to consumers. These APIs should be secured, managed, observed, and monetized. This requires a governance model with  policy enforcement. This is where API gateways are important.</p>
+<h3 id="api-gateway">API Gateway</h3>
+<p>An API gateway can be used as a policy enforcement point of API governance while working in sync with the control and management plane components like lifecycle management, traffic control, policy control and identity and access management. The following are the key functionalities of an API gateway;</p>
+<h4 id="authentication-and-security">Authentication and Security:</h4>
+<p>While microservices are mainly focusing on business logic, authentication and security can be implemented in the service level as well. But it duplicates functionality and increases maintainability issues. One main benefit of MSA is heterogeneous language support for service implementation. An API Gateway enforces standard authentication and security across all microservices.</p>
+<h4 id="api-rate-limiting">API Rate Limiting:</h4>
+<p>The load handling capacity differs from microservice to microservice. Overloading a few microservices might lead to an unresponsive application and recovering from this kind of a situation is hard. An API gateway only allows requests that can be handled in each microservice and it controls requests that go over the limit.</p>
+<h4 id="dynamic-api-discovery-and-routing">Dynamic API Discovery and Routing:</h4>
+<p>Applications go through a series of different lifecycle stages. These life cycles can differ from enterprise to enterprise. Development, test, staging, and production are common lifecycle stages; these are sometimes called  environments. In the development stage, developers need to discover other microservices for inter-communication. In addition to discoverability, these inter-communication links should work in different environments without altering anything. Dynamic discovery and dynamic routing should be a key functionality in an API gateway.</p>
+<h4 id="api-loadbance-and-failover">API Loadbance and Failover:</h4>
+<p>To make microservices highly available or scalable, we need to run two or more of the same microservice in a deployment. In such a case, an  API gateway can handle the load balancing or failover functionality.</p>
+<h4 id="api-shaping">API Shaping:</h4>
+<p>An API gateway can optimize the API response depending on the nature of the API consumer. For example, if the API consumer is a mobile device, we can strip down some content of the response to optimize bandwidth usage compared to a web consumer.</p>
+<h4 id="api-composition">API Composition:</h4>
+<p>Especially when we expose APIs to external parties, we might need to aggregate multiple microservice responses and create a single composite API response. An API gateway plays a major role in these kinds of edge compositions.</p>
+<h4 id="api-mediation-and-transformation">API Mediation and Transformation:</h4>
+<p>The same microservice may need to support new microservice consumers as well as legacy consumers. Mediation and message transformation in the API gateway is very useful in such a situation.</p>
+<h4 id="response-caching">Response Caching:</h4>
+<p>Response caching could be handy in some situations rather than expecting the backend to process each and every request. An API gateway comes in handy in this kind of requirement.</p>
+<h4 id="api-gateway-deployment-patterns">API Gateway Deployment Patterns</h4>
+<p>Aligning with the MSA, API governance can be achieved via three main API gateway deployment patterns.</p>
+<ul>
+<li>Centralized/shared API gateway</li>
+<li>Private jet API gateway</li>
+<li>Sidecar API gateway</li>
+</ul>
+<h5 id="centralizedshared-gateway">Centralized/Shared Gateway</h5>
+<p>A centralized API gateway is a well-established and popular deployment pattern. The shared cluster of API gateways handle all API requests. These requests can be internal as well as external API calls. An API gateway cluster can be scaled horizontally and the load is distributed among all the API gateway containers.</p>
+<p align="center">
+<img src="https://github.com/lakwarus/reference-architecture/raw/master/media/ra-shared-gateway.png">
+<br> 
+<i>Figure 15 - Centralized/shared API gateway</i>
+</p>
+<p>In this deployment, the API gateway adds an additional hop into inter-microservice communications. The same gateway cluster can be used to manage external APIs as well as internal APIs or can have a dedicated API gateway layer to manage external traffic.</p>
+<h5 id="private-jet-gateway">Private Jet Gateway</h5>
+<p>In this pattern, each individual microservice has a dedicated API Gateway. This provides maximum security as well as guarantees resource allocation for API execution. A single private jet API gateway can be attached to a cluster of microservices of the same type. Load balancing, failover features will be necessary and naturally fit into this kind of scenario.</p>
+<p align="center">
+<img src="https://github.com/lakwarus/reference-architecture/raw/master/media/ra-private-jet-gateway.png">
+<br> 
+<i>Figure 16 - Private Jet API Gateway</i>
+</p>
+<p>A private jet API gateway itself can be scaled independently. This pattern also increases one network hop in inter-microservice communication similar to a centralized API gateway.</p>
+<h5 id="sidecar-gateway">Sidecar Gateway</h5>
+<p>Hetrogeneos services are one of the key benefits in the MSA. Microservices can be implemented in different languages depending on the benefits. An API gateway can be attached as a sidecar to the microservice, which can then benefit from all the capabilities of the API gateway.</p>
+<p align="center">
+<img src="https://github.com/lakwarus/reference-architecture/raw/master/media/ra-sidecar-gateway.png">
+<br> 
+<i>Figure 17 - Sidecar API gateway</i>
+</p>
+<p>The sidecar pattern reduces the additional external network hops that are required in the centralized and private jet gateway patterns, while having the local network call to communicate.</p>
+<p>A sidecar is heavily used in service mesh architectural patterns. Offloading all service to service communication matters, such as discovery, reliable delivery, routing, failover, load balancing, etc., into a mesh sidecar will give freedom to developers to focus on business functionality.</p>
+<p>A sidecar API gateway pattern can be used when and where you want to have service-mesh architecture.</p>
+<h4 id="all-in-one-gateway">All-in-One Gateway</h4>
+<p align="center">
+<img src="https://github.com/lakwarus/reference-architecture/raw/master/media/ra-future-gateways.png">
+<br> 
+<i>Figure 18 - Gateway convergence</i>
+</p>
+<p>Technology is evolving in a way that all types of gateways such as API gateways, ingress gateways, service mesh gateways, and micro integrators are merging into one single all-in-one gateway.</p>
+<p>But even if these gateways are merging into a single gateway concept, depending on the use case and the requirement, in some cases, it is good to use multiple gateways to have a clean and scalable architecture.</p>
+<h3 id="control-and-management-plane">Control and Management Plane</h3>
+<p>API gateways are the interception point to policy enforcement, capture stats, metrics, and analyze to find out how APIs are behaving. Managing these APIs is a necessity in today's digital economy. Control and management planes should provide the API management capabilities.</p>
+<h4 id="design-and-lifecycle-management">Design and Lifecycle Management</h4>
+<p>API design is a very important phase in the software development life cycle (SDLC). The design phase helps to gather developer feedback before implementing (API-first design). OpenAPI (Swagger) is the common industry standard to define the API design. Deploying a prototyped API, providing early access to APIs, creating mock API implementations, and getting early feedback are some of the functionalities that are provided by design and lifecycle management.</p>
+<h4 id="control-access-and-enforce-security">Control Access and Enforce Security</h4>
+<p>Security is paramount when exposing business capabilities via APIs. This  not only involves authentication and authorization but also covers policies to protect attacks, sensitive data leaking, revoke compromise APIs, blocking subscriptions due to non-payment, threat protection, bot detection, token-fraud detection, etc. APIs can be secured by using OAuth2.0, OIDC, Basic Auth, API Key, and Mutual TLS. The control and management planes can be used to define these security policies.</p>
+<h4 id="manage-and-scale-api-traffic">Manage and Scale API Traffic</h4>
+<p>API management enables users  to control traffic flows to backend business services. API quotas and spike arrest helps to protect backend systems from being properly throttled and managed. The control and management planes should be able to define these policies and enforce them in the data plan via API gateways.</p>
+<h3 id="observability">Observability</h3>
+<p>Unlike monolith architecture, auditing and tracing are hard problems in decentralized architectures such as MSA. Having the necessary interceptors to collect metrics, stats, and data is critical. The control and management planes should have capable analytics tools and engines to analyze these collected metrics, stats, and data to generate business intelligence reports. These reports can be utilized to monetize business capabilities by combining them with the defined business plans.</p>
+<h3 id="developer-portal">Developer Portal</h3>
+<p>It also important that these APIs are listed in an externally accessible self-service developer portal, where application developers or API users can easily discover these APIs and use them with a well-defined business plan. The developer experience is key to the adoption and success of your APIs, and having a feedback mechanism, such as customer ratings and forums, is key for a  developer portal.</p>
+<h3 id="business-insight-report">Business Insight Report</h3>
+<p>To become a successful digital enterprise, it is important to collect data, analyze, and get meaningful business insights on how these APIs are behaving. Comprehensive observability and business insight reporting systems play a major role here. These dashboards and reports can be used by both business and operations leaders to gain a 360-degree view of their digital business.</p>
+<h2 id="gitops">GitOps</h2>
+<p>Continuous integration and continuous deployment is critical to achieving agility. GitOps is a way of implementing continuous deployment to cloud native applications. It combines the functionalities of Git and continuous deployment tools and provides a developer-centric experience when operating infrastructure.</p>
+<p>A Git repository keeps all declarative deployment descriptions of the infrastructure in the given environment (dev, test, stage, prod, etc.) and continuous deployment tools automate the process to make the environment match the described state in the repository. During an unfortunate event, it is easy to rollback to a working state by referring to the Git revision.</p>
+<p>In GitOps, as a general practice, you can have two Git repositories, one to keep application code revisions and another to keep track of declarative descriptions for deployments.</p>
+<p align="center">
+<img src="https://github.com/lakwarus/reference-architecture/raw/master/media/ra-gitops.png">
+<br> 
+<i>Figure 19 - GitOps</i>
+</p>
+<p>By configuring Git triggers for application source code push events, build pipelines can start the configured pipeline steps depending on the application requirements. One step could be building and pushing relevant container images. Another step could be creating declarative deployment descriptors and committing and pushing to the separate deployment Git repository.</p>
+<p>If you have many deployment environments, then you can have separate Git branches for each environment. After completing environment testing, we can then promote to upper environments (e.g., stage to prod) by merging into the relevant Git branch. With this mode, If you want to deploy a new application or update an existing one, you only need to update the repository; the automated process handles everything else.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The digital enterprise enables companies of every sector to integrate and expose their business capabilities as APIs by digitalization of the entire value chain in their digital transformation journey. These APIs should be secured, managed, observed, and monetized. An API-led integration platform is essential for digital enterprises whether they start with a greenfield or a brownfield.</p>
+<p>Cloud native applications are all about dynamism. Microservice architecture (MSA) is critical to accomplish agility. Cloud native technologies, such as containers and orchestration platforms, are critical for successful microservice implementation and deployments. API gateways play a key role by enforcing policies that are defined in the control and management plane.</p>
+<p>A self-service developer portal is important to build an effective API ecosystem. Dashboards and reports help both business and operations to gain a 360-degree view of their digital business.</p>
+<p>Combining cloud native technologies with an API-led integration platform creates an effective architecture for a digital enterprise to increase productivity by having automation, production or operation, and services.</p>
+<h1 id="appendix">Appendix</h1>
+<h2 id="abstractions">Abstractions</h2>
+<table>
+<thead>
+<tr>
+<th>Icon</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="file:////media/ra-microservice.png" alt="Component"></td>
+<td>Microservices and serverless components</td>
+<td>Core business logic, aggregation and service composition, transformation.</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-gateway.png" alt="Component"></td>
+<td>Gateways</td>
+<td>API gateways, ingress gateways, mesh gateways, micro integrators, exposed APIs, events and streams, policy enforcement points</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-data-service.png" alt="Component"></td>
+<td>Legacy and data services</td>
+<td>Databases, existing systems, registries and repositories, user stores, business processes</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-saas-epr.png" alt="SaaS EPR"></td>
+<td>External endpoint</td>
+<td>Access using APIs, events, and streams, cloud systems, and SaaS</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-front-end-clients.png" alt="Front end Client"></td>
+<td>API consumers</td>
+<td>Mobile apps, reactive apps, API consumers</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-desktop-client-v3.png" alt="Desktop Client"></td>
+<td>API consumers</td>
+<td>Mobile apps, reactive apps, API consumers</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-mobile-client-v3.png" alt="Mobile Client"></td>
+<td>API consumers</td>
+<td>Mobile apps, reactive apps, API consumers</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-bot-client-v3.png" alt="Bot Client"></td>
+<td>API consumers</td>
+<td>Bots, API consumers</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-iot-client-v3.png" alt="IOT Client"></td>
+<td>API consumers</td>
+<td>IoT devices, apps, API consumers</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-key-v3.png" alt="Key"></td>
+<td>Credentials</td>
+<td>Credentials, keys, passwords</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-config-v3.png" alt="Config"></td>
+<td>Configurations</td>
+<td>Configurations</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-cert-v3.png" alt="Cert"></td>
+<td>Certificates</td>
+<td>Certificates</td>
+</tr>
+<tr>
+<td><img src="file:////media/ra-load-balancer-v3.png" alt="Load Balancer"></td>
+<td>Load balancer</td>
+<td>Load balancer</td>
+</tr>
+</tbody>
+</table>
+<h2 id="deployment-strategies">Deployment Strategies</h2>
+<h5 id="ramped">Ramped</h5>
+<p>Ramped (also known as rolling-update) is the simplest rollout strategy that can be achieved with  zero downtime. In this, a new version (e.g., version 2) is achieved by replacing containers one after another until all the containers are rolled out.</p>
+<p align="center">
+<img src="https://github.com/lakwarus/reference-architecture/raw/master/media/ra-ramped.png">
+<br> 
+<i>Figure 10 - Ramped deployment strategy</i>
+</p>
+<h5 id="bluegreen">Blue/Green</h5>
+<p>The blue/green deployment strategy deploys version 2 (green) alongside version 1 (blue) with exactly the same amount of containers. After testing by running some for a time period, the new version traffic is switched from version 1 to version 2 at the load balancer level.</p>
+<p align="center">
+<img src="https://github.com/lakwarus/reference-architecture/raw/master/media/ra-blue-green.png">
+<br> 
+<i>Figure 11 - Blue/Green deployment strategy</i>
+</p>
+<h5 id="canary">Canary</h5>
+<p>A canary deployment gradually shifts production traffic from version 1 to version 2. Initially a smaller percentage of traffic will be routed to the new version. Canary is mostly used when the tests are lacking or there is little confidence about the stability of the new version.</p>
+<p align="center">
+<img src="https://github.com/lakwarus/reference-architecture/raw/master/media/ra-canary.png">
+<br> 
+<i>Figure 12 - Canary deployment strategy</i>
+</p>
+<h5 id="ab-testing">A/B Testing</h5>
+<p>A/B testing deployments routes a subset of users to a new version (functionality) under specific conditions. This deployment strategy is used to test the conversion of a given feature and only rolls out the version that converts the most.</p>
+<p align="center">
+<img src="https://github.com/lakwarus/reference-architecture/raw/master/media/ca-ab-testing.png">
+<br> 
+<i>Figure 13 - A/B testing deployment strategy</i>
+</p>
+<h5 id="shadow">Shadow</h5>
+<p>Shadow deployment strategies run version 1 and 2 together and fork version 1 incoming requests and send them to version 2 as well without impacting production traffic. This is a fairly complex deployment strategy and is mainly used to test production load on a new feature.  When the required stability and performance are met, the new version of the application can be rolled out.</p>
+<p align="center">
+<img src="https://github.com/lakwarus/reference-architecture/raw/master/media/ra-shadow.png">
+<br> 
+<i>Figure 14 - Shadow deployment strategy</i>
+</p>
+<h2 id="references">References:</h2>
+<ul>
+<li>[1] <a href="https://thenewstack.io/deployment-strategies/">Six Strategies for Application Deployment</a></li>
+<li>[2] <a href="https://medium.com/@lakwarus/micro-api-gateway-58cce43f2d7d">API Microgateway</a></li>
+<li>[3] <a href="https://12factor.net/">The twelve-factor Apps</a></li>
+<li>[4] <a href="https://www.gitops.tech/">GitOps</a></li>
+</ul>
+
+    </body>
+    </html>
